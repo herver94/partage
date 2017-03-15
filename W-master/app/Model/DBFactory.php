@@ -16,11 +16,10 @@ class DBFactory
       ORM::configure('password', $app->getConfig('db_pass'));
       // Cette configuration n'est necessaire que si les clés primaires sont différentes de 'id'
       ORM::configure('id_column_overrides', array(
-        'article' => 'IDARTICLE',
-        'auteur' => 'IDAUTEUR',
-        'categorie' => 'IDCATEGORIE',
-        'tags' => 'IDTAGS',
-        'view_articles'=> 'IDARTICLE'
+        'categories' => 'IDCATEGORIE',
+        'commentaires' => 'IDCOMMENTAIRE',
+        'partages' => 'IDPARTAGE',
+        'users' => 'IDUSER',
       ));
     }
 }
