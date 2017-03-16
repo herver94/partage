@@ -2,7 +2,9 @@
 
 namespace Controller;
 
+
 use \W\Controller\Controller;
+use Model\Db\DBFactory;
 
 class DefaultController extends Controller
 {
@@ -12,7 +14,12 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$this->show('default/home');
+		DBFactory::start();
+
+		$partages = \ORM::for_table('view_partage')->find_result_set();
+
+		$this->show('default/home', ['partages' => $partages]);
+	    
 	}
 
-}
+}	

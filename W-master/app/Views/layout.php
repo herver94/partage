@@ -13,7 +13,7 @@
 		</header>
 
 		<section>
-			<?= $this->section('main_content') ?>
+			<?= $this->section('contenu') ?>
 		</section>
 
 		<footer>
