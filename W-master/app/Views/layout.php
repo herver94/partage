@@ -10,12 +10,13 @@
 
 <!-- CSS
 ================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>">
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>">
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>" />
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>"/>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>"/>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>"/>
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/flexslider.css'); ?>" />
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/prettyPhoto.css'); ?>"/>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>"/>
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -142,7 +143,7 @@
     <?= $this->section('contenu') ?>
  <!-- Footer Area
         ================================================== -->
-
+    </div>
 	<div class="footer-container"><!-- Begin Footer -->
     	<div class="container">
         	<div class="row footer-row">
@@ -180,10 +181,12 @@
             </div><!-- End Sub Footer -->
 
         </div>
+
     </div><!-- End Footer -->
 
     <!-- Scroll to Top -->
-    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
+    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page <i>glyphicon glyphicon-arrow-up</i></div>
+
 
 </body>
 </html>
