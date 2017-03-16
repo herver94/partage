@@ -20,7 +20,7 @@
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" href="css/style-ie.css"/>
-<![endif]--> 
+<![endif]-->
 
 <!-- Favicons
 ================================================== -->
@@ -36,6 +36,7 @@
 <script src="<?= $this->assetUrl('/js/jquery.prettyPhoto.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -63,7 +64,7 @@
                 start: function(slider){
                   $('body').removeClass('loading');
                 }
-            });  
+            });
         });
 
 </script>
@@ -74,27 +75,27 @@
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
-    
+
     <div class="container">
-    
+
       <div class="row header"><!-- Begin Header -->
-      
+
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
         	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
             <h4>Le site web qui donne la parole aux seniors !</h4>
         </div>
-        
+
         <!-- Main Navigation
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-            
+
             <ul class="nav">
             <li class="active">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">ACCUEIL</a>
-                
+
             </li>
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
@@ -110,7 +111,7 @@
              <li><a href="profil.php">Mon compte</a></li>
              <li><a href="contact.php">Contact</a></li>
             </ul>
-           
+
             </div>
 
             <!-- Mobile Nav
@@ -134,9 +135,9 @@
                 </form>
 
         </div>
-       
+
       </div><!-- End Header -->
-   
+
 
     <?= $this->section('contenu') ?>
  <!-- Footer Area
@@ -179,10 +180,10 @@
             </div><!-- End Sub Footer -->
 
         </div>
-    </div><!-- End Footer --> 
-    
-    <!-- Scroll to Top -->  
+    </div><!-- End Footer -->
+
+    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
-    
+
 </body>
 </html>

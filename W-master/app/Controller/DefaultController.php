@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Db\DBFactory;
+use Model\DBFactory;
 
 class DefaultController extends Controller
 {
@@ -55,6 +55,21 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/article', ['article' => $article, 'categorie' => $article->LIBELLECATEGORIE]);
+
+	}
+	public function redaction() {
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Récupération des Données de l'Article
+	   // $article = \ORM::for_table('view_partage')->find_one($id);
+
+	    # Suggestions
+	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
+
+	    # Transmettre à la Vue
+	    $this->show('redaction');
 
 	}
 
