@@ -1,6 +1,7 @@
-<?php 
-		$this->layout('layout', ['title' => 'TechNews | '.ucfirst($categorie), 'current' => ucfirst($categorie)]);
-		use Model\Shortcut;
+<?php
+		$this->layout('layout', ['title' => 'Partage | Inscription ', 'current' => '']);
+		//use Model\Shortcut;
+
 		$this->start('contenu');
 ?>
 
@@ -12,14 +13,14 @@
 
         <div class="span8 contact">
 
-            <h2>Contact Us</h2>
+            <h2>Inscription</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna.</p>
 
             <div class="alert alert-success">
                 Well done! You successfully read this important alert message.
             </div>
 
-            <form action="#" id="contact-form">
+            <form action="#" id="inscription-form" method="post">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
@@ -61,19 +62,13 @@
             <h5 class="title-bg">Map Us</h5>
             <img src="img/location-map.jpg" alt="map">
 
-        </div><!-- End sidebar column -->
+        </div><!-- Fin sidebar column -->
 
-    </div><!-- End container row -->
+    </div><!-- Fin container row -->
 
-    </div> <!-- End Container -->
-
-    <!-- Footer Area
-        ================================================== -->
-
+	</div> <!-- Fin Container -->
 
 
     <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-
-</body>
-</html>
+    <?php $this->stop('contenu'); ?>
