@@ -2,7 +2,7 @@
 namespace Controller;
 
 use W\Controller\Controller;
-use Model\Db\DBFactory;
+use Model\DBFactory;
 use Model\Shortcut;
 
 class ArticleController extends Controller
