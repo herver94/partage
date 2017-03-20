@@ -47,7 +47,7 @@ public function connexion() {
 									//connexion
 									$auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('oiso');
+									$this->redirectToRoute('default_profil');
 							}//sinon retour formulaire
 							else{
 
@@ -144,14 +144,13 @@ public function connexion() {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Articles pour la home
-	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
-        
+
+
         # Récupérer l'utilisateur connecté
         $loggedUser = $this->getUser();
 
 	    # Transmettre à la Vue
-	    $this->show('default/profil', ['profil' => $profil]);
+	    $this->show('default/profil', ['loggedUser' => $loggedUser]);
 	}
 
 

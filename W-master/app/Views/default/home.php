@@ -12,19 +12,20 @@
      	<!-- Slider Carousel
         ================================================== -->
         <div class="span8">
-            <div class="flexslider">
-              <ul class="slides">
-                <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/23.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/24.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
-
-              </ul>
-            </div>
-        </div>
+      <div class="flexslider">
+        <ul class="slides">
+          <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/23.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/24.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/20.jpg'); ?>" alt="slider" /></li>
+          <li><img src="<?= $this->assetUrl('/img/partages/16.jpg'); ?>" alt="slider" /></li>
+        </ul>
+      </div>
+  </div>
 
         <!-- Headline Text
         ================================================== -->
@@ -46,9 +47,9 @@
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
                            <h4 id="title-login">Connectez-vous</h4>
-                           <form>
+                           <form method="post" action="#">
                                <div class="form-group">
-                                   <input type="email" name="login"  placeholder="Email">
+                                   <input type="text" name="login"  placeholder="Votre email ou votre nom">
                                </div>
                                <div class="form-group">
                                    <input type="password" name="password" placeholder="Mot de passe">
