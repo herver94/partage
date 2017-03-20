@@ -6,7 +6,7 @@
     $this->start('contenu')
 
  ?>
-
+<?php print_r($loggedUser); ?>
 
 
 
