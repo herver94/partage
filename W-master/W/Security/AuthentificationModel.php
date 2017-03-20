@@ -28,7 +28,7 @@ class AuthentificationModel
 
 		if(password_verify($plainPassword, $foundUser[$app->getConfig('security_password_property')])){
 			return (int) $foundUser[$app->getConfig('security_id_property')];
-		}
+	}
 
 		return 0;
 	}
@@ -64,7 +64,7 @@ class AuthentificationModel
 		return (isset($_SESSION['user'])) ? $_SESSION['user'] : null;
 	}
 
-	
+
 
 	/**
 	 * Utilise les données utilisateurs présentes en base pour mettre à jour les données en session

@@ -1,15 +1,15 @@
-<?php 
+<?php
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current'=>'categorie']);
     use Model\Shortcut;
- $this->start('contenu'); 
+ $this->start('contenu');
  ?>
     <!-- Blog Content
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
 
         <!-- Blog Posts
-        ================================================== --> 
+        ================================================== -->
         <div class="span8 blog">
             <?php foreach ($articles as $partage) : ?>
                 <!-- Blog Post 1 -->
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Blog Sidebar
-        ================================================== --> 
+        ================================================== -->
         <div class="span4 sidebar">
 
             <!--Search-->
@@ -55,7 +55,7 @@
             </section>
 
             <!--Categories-->
-           <h5 class="title-bg">Categories</h5> 
+           <h5 class="title-bg">Categories</h5>
 
             <ul class="post-category-list">
                <?php foreach ($categories as $categorie) : ?>
@@ -63,10 +63,10 @@
                 <?php endforeach; ?>
             </ul>
 
-          
+
         </div>
 
     </div>
-    
+
     </div> <!-- End Container -->
     <?php $this->stop('contenu') ?>

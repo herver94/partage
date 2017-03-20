@@ -2,7 +2,7 @@
 
  use Model\CategoriesModel;
     use Model\DBFactory;
-    
+
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
 ?>
@@ -46,6 +46,7 @@
 <script src="<?= $this->assetUrl('/js/jquery.prettyPhoto.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -102,11 +103,13 @@
             <div class="navbar hidden-phone">
 
             <ul class="nav">
-               <li <?php if($current == 'Accueil') { 
-                    echo 'class="active"'; 
-                } ?> 
+
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
             <li class="dropdown">
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <?php foreach($categories as $categorie) : ?>
@@ -114,12 +117,13 @@
                     <?php endforeach; ?>
                 </ul>
              </li>
-             
-                <li> <a href="#">Inscription</a></li>
+
+                <li> <a href="<?= $this->url("Default_inscription");
+?>">Inscription</a></li>
                 <li> <a href="#">Connexion</a></li>
                 <li> <a href="#">Mon Compte</a></li>
                 <li> <a href="#">Contact</a></li>
-                
+
             </ul>
 
             </div>
@@ -180,7 +184,7 @@
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
-                        <div class="span6">
+                        <div class="span6">s
                             <span class="right">
                             <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
                             </span>
@@ -190,10 +194,12 @@
             </div><!-- End Sub Footer -->
 
         </div>
+
     </div><!-- End Footer -->
 
     <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
+
 
 </body>
 </html>

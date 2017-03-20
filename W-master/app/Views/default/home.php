@@ -2,7 +2,6 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
     use Model\Shortcut;
-    debug($w_user);
 ?>
 <?php $this->start('contenu') ?>
 
@@ -34,34 +33,9 @@
             Inscription gratuite et rapide !</p>
 <!--
         Connexion
-        ----------------------------------------------------
+       
 -->
-    <div class="container">
-       <div class="row">
-           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
-           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-               <div class="container-fluid container-login formulaire">
-                   <div class="panel panel-default" id="panel-login">
-                       <div class="panel-body">
-                           <h4 id="title-login">Connectez-vous</h4>
-                           <form  method="post" action="">
-                               <div class="form-group">
-                                   <input type="email" name="email"  placeholder="Email">
-                               </div>
-                               <div class="form-group">
-                                   <input type="password" name="password" placeholder="Mot de passe">
-                               </div>
-                               <button type="submit" class="btn btn-default">Connexion</button>
-                           </form>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
-       </div>
-    </div>
-        </div>
-
+    
     </div><!-- End Headline -->
 
     <div class="row gallery-row"><!-- Begin Gallery Row -->
