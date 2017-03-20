@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Db\DBFactory;
+use Model\DBFactory;
 
 class DefaultController extends Controller
 {
@@ -57,6 +57,21 @@ class DefaultController extends Controller
 	    $this->show('default/article', ['article' => $article, 'categorie' => $article->LIBELLECATEGORIE]);
 
 	}
+    public function profil() {
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Récupération des Articles pour la home
+	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
+        
+        # Récupérer l'utilisateur connecté
+        $loggedUser = $this->getUser();
+
+	    # Transmettre à la Vue
+	    $this->show('default/profil', ['profil' => $profil]);
+	}
+
 
 
 }

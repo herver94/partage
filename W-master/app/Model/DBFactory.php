@@ -1,5 +1,5 @@
 <?php
-namespace Model\Db;
+namespace Model;
 use ORM;
 
 

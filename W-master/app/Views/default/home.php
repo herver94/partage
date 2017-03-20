@@ -14,11 +14,14 @@
         <div class="span8">
             <div class="flexslider">
               <ul class="slides">
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/23.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/24.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
+                
               </ul>
             </div>
         </div>
@@ -37,8 +40,7 @@
 -->
     <div class="container">
        <div class="row">
-           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
-           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+           <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                <div class="container-fluid container-login formulaire">
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
@@ -76,7 +78,7 @@
     	<!-- Blog Preview
         ================================================== -->
     	 <!-- Blog Post 1 -->
-   
+       <div class=" container-fluid row-fluid">
         <div class="span5 blog dernier-partage">
             <article class="clearfix">
                 <a href="blog-single.htm"><img src="<?= $this->assetUrl('/img/gallery/gallery-img-1-4col.jpg'); ?>" alt="Post Thumb" class="align-left"></a>
@@ -107,6 +109,7 @@
                     </div>
             </article>
         </div>
+       </div>
     
         
         <!-- Client Area<a href="#">Lire plus</a>
