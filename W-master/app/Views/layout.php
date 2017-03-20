@@ -118,7 +118,8 @@
                 </ul>
              </li>
 
-                <li> <a href="#">Inscription</a></li>
+                <li> <a href="<?= $this->url("Default_inscription");
+?>">Inscription</a></li>
                 <li> <a href="#">Connexion</a></li>
                 <li> <a href="#">Mon Compte</a></li>
                 <li> <a href="#">Contact</a></li>

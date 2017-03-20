@@ -1,23 +1,23 @@
-<?php 
+<?php
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current'=>'categorie']);
     use Model\Shortcut;
- $this->start('contenu'); 
+ $this->start('contenu');
  ?>
     <!-- Blog Content
-    ================================================== --> 
+    ================================================== -->
     <div class="row">
 
         <!-- Blog Posts
-        ================================================== --> 
+        ================================================== -->
         <div class="span8 blog">
             <?php foreach ($articles as $partage) : ?>
                 <!-- Blog Post 1 -->
                 <article class="clearfix">
-                    <a href="<?= $this->url('default_partage', ['idpartage' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
-                    <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['idpartage' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h4>
+                    <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
+                    <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h4>
                         <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
-                        <button class="btn btn-mini btn-inverse" type="button" onclick="javascript:location.href='<?= $this->url('default_partage', ['idpartage' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>'">Lire la suite...</button>
+                        <button class="btn btn-mini btn-inverse" type="button" onclick="javascript:location.href='<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>'">Lire la suite...</button>
                         <div class="post-summary-footer">
                             <ul class="post-data-3">
                                 <li><i class="icon-calendar"></i>  <?= $partage->DATEPARTAGE; ?></li>
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Blog Sidebar
-        ================================================== --> 
+        ================================================== -->
         <div class="span4 sidebar">
 
             <!--Search-->
@@ -55,7 +55,7 @@
             </section>
 
             <!--Categories-->
-           <h5 class="title-bg">Categories</h5> 
+           <h5 class="title-bg">Categories</h5>
 
             <ul class="post-category-list">
                <?php foreach ($categories as $categorie) : ?>
@@ -63,10 +63,10 @@
                 <?php endforeach; ?>
             </ul>
 
-          
+
         </div>
 
     </div>
-    
+
     </div> <!-- End Container -->
     <?php $this->stop('contenu') ?>
