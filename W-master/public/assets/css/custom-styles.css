@@ -694,6 +694,7 @@ a.accordion-toggle{background: #f5f5f5;}
 #lightbox-image-details-currentNumber {display: none; visibility: hidden;}
 
 /***** Testimonials *****/
+<<<<<<< HEAD
 .quote-text {
 	font-size:16px;
 	line-height:24px;
@@ -702,6 +703,16 @@ a.accordion-toggle{background: #f5f5f5;}
 	margin:0px 20px; }
 .quote-text cite {
 	font-size:12px;
+=======
+.quote-text { 
+	font-size:16px; 
+	line-height:24px; 
+	font-family:Georgia, "Times New Roman", Times, serif; 
+	font-style:italic; 
+}
+.quote-text cite { 
+	font-size:12px; 
+>>>>>>> ecff2dc23a50575b6b0ee87e99aeb190f215572b
 	color:#999;
 	display:block;
 	margin-top:5px; }

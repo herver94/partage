@@ -102,7 +102,10 @@
             <div class="navbar hidden-phone">
 
             <ul class="nav">
-               <li <?php if($current == 'Accueil') { echo 'class="active"'; } ?> ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
+               <li <?php if($current == 'Accueil') { 
+                    echo 'class="active"'; 
+                } ?> 
+                ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
