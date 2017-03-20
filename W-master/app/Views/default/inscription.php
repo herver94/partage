@@ -1,26 +1,25 @@
+
 <?php
-		$this->layout('layout', ['title' => 'Partage | Inscription ', 'current' => '']);
-		//use Model\Shortcut;
-
-		$this->start('contenu');
+    # Layout utilisé pour la vue
+    $this->layout('layout', ['title' => 'Inscription', 'current' => 'Inscription']);
+    //use Model\Shortcut;
 ?>
+<?php $this->start('contenu') ?>
 
-		<div class="container main-container">
-
-    <!-- Page contenu
+    <!-- Page Content
     ================================================== -->
     <div class="row"><!--Container row-->
 
-        <div class="span8 contact">
+        <div class="span8 contact"><!--Begin page content column-->
 
-            <h2>Inscription</h2>
+            <h2>Contact Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna.</p>
 
             <div class="alert alert-success">
                 Well done! You successfully read this important alert message.
             </div>
 
-            <form action="#" id="inscription-form" method="post">
+            <form action="#" id="contact-form">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
@@ -62,13 +61,16 @@
             <h5 class="title-bg">Map Us</h5>
             <img src="img/location-map.jpg" alt="map">
 
-        </div><!-- Fin sidebar column -->
+        </div><!-- End sidebar column -->
 
-    </div><!-- Fin container row -->
+    </div><!-- End container row -->
 
-	</div> <!-- Fin Container -->
+    </div> <!-- End Container -->
 
+    <!-- Footer Area
+        ================================================== -->
 
-    <!-- Scroll to Top -->
+	    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
-    <?php $this->stop('contenu'); ?>
+
+<?php $this->stop('contenu') ?>
