@@ -1,3 +1,12 @@
+<?php
+
+ use Model\CategoriesModel;
+    use Model\DBFactory;
+
+    $CM = new CategoriesModel;
+    $categories = $CM->findCategories();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
@@ -10,13 +19,13 @@
 
 <!-- CSS
 ================================================== -->
-<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>"/>
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>"/>
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>"/>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>">
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>">
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>" />
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/flexslider.css'); ?>" />
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/prettyPhoto.css'); ?>"/>
-<link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>"/>
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -94,23 +103,26 @@
             <div class="navbar hidden-phone">
 
             <ul class="nav">
-            <li class="active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">ACCUEIL</a>
 
-            </li>
-             <li class="dropdown">
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
+                ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
+            <li class="dropdown">
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="AvisSurLaSociete.php">Expériences de vie</a></li>
-                    <li><a href="anecdote.php">Anecdotes</a></li>
-                    <li><a href="AvisSurLaSociete.php">Avis sur la société actuelle</a></li>
-                    <li><a href="ConseilsGenerations.php">Conseils aux futurs générations</a></li>
+                    <?php foreach($categories as $categorie) : ?>
+                        <li <?php if($current == $categorie->getLIBELLECATEGORIE()) { echo 'class="active"'; } ?> ><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
              </li>
-             <li><a href="inscription.php">Inscription</a></li>
-             <li><a href="connexion.php">Connexion</a></li>
-             <li><a href="profil.php">Mon compte</a></li>
-             <li><a href="contact.php">Contact</a></li>
+
+                <li> <a href="#">Inscription</a></li>
+                <li> <a href="#">Connexion</a></li>
+                <li> <a href="#">Mon Compte</a></li>
+                <li> <a href="#">Contact</a></li>
+
             </ul>
 
             </div>
@@ -143,7 +155,7 @@
     <?= $this->section('contenu') ?>
  <!-- Footer Area
         ================================================== -->
-    </div>
+
 	<div class="footer-container"><!-- Begin Footer -->
     	<div class="container">
         	<div class="row footer-row">
@@ -185,7 +197,7 @@
     </div><!-- End Footer -->
 
     <!-- Scroll to Top -->
-    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page <i>glyphicon glyphicon-arrow-up</i></div>
+    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
 
 
 </body>

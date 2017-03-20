@@ -1,6 +1,7 @@
 
 <?php
     # Layout utilisé pour la vue
+
     $this->layout('layout', ['title' => 'Inscription', 'current' => 'inscription']);
     //use Model\Shortcut;
 ?>
@@ -10,21 +11,26 @@
 
 <?php $this->start('contenu'); ?>
 
+
     <!-- Page Content
     ================================================== -->
     <div class="row"><!--Container row-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
+
             <h2>Inscription</h2>
             <p>Inscrivez vous simplement, rapidement et gratuitement pour partager et échanger avec les autres. Recevoir nos newsletters pour être toujours mieux informés
 							Commenter les articles et discuter. Participer à nos jeux concours
+
 
             <div class="alert alert-success">
                 Well done! You successfully read this important alert message.
             </div>
 
+
 						<form action="#" method="post" id="contact-form" id="inscriptionForm">
+
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span7" name="NOMUSER" id="nom" size="16" type="text" placeholder="Nom">
@@ -91,14 +97,20 @@
 
         </div><!-- End sidebar column -->
 
+
     </div><!-- End container row -->
 
     </div> <!-- End Container -->
 
 
 
+
+    <!-- Footer Area
+        ================================================== -->
+
 	    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+
 
 <?php $this->stop('contenu'); ?>
 

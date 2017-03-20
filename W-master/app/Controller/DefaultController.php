@@ -7,6 +7,7 @@ use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 
+
 class DefaultController extends Controller
 {
 
@@ -61,6 +62,7 @@ public function connexion() {
 	 * Permet d'afficher les articles d'une catégorie
 	 * $categorie
 	 */
+
 	 public function inscription() {
 		 if(!empty($_POST))
 	 			{
@@ -83,17 +85,23 @@ public function connexion() {
 	 						}
 								$this->show('default/inscription');
 							}
-	public function categorie($categories) {
+
+
+	public function categories($categorie) {
+
 	    # Connexion a la BDD
 	    DBFactory::start();
 
 	    # Récupérations des Articles de la Catégorie
-	    $articles  = \ORM::for_table('view_partage')->where('LIBELLECATEGORIE', ucfirst($categorie))->find_result_set();
+	    $articles  = \ORM::for_table('view_partage')->where('CHEMIN', $categorie)->find_result_set();
 
 	    $nbarticles = $articles->count();
 
+	    $categories = \ORM::for_table('categories')->find_result_set();
+
 	    # Transmettre à la Vue
-	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'nbarticles' => $nbarticles]);
+	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles]);
+
 
 	}
 
@@ -104,13 +112,10 @@ public function connexion() {
 	    DBFactory::start();
 
 	    # Récupération des Données de l'Article
-	    $article = \ORM::for_table('view_partage')->find_one($id);
-
-	    # Suggestions
-	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
+	    $partage = \ORM::for_table('view_partage')->find_one($id);
 
 	    # Transmettre à la Vue
-	    $this->show('default/article', ['article' => $article, 'categorie' => $article->LIBELLECATEGORIE]);
+	    $this->show('default/partage', ['partage' => $partage]);
 
 	}
 	public function redaction() {

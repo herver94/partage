@@ -3,13 +3,11 @@
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
 
     //use Model\Shortcut;
-?>
+    $this->start('contenu')
 
-<?php $this->start('contenu') ?>
+ ?>
 
-<?php // print_r($articles); ?>
 
-<?php echo password_hash('francois', PASSWORD_DEFAULT); ?>
 
 
 
