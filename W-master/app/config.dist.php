@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $w_config = [
    	//information de connexion à la bdd
@@ -10,11 +10,11 @@ $w_config = [
 
 	//authentification, autorisation
 	'security_user_table' => 'users',				//nom de la table contenant les infos des utilisateurs
-	'security_id_property' => 'id',					//nom de la colonne pour la clef primaire
-	'security_username_property' => 'username',		//nom de la colonne pour le "pseudo"
-	'security_email_property' => 'email',			//nom de la colonne pour l'"email"
-	'security_password_property' => 'password',		//nom de la colonne pour le "mot de passe"
-	'security_role_property' => 'role',				//nom de la colonne pour le "role"
+	'security_id_property' => 'IDUSER',					//nom de la colonne pour la clef primaire
+	'security_username_property' => 'NOMUSER',		//nom de la colonne pour le "pseudo"
+	'security_email_property' => 'EMAILUSER',			//nom de la colonne pour l'"email"
+	'security_password_property' => 'MOTDEPASSEUSER',		//nom de la colonne pour le "mot de passe"
+	'security_role_property' => 'ROLE',				//nom de la colonne pour le "role"
 
 	'security_login_route_name' => 'login',			//nom de la route affichant le formulaire de connexion
 
@@ -23,4 +23,3 @@ $w_config = [
 ];
 
 require('routes.php');
-

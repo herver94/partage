@@ -171,7 +171,7 @@
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
-                        <div class="span6">
+                        <div class="span6">s
                             <span class="right">
                             <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
                             </span>

@@ -4,6 +4,8 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use Model\DBFactory;
+use \W\Security\AuthentificationModel;
+use \W\Model\UsersModel;
 
 class DefaultController extends Controller
 {
@@ -12,21 +14,75 @@ class DefaultController extends Controller
 	 * Page d'accueil par défaut
 	 */
 	public function home() {
+		# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-	    DBFactory::start();
 
-	    # Récupération des Articles pour la home
-	    $articles = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
+		 # Transmettre à la Vue
+//
 
-	    # Transmettre à la Vue
-	    $this->show('default/home', ['articles' => $articles]);
-	}
 
+					DBFactory::start();
+
+					$articles = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
+					$this->show('default/home', ['articles' => $articles,]);
+
+				}
+
+
+
+
+public function connexion() {
+
+				if(!empty($_POST))
+						{
+							DBFactory::start();
+							//on a besoin d'un objet sécurité
+							$auth = new AuthentificationModel;
+							// vérification du login/password dans la table (cf config.php)
+							if($auth->isValidLoginInfo($_POST['login'], $_POST['password']))
+							{
+									// récup d'un objet User
+									$user = new UsersModel;
+									// récupération des infos de l'utilisateur
+									$util = $user->getUserByUsernameOrEmail($_POST['login']);
+									//connexion
+									$auth->logUserIn($util); //utilisateur dans la session
+
+									$this->redirectToRoute('oiso');
+							}//sinon retour formulaire
+							else{
+
+									$message = 'erreur de pseudo';
+									$this->redirectToRoute('default_home' ); }
+						}
+						}
 	/**
 	 * Permet d'afficher les articles d'une catégorie
-	 * @param STRING $categorie
+	 * $categorie
 	 */
+	 public function inscription() {
+		 if(!empty($_POST))
+	 			{
+	 				DBFactory::start();
+
+
+
+	 			$newuser	= \ORM::for_table('users')->create();
+
+				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
+				$newuser->NOMUSER = $_POST['NOMUSER'];
+				$newuser->ROLE = 'USER';
+				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
+				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
+				$newuser->EMAILUSER = $_POST['EMAILUSER'];
+				$newuser->CPUSER = $_POST['CPUSER'];
+				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
+				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
+				$newuser->save();
+	 						}
+								$this->show('default/inscription');
+							}
 	public function categorie($categories) {
 	    # Connexion a la BDD
 	    DBFactory::start();
@@ -70,6 +126,15 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('redaction');
+
+	}
+	public function gestionDesMembres(){
+
+  DBFactory::start();
+	$membres = \ORM::for_table('view_partage')->find_result_set();
+		//$this->allowTo('admin');
+ $this->show('admin/gestionDesMembres', ['membres' => $membres ]);
+
 
 	}
 

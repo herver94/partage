@@ -11,6 +11,7 @@ class DBFactory
       // Récupération des Données de l'app
       $app = getApp();
       //initialisation de Idiorm
+        ORM::configure('driver_options', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
       ORM::configure('mysql:host='.$app->getConfig('db_host').';dbname='.$app->getConfig('db_name'));
       ORM::configure('username', $app->getConfig('db_user'));
       ORM::configure('password', $app->getConfig('db_pass'));
@@ -22,5 +23,5 @@ class DBFactory
         'users' => 'IDUSER',
       ));
     }
-    ORM::configure('driver_options', array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
 }
