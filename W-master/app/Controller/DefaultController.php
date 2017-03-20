@@ -19,17 +19,14 @@ class DefaultController extends Controller
 
 	    # Connexion a la BDD
 
-		 # Transmettre à la Vue
-//
 
+			DBFactory::start();
+	    # Récupération des Articles pour la home
+	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
-					DBFactory::start();
-					$loggedUser = $this->getUser();
-					$articles = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
-					$this->show('default/home', ['articles' => $articles, 'loggedUser' => $loggedUser ]);
-
-				}
-
+	    # Transmettre à la Vue
+	    $this->show('default/home', ['partages' => $partages]);
+	}
 
 
 
