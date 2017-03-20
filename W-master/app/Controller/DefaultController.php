@@ -18,7 +18,7 @@ class DefaultController extends Controller
 		# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-
+        DBFactory::start();
 
 			DBFactory::start();
 	    # Récupération des Articles pour la home
@@ -139,6 +139,21 @@ public function connexion() {
 
 
 	}
+    public function profil() {
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Récupération des Articles pour la home
+	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
+        
+        # Récupérer l'utilisateur connecté
+        $loggedUser = $this->getUser();
+
+	    # Transmettre à la Vue
+	    $this->show('default/profil', ['profil' => $profil]);
+	}
+
 
 
 }
