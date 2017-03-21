@@ -144,10 +144,10 @@ class DefaultController extends Controller
 	}
 	public function gestionDesMembres(){
 
-  DBFactory::start();
-	$membres = \ORM::for_table('view_partage')->find_result_set();
+ 		DBFactory::start();
+		$membres = \ORM::for_table('view_partage')->find_result_set();
 		//$this->allowTo('admin');
- $this->show('admin/gestionDesMembres', ['membres' => $membres ]);
+ 		$this->show('admin/gestionDesMembres', ['membres' => $membres ]);
 
 
 	}
@@ -156,8 +156,7 @@ class DefaultController extends Controller
 	    # Connexion a la BDD
 		    DBFactory::start();
 
-		    # Récupération des Articles pour la home
-
+		# Récupération des Articles pour la home
 
 
 	    # Transmettre à la Vue
@@ -182,6 +181,22 @@ class DefaultController extends Controller
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	}
+
+		public function deleteprofil($id){
+			# Connexion a la BDD
+	   		DBFactory::start();
+
+	   		$person = \ORM::for_table('users')->find_one($id);
+			$person->delete();
+
+			//on a besoin d'un objet sécurité
+			$auth = new AuthentificationModel;
+
+			//déconnexion de la session
+			$auth->logUserOut();
+
+	   		$this->redirectToRoute('default_home');
+		}
 
 
 
