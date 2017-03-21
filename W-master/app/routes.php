@@ -4,6 +4,7 @@
 		['GET', '/', 'Default#home', 'default_home'],
 		['GET', '/profil', 'Default#profil', 'default_profil'],
 
+        
 		['POST', '/', 'Default#connexion', 'default_connexion'],
 		['GET', '/accueil.html', 'Default#home', 'default_accueil'],
 		['GET', '/partages/[:categorie]', 'Default#categories', 'default_categorie'],
@@ -12,3 +13,4 @@
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres']
 	);
+

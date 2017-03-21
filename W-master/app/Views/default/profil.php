@@ -8,8 +8,6 @@
 
 ​
 
-​
-
     <!-- Page Content
 
     ================================================== --> 
@@ -29,14 +27,18 @@
             <div class="row">
 
                 <div class="span6">
+<
 
                     <img src="<?= $this->assetUrl('/img/partages/'.$w_user['PHOTOUSER']); ?>" width="50%" height="50%" class="align-left thumbnail" alt="avatar">
+
 
                 </div>
 
                 <div class="span6">
 
+
                     <h2><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
+
 
                     <p class="lead">For an international ad campaign. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus</p>
 
@@ -58,13 +60,14 @@
 
                     </ul>
 
-​
+
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte à partager</button>
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Déconnexion</button>
+
 
                 </div>
 
@@ -81,6 +84,7 @@
     
 
     </div> <!-- End Container -->
+
 
 ​
 
