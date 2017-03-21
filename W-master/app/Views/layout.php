@@ -1,3 +1,12 @@
+<?php
+
+ use Model\CategoriesModel;
+    use Model\DBFactory;
+
+    $CM = new CategoriesModel;
+    $categories = $CM->findCategories();
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
@@ -16,11 +25,12 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>" />
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/flexslider.css'); ?>" />
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
+<link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" href="css/style-ie.css"/>
-<![endif]--> 
+<![endif]-->
 
 <!-- Favicons
 ================================================== -->
@@ -36,6 +46,7 @@
 <script src="<?= $this->assetUrl('/js/jquery.prettyPhoto.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -63,7 +74,7 @@
                 start: function(slider){
                   $('body').removeClass('loading');
                 }
-            });  
+            });
         });
 
 </script>
@@ -74,43 +85,47 @@
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
-    
+
     <div class="container">
-    
+
       <div class="row header"><!-- Begin Header -->
-      
+
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
         	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
             <h4>Le site web qui donne la parole aux seniors !</h4>
         </div>
-        
+
         <!-- Main Navigation
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-            
+
             <ul class="nav">
-            <li class="active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">ACCUEIL</a>
-                
-            </li>
-             <li class="dropdown">
+
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
+                ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
+            <li class="dropdown">
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="AvisSurLaSociete.php">Expériences de vie</a></li>
-                    <li><a href="anecdote.php">Anecdotes</a></li>
-                    <li><a href="AvisSurLaSociete.php">Avis sur la société actuelle</a></li>
-                    <li><a href="ConseilsGenerations.php">Conseils aux futurs générations</a></li>
+                    <?php foreach($categories as $categorie) : ?>
+                        <li <?php if($current == $categorie->getLIBELLECATEGORIE()) { echo 'class="active"'; } ?> ><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
+                    <?php endforeach; ?>
                 </ul>
              </li>
-             <li><a href="inscription.php">Inscription</a></li>
-             <li><a href="connexion.php">Connexion</a></li>
-             <li><a href="profil.php">Mon compte</a></li>
-             <li><a href="contact.php">Contact</a></li>
+
+                <li> <a href="<?= $this->url("Default_inscription");
+?>">Inscription</a></li>
+                <li> <a href="#">Connexion</a></li>
+                <li> <a href="#">Mon Compte</a></li>
+                <li> <a href="#">Contact</a></li>
+
             </ul>
-           
+
             </div>
 
             <!-- Mobile Nav
@@ -134,9 +149,9 @@
                 </form>
 
         </div>
-       
+
       </div><!-- End Header -->
-   
+
 
     <?= $this->section('contenu') ?>
  <!-- Footer Area
@@ -169,7 +184,7 @@
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
-                        <div class="span6">
+                        <div class="span6">s
                             <span class="right">
                             <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
                             </span>
@@ -179,10 +194,12 @@
             </div><!-- End Sub Footer -->
 
         </div>
-    </div><!-- End Footer --> 
-    
-    <!-- Scroll to Top -->  
+
+    </div><!-- End Footer -->
+
+    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
-    
+
+
 </body>
 </html>
