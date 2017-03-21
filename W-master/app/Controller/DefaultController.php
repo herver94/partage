@@ -21,6 +21,7 @@ class DefaultController extends Controller
 		DBFactory::start();
 
 
+			DBFactory::start();
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
@@ -29,7 +30,7 @@ class DefaultController extends Controller
 	}
 
 
-public function connexion() {
+    public function connexion() {
 
 				if(!empty($_POST))
 						{
@@ -158,8 +159,28 @@ public function connexion() {
 		    # Récupération des Articles pour la home
 
 
+
 	    # Transmettre à la Vue
-	   $this->show('default/profil');
+
+	    $this->show('default/profil');
+
+
+	}
+        public function contact(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/contact');
+	}
+        public function conditionsGenerale(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/conditionsGenerale');
 	}
 
 

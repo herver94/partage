@@ -2,8 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
     use Model\Shortcut;
-?>
-<?php $this->start('contenu') ?>
+ $this->start('contenu') ?>
 
 
 
@@ -11,6 +10,7 @@
 
       <!-- Slider Carousel
         ================================================== -->
+
          <div class="span8">
             <div class="flexslider">
               <ul class="slides">
@@ -22,15 +22,10 @@
                 <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
                 <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
                 <li><img src="<?= $this->assetUrl('/img/partages/20.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/16.jpg'); ?>" alt="slider" /></li>  
-                <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
-                <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
-                
               </ul>
             </div>
         </div>
+
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
@@ -41,37 +36,39 @@
             Inscription gratuite et rapide !</p>
 <!--
         Connexion
-       
+
 -->
 
-    <div class="container">
+    <div <?php if(!empty($w_user)){
+      echo 'style="display:none;"';
+    }; ?> class="container">
        <div class="row">
            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                <div class="container-fluid container-login formulaire">
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
+
                            <h4 id="title-login">Connectez-vous</h4>    
 
-                           <form method="post" action="#">
-                           <form>
+                           <form method="post" action="#">                   
+
                                <div class="form-group">
-                                   <input type="text" name="login"  placeholder="Email">
+                                   <input type="text" name="login"  placeholder="Votre email ou votre nom">
                                </div>
                                <div class="form-group">
                                    <input type="password" name="password" placeholder="Mot de passe">
                                </div>
-                               <button type="submit" class="btn btn-default">Connexion</button>
+                               <button type="submit" class="btn btn-default btn-profil">Connexion</button>
                            </form>
                        </div>
                    </div>
                </div>
            </div>
 
-           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
        </div>
     </div>
         </div>
-        
+
     </div><!-- End Headline -->
 
     <div class="row gallery-row"><!-- Begin Gallery Row -->
@@ -103,6 +100,6 @@
         </div>
          <?php endforeach; ?>
     </div><!-- End Bottom Section -->
-    
+
 </div>
 <?php $this->stop('contenu') ?>

@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/flexslider.css'); ?>" />
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -47,6 +48,10 @@
 <script src="<?= $this->assetUrl('/js/jquery.prettyPhoto.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
+
+<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -108,19 +113,25 @@ print_r($current); ?>
                     echo 'class="active"'; 
                 } ?> 
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
+
            
             <li <?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?> >
             
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+
                     <?php foreach($categories as $categorie) : ?>
                         <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
                 </ul> 
              <?php if(empty($w_user)) : ?>
              </li>
+
+
+                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
+
              
-                <li> <a href="#">Inscription</a></li>
+
                 <li> <a href="#">Connexion</a></li>
                 <li> <a href="#">Contact</a></li>
                 
