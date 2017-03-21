@@ -64,6 +64,9 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
+                <div id="erreur1" style="display : block;">
+        <p>Les mots de passe ne sont pas identiques!</p>
+    </div>
 								<div class="input-prepend">
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
@@ -113,7 +116,8 @@
         });
 
         $confirmation.keyup(function(){
-            if($(this).val() != $mdp.val()){ // si la confirmation est différente du mot de passe
+            if($(this).val() != $mdp.val()){
+                $erreur1.css('display', 'block'); // si la confirmation est différente du mot de passe
                 $(this).css({ // on rend le champ rouge
          	        borderColor : 'red',
             	color : 'red'

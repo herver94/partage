@@ -71,7 +71,7 @@ class DefaultController extends Controller
 
 				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
 				$newuser->NOMUSER = $_POST['NOMUSER'];
-				$newuser->ROLE = 'USER';
+				$newuser->ROLE = 'user';
 				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
 				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
 				$newuser->EMAILUSER = $_POST['EMAILUSER'];
@@ -116,20 +116,35 @@ class DefaultController extends Controller
 
 	}
 	public function redaction() {
+		$this->allowTo(['user', 'admin']);
 
-	    # Connexion a la BDD
-	    DBFactory::start();
+ $this->show('redaction');
 
-	    # Récupération des Données de l'Article
-	   // $article = \ORM::for_table('view_partage')->find_one($id);
 
-	    # Suggestions
-	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
-	    # Transmettre à la Vue
-	    $this->show('redaction');
 
-	}
+
+		if(!empty($_POST))
+			 {
+				 DBFactory::start();
+
+
+			 $newpartage	= \ORM::for_table('users')->create();
+
+			 $newpartage->TITREPARTAGE = $_POST['TITREPARTAGE'];
+			 $newpartage->CONTENUPARTAGE = $_POST['CONTENUPARTAGE'];
+			 $newpartage->PHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+			 $newpartage->DATEPARTAGE = CURDATE();
+			 $newpartage->IDPARTAGE = $_POST['IDPARTAGE'];
+			 $newpartage->IDUSER= $w_user['IDUSER'];
+			 $newpartage->save();
+						 }
+
+
+
+}
+
+
 	public function gestionDesMembres(){
 
   DBFactory::start();

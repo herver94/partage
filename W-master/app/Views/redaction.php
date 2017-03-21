@@ -15,7 +15,7 @@
     <div class="container main-container">
 
 
-    ================================================== -->
+
     <div class="row"><!--Container row-->
 
         <div class="span8 contact"><!--Begin page content column-->
@@ -32,20 +32,23 @@
                     <span class="add-on"><i class="icon-user"></i></span>
                     <textarea  class="span7" name="TITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
 
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span7" id="prependedInput" size="16" type="text" placeholder="">
-                </div>
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-globe"></i></span>
-                    <input class="span7" id="prependedInput" size="16" type="text" placeholder="Website URL">
-                </div>
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input type="hidden" >
+                        <select name="IDCATEGORIE" id="categorie" class="span4">
+                          <option value="1">Expériences de vie</option>
+                          <option value="2">
+Anecdotes</option>
+                          <option value="3">Avis sur la société actuelle</option>
+                          <option value="4">Conseils aux futures générations</option>
+                        </select>
+                    </div><br>
 
                           <textarea name="CONTENUPARTAGE"></textarea>
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Send Message">
+                        <input type="submit" class="btn btn-inverse" value="Envoyer le partage">
                     </div>
                 </div>
             </form>

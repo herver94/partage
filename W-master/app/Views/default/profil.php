@@ -1,6 +1,6 @@
 <?php
 
-		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => '']);
+		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => 'profil']);
 
 	$nom = $w_user['PRENOMUSER'];
 		$prenom= $w_user['NOMUSER'];
@@ -84,7 +84,7 @@
 
 
 
-    
+
                 </div>
 
             </div>

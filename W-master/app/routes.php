@@ -8,10 +8,10 @@
 		['POST', '/', 'Default#connexion', 'default_connexion'],
 		['GET', '/accueil.html', 'Default#home', 'default_accueil'],
 		['GET', '/partages/[:categorie]', 'Default#categories', 'default_categorie'],
-		['GET', '/redaction', 'Default#redaction', 'redaction'],
+		['GET|POST', '/redaction', 'Default#redaction', 'redaction'],
 		['GET|POST', '/inscription', 'Default#inscription', 'Default_inscription'],
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
-        ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
-        ['GET', '/contact', 'Default#contact', 'default_contact'],
+      ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
+    ['GET', '/contact', 'Default#contact', 'default_contact'],
 	);
