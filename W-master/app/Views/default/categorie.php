@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current'=>'categorie']);
+    $this->layout('layout', ['title' => 'Accueil', 'current'=> $categorie]);
     use Model\Shortcut;
  $this->start('contenu');
  ?>

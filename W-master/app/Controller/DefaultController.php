@@ -18,7 +18,7 @@ class DefaultController extends Controller
 		# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-
+		DBFactory::start();
 
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
@@ -28,7 +28,9 @@ class DefaultController extends Controller
 	}
 
 		
-
+public function profil(){
+	 $this->show('default/profil');
+}
 public function connexion() {
 
 				if(!empty($_POST))
@@ -46,7 +48,7 @@ public function connexion() {
 									//connexion
 									$auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('oiso');
+									$this->redirectToRoute('default_profil	');
 							}//sinon retour formulaire
 							else{
 
