@@ -80,7 +80,8 @@
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte à partager</button>
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Déconnexion</button>
+										<a href="<?= $this->url('default_deconnexion') ?>">
+                    <button class="btn btn-inverse pull-left btn-profil" type="button">Déconnexion</button></a>
 
 
 

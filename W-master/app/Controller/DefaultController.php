@@ -67,7 +67,7 @@ class DefaultController extends Controller
 
 
 
-	 			$newuser	= \ORM::for_table('users')->create();
+	 			$newuser	= \ORM::for_table('users')->limit(3)->create();
 
 				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
 				$newuser->NOMUSER = $_POST['NOMUSER'];
@@ -130,57 +130,33 @@ class DefaultController extends Controller
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
- $this->show('redaction');
+		$loggedUser = $this->getUser();
+		$idloggedUser = $loggedUser['IDUSER'];
 
-
-
+ DBFactory::start();
+$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
 
 		if(!empty($_POST))
 			 {
-				 DBFactory::start();
 
 
-			 $newpartage	= \ORM::for_table('users')->create();
+			 $newpartage = \ORM::for_table('modpartages')->create();
 
-			 $newpartage->TITREPARTAGE = $_POST['TITREPARTAGE'];
-			 $newpartage->CONTENUPARTAGE = $_POST['CONTENUPARTAGE'];
-			 $newpartage->PHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
-			 $newpartage->DATEPARTAGE = CURDATE();
-			 $newpartage->IDPARTAGE = $_POST['IDPARTAGE'];
-			 $newpartage->IDUSER= $w_user['IDUSER'];
+			 $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
+			 $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
+		//	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+			 $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
+			 $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
+			 $newpartage->IDUSER= $idloggedUser;
 			 $newpartage->save();
 						 }
 
-
+ $this->show('redaction', ['samepartage' => $samepartage]);
 
 }
 
 
-	public function gestionDesMembres(){
-
-  DBFactory::start();
-	$membres = \ORM::for_table('view_partage')->find_result_set();
-		//$this->allowTo('admin');
- $this->show('admin/gestionDesMembres', ['membres' => $membres ]);
-
-
-	}
-    public function profil() {
-
-	    # Connexion a la BDD
-		    DBFactory::start();
-
-		    # Récupération des Articles pour la home
-
-
-
-	    # Transmettre à la Vue
-
-	    $this->show('default/profil');
-
-
-	}
         public function contact(){
 
 	    # Connexion a la BDD
@@ -197,6 +173,7 @@ class DefaultController extends Controller
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	}
+
 
 
 

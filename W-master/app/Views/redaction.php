@@ -1,16 +1,18 @@
 <?php
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
-    //use Model\Shortcut;
+    use Model\Shortcut;
 ?>
-<?php $this->start('contenu') ?>
+<?php $this->start('contenu');
+//print_r($samepartage);
+
+ ?>
 
 
 
 
 <body>
-	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
+
 
     <div class="container main-container">
 
@@ -20,7 +22,7 @@
 
         <div class="span8 contact"><!--Begin page content column-->
 
-            <h2>Ecrire votre anecdote ici</h2>
+            <h2 class="title-bg">Ecrire votre anecdote ici</h2>
             <p>Veuillez remplir les champs suivant en appliquant les instructions .</p>
 
             <div class="hidden" class="alert alert-success">
@@ -30,12 +32,13 @@
             <form action="#" method="post" id="message-form">
 
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <textarea  class="span7" name="TITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
+                    <textarea  class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
 
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-user"></i></span>
                         <input type="hidden" >
-                        <select name="IDCATEGORIE" id="categorie" class="span4">
+                        <label for="categorie">Selectionnez une catégorie</label>
+                        <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
                           <option value="2">
 Anecdotes</option>
@@ -44,7 +47,7 @@ Anecdotes</option>
                         </select>
                     </div><br>
 
-                          <textarea name="CONTENUPARTAGE"></textarea>
+                          <textarea name="MODCONTENUPARTAGE"></textarea><br/>
 
                 <div class="row">
                     <div class="span2">
@@ -59,21 +62,26 @@ Anecdotes</option>
         ================================================== -->
         <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
             <h5 class="title-bg">Vos precendents articles</h5>
-            <address>
-            <strong>Piccolo</strong><br>
-            123 Main St, Suite 600<br>
-            San Francisco, CA 94107<br>
-            <abbr title="Phone">P:</abbr> (123) 456-7890
-            </address>
+               <?php foreach ($samepartage as $partage) : ?>
+            <article>
+                <h3 class="title-bg"><a href="#"><?= $partage->TITREPARTAGE; ?></a></h3>
+                <div class="post-content">
+                    <a href="#"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb"></a>
 
-            <address>
-            <strong>Jimmy Doe</strong><br>
-            <a href="mailto:#">first.last@gmail.com</a>
-            </address>
+                    <div class="post-body">
+                              <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p></p>
+                    </div>
 
-            <h5 class="title-bg">Map Us</h5>
-            <img src="img/location-map.jpg" alt="map">
-
+                    <div class="post-summary-footer">
+                        <ul class="post-data">
+                            <li><i class="icon-calendar"></i> <?= $partage->DATEPARTAGE; ?></li>
+                            <li><i class="icon-user"></i> <a href="#"><?= $partage->PRENOMUSER; ?> <?= $partage->NOMUSER; ?></a></li>
+                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+ <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
     </div><!-- End container row -->
@@ -81,7 +89,7 @@ Anecdotes</option>
     </div> <!-- End Container -->
 </div>
     <script>
-        CKEDITOR.replace( 'CONTENUPARTAGE' );
+        CKEDITOR.replace( 'MODCONTENUPARTAGE' );
     </script>
 
 <?php $this->stop('contenu') ?>
