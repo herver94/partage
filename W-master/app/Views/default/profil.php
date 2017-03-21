@@ -29,39 +29,28 @@
 
 
         <div class="span12 gallery-single">
-
-
-
             <div class="row">
                 <div class="span6">
-
                     <img src="<?php if(empty($photo)){
-											if ($genre == 'Homme'){
-												echo $this->assetUrl('/img/partages/homme.jpg');
-										}
-											else{
-												echo  $this->assetUrl('/img/partages/femme.jpg');
-											}}
-											else{ 	echo $this->assetUrl("/img/profil/".$photo );
+                                        if ($genre == 'Homme'){
+                                            echo $this->assetUrl('/img/partages/homme.jpg');
+                                    }
+                                        else{
+                                            echo  $this->assetUrl('/img/partages/femme.jpg');
+                                        }}
+                                        else{ 	echo $this->assetUrl("/img/profil/".$photo );
 
-											}
+                                        }
 
-										?>" class="align-left thumbnail" alt="avatar">
-
+                                    ?>" class="align-left thumbnail" alt="avatar">
                 </div>
 
                 <div class="span6">
-
                     <h2><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
 
+                        <p class="lead">For an international ad campaign. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus</p>
 
-
-
-                    <p class="lead">For an international ad campaign. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
-
-
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
 
                     <ul class="project-info">
 

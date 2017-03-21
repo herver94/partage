@@ -6,7 +6,9 @@
  ?>
     <!-- Blog Content
     ================================================== -->
-    <div class="row">
+    <div class="row-fluid">
+        <h2 class="title-bg"><?= $titre->LIBELLECATEGORIE; ?></h2>
+        
 
         <!-- Blog Posts
         ================================================== -->

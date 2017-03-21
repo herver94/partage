@@ -13,5 +13,5 @@
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
         ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
-        ['GET', '/contact', 'Default#contact', 'default_contact'],
+        ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 	);

@@ -29,7 +29,7 @@
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-          <h3>Bienvenue sur Part Âge.</h3>
+          <h3>Bienvenue sur Part Âge</h3>
             <p class="quote-text text-accueil">Partager une expérience de vie, une anecdote,
             des conseils aux futurs générations, votre avis sur la société actuelle...<br />
             N'hésitez pas à vous inscrire sur Part Âge !<br />

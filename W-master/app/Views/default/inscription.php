@@ -16,17 +16,15 @@
         <div class="span8 contact inscription"><!--Begin page content column-->
 
 
-            <h2>Inscription</h2>
+            <h2 class="title-bg">Inscription</h2>
 
-              <p>Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,
-                des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres. </p>
+              <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une         anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
 
-              <div id="erreur" style="display : none;">
-      <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-  </div>
+        <div id="erreur" style="display : none;">
+              <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+        </div>
 
-						<form ifaction="#" method="post" id="contact-form" id="inscriptionForm">
-
+        <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
@@ -43,10 +41,10 @@
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input type="hidden" >
-										<select name="SEXEUSER" id="sexe" class="span4">
-											<option value="Homme">Homme</option>
-                      <option value="Femme">Femme</option>
-										</select>
+				        <select name="SEXEUSER" id="sexe" class="span4">
+				            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+				        </select>
                 </div><br>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
@@ -71,11 +69,11 @@
                 <div class="row">
                     <div class="span2">
 
-                        <input type="submit" id="envoi" class="btn btn-inverse" value="Inscription">
+                        <input type="submit" id="envoi" class="btn btn-inverse btn-profil" value="Inscription">
 
                     </div>
                 </div>
-            </form>
+        </form>
 
         </div> <!--End page content column-->
 

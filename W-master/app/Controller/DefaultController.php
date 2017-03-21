@@ -21,7 +21,6 @@ class DefaultController extends Controller
 		DBFactory::start();
 
 
-			DBFactory::start();
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
@@ -60,12 +59,10 @@ class DefaultController extends Controller
 	 * $categorie
 	 */
 
-	 public function inscription() {
+    public function inscription(){
 		 if(!empty($_POST))
 	 			{
-	 				DBFactory::start();
-
-
+	 		    DBFactory::start();
 
 	 			$newuser	= \ORM::for_table('users')->create();
 
@@ -79,16 +76,18 @@ class DefaultController extends Controller
 				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
 				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
 				$newuser->save();
-	 						}
-								$this->show('default/inscription');
-							}
+	 		        }
+				$this->show('default/inscription');
+				}
 
 
 	public function categories($categorie) {
 
 	    # Connexion a la BDD
 	    DBFactory::start();
-
+        
+        $categorieTitre = \ORM::for_table('categories')->where('CHEMIN', $categorie)->find_one();
+        
 	    # Récupérations des Articles de la Catégorie
 	    $articles  = \ORM::for_table('view_partage')->where('CHEMIN', $categorie)->find_result_set();
 
@@ -97,7 +96,7 @@ class DefaultController extends Controller
 	    $categories = \ORM::for_table('categories')->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles]);
+	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles, 'titre' => $categorieTitre]);
 
 
 	}
@@ -144,14 +143,9 @@ class DefaultController extends Controller
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-
-
-
-
 	    # Transmettre à la Vue
 
 	    $this->show('default/profil');
-
 
 	}
         public function contact(){
