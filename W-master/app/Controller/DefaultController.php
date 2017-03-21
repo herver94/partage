@@ -82,6 +82,18 @@ public function connexion() {
 								$this->show('default/inscription');
 							}
 
+	public function deconnexion()
+	{
+		//on a besoin d'un objet sécurité
+		$auth = new AuthentificationModel;
+
+		//déconnexion de la session
+		$auth->logUserOut();
+
+		//retour à l'index
+		$this->redirectToRoute('default_home');
+	}
+
 
 	public function categories($categorie) {
 
@@ -141,16 +153,13 @@ public function connexion() {
     public function profil() {
 
 	    # Connexion a la BDD
-	    DBFactory::start();
+		    DBFactory::start();
 
-	    # Récupération des Articles pour la home
-	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
-        
-        # Récupérer l'utilisateur connecté
-        $loggedUser = $this->getUser();
+		    # Récupération des Articles pour la home
+
 
 	    # Transmettre à la Vue
-	   // $this->show('default/profil', ['profil' => $profil]);
+	   $this->show('default/profil');
 	}
 
 

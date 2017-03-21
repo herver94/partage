@@ -1,7 +1,8 @@
 <?php
-
- use Model\CategoriesModel;
+    
+    use Model\CategoriesModel;
     use Model\DBFactory;
+    use Controller\DefaultController;
     
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
@@ -140,7 +141,7 @@ print_r($current); ?>
                 } ?>>
                  <a href="">Partagez ! </a></li>
                
-                <li> <a href="">Déconnexion</a></li>
+                <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
               
             <?php endif; ?>
 
