@@ -6,6 +6,7 @@
 		['GET', '/profil', 'Default#profil', 'default_profil'],
 
 		['POST', '/', 'Default#connexion', 'default_connexion'],
+		['GET', '/deconnexion', 'Default#deconnexion', 'default_deconnexion'],
 		['GET', '/accueil.html', 'Default#home', 'default_accueil'],
 		['GET', '/partages/[:categorie]', 'Default#categories', 'default_categorie'],
 		['GET|POST', '/redaction', 'Default#redaction', 'redaction'],

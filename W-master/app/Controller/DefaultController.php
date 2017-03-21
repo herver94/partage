@@ -83,6 +83,18 @@ class DefaultController extends Controller
 								$this->show('default/inscription');
 							}
 
+	public function deconnexion()
+	{
+		//on a besoin d'un objet sécurité
+		$auth = new AuthentificationModel;
+
+		//déconnexion de la session
+		$auth->logUserOut();
+
+		//retour à l'index
+		$this->redirectToRoute('default_home');
+	}
+
 
 	public function categories($categorie) {
 
@@ -157,9 +169,9 @@ class DefaultController extends Controller
     public function profil() {
 
 	    # Connexion a la BDD
-	    DBFactory::start();
+		    DBFactory::start();
 
-
+		    # Récupération des Articles pour la home
 
 
 
