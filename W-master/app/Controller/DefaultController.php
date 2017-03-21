@@ -15,10 +15,11 @@ class DefaultController extends Controller
 	 * Page d'accueil par défaut
 	 */
 	public function home() {
-		# Récupération des Articles pour la home
+	# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-        DBFactory::start();
+		DBFactory::start();
+
 
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
@@ -27,7 +28,6 @@ class DefaultController extends Controller
 	    $this->show('default/home', ['partages' => $partages]);
 	}
 
-		
 
     public function connexion() {
 
@@ -51,7 +51,7 @@ class DefaultController extends Controller
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home' ); }
+									$this->redirectToRoute('default_home'); }
 						}
 						}
 	/**
@@ -150,7 +150,7 @@ class DefaultController extends Controller
         $loggedUser = $this->getUser();
 
 	    # Transmettre à la Vue
-	    $this->show('default/profil', ['profil' => $profil]);
+	   // $this->show('default/profil', ['profil' => $profil]);
 	}
         public function contact(){
 

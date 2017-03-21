@@ -9,9 +9,9 @@
 
     <div class="row headline"><!-- Begin Headline -->
 
-     	<!-- Slider Carousel
+      <!-- Slider Carousel
         ================================================== -->
-        <div class="span8">
+         <div class="span8">
             <div class="flexslider">
               <ul class="slides">
                 <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
@@ -26,11 +26,10 @@
               </ul>
             </div>
         </div>
-
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-        	<h3>Bienvenue sur Part Âge.</h3>
+          <h3>Bienvenue sur Part Âge.</h3>
             <p class="quote-text text-accueil">Partager une expérience de vie, une anecdote,
             des conseils aux futurs générations, votre avis sur la société actuelle...<br />
             N'hésitez pas à vous inscrire sur Part Âge !<br />
@@ -47,9 +46,10 @@
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
                            <h4 id="title-login">Connectez-vous</h4>    
-                           <form method="post" action="#">
+
+                           <form method="post" action="#">                   
                                <div class="form-group">
-                                   <input type="email" name="login"  placeholder="Email">
+                                   <input type="text" name="login"  placeholder="Email">
                                </div>
                                <div class="form-group">
                                    <input type="password" name="password" placeholder="Mot de passe">
@@ -60,6 +60,7 @@
                    </div>
                </div>
            </div>
+
        </div>
     </div>
         </div>
@@ -68,7 +69,7 @@
 
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 
-    	<div class="span12">
+      <div class="span12">
             <h4 class="title-bg">Les Derniers Partages</h4>
         </div>
 
@@ -79,11 +80,11 @@
         <div class="span5 blog dernier-partage">
             <article class="clearfix">
               <div class="thumbnail img-home">
-                <a href="blog-single.htm"><img class="img-responsive" src="<?= $this->assetUrl('/img/partages/'. $partage->PHOTOPARTAGE  .''); ?>" alt="Partage" class="align-left"></a>
+                <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img class="img-responsive" src="<?= $this->assetUrl('/img/partages/'. $partage->PHOTOPARTAGE  .''); ?>" alt="Partage" class="align-left"></a>
               </div>
-                <h4 class="title-bg"><a href=""><?= Shortcut::getTitre($partage->TITREPARTAGE); ?></a></h4>
+                <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= Shortcut::getTitre($partage->TITREPARTAGE); ?></a></h4>
                   <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
-                  <a href="#">Lire plus</a>
+                  <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>">Lire plus</a>
                     <div class="post-summary-footer">
                         <ul class="post-data-3">
                             <li><i class="icon-calendar"></i><?= $partage->DATEPARTAGE; ?></li>

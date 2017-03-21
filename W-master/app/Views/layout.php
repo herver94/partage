@@ -2,7 +2,7 @@
 
  use Model\CategoriesModel;
     use Model\DBFactory;
-
+    
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
 ?>
@@ -47,8 +47,10 @@
 <script src="<?= $this->assetUrl('/js/jquery.prettyPhoto.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
+
 <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -83,7 +85,8 @@
 
 </head>
 <body class="home">
-
+<?php 
+print_r($current); ?>
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
@@ -103,29 +106,54 @@
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-
+          
             <ul class="nav">
-
-               <li <?php if($current == 'Accueil') {
-                    echo 'class="active"';
-                } ?>
+               <li <?php if($current == 'Accueil') { 
+                    echo 'class="active"'; 
+                } ?> 
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
-            <li class="dropdown">
 
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
-                <ul class="dropdown-menu active">
+           
+            <li <?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?> >
+            
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lire les partages <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+
                     <?php foreach($categories as $categorie) : ?>
-                        <li <?php if($current == $categorie->getLIBELLECATEGORIE()) { echo 'class="active"'; } ?> ><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
+                        <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
-                </ul>
+                </ul> 
+             <?php if(empty($w_user)) : ?>
              </li>
 
-                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
-                <li> <a href="#">Connexion</a></li>
-                <li> <a href="#">Mon Compte</a></li>
-                <li> <a href="#">Contact</a></li>
 
-            </ul>
+                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
+
+             
+
+                <li> <a href="#">Connexion</a></li>
+                <li> <a href="#">Contact</a></li>
+                
+            </ul>  
+            <?php else : ?>
+                <li <?php if($current == 'profil') { 
+                    echo 'class="active"'; 
+                } ?>> 
+                <a href="<?= $this->url('default_profil'); ?>">Mon Compte</a></li>
+               
+                <li <?php if($current == '') { 
+                    echo 'class="active"'; 
+                } ?>>
+                 <a href="#">Contact</a></li>
+               
+                <li <?php if($current == '') { 
+                    echo 'class="active"'; 
+                } ?>>
+                 <a href="">Partagez ! </a></li>
+               
+                <li> <a href="">Déconnexion</a></li>
+              
+            <?php endif; ?>
 
             </div>
 
@@ -195,12 +223,10 @@
             </div><!-- End Sub Footer -->
 
         </div>
-
     </div><!-- End Footer -->
 
     <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Haut de page </div>
-
 
 </body>
 </html>
