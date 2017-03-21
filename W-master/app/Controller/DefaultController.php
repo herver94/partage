@@ -58,7 +58,21 @@ class DefaultController extends Controller
 	/**
 	 * Permet d'afficher les articles d'une catégorie
 	 * $categorie
-	 */
+	 */public function profil() {
+
+		 # Connexion a la BDD
+			 DBFactory::start();
+
+			 # Récupération des Articles pour la home
+
+
+
+		 # Transmettre à la Vue
+
+		 $this->show('default/profil');
+
+
+ }
 
 	 public function inscription() {
 		 if(!empty($_POST))
@@ -130,8 +144,30 @@ class DefaultController extends Controller
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
+
 		$loggedUser = $this->getUser();
 		$idloggedUser = $loggedUser['IDUSER'];
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Récupération des Données de l'Article
+	   // $article = \ORM::for_table('view_partage')->find_one($id);
+
+	    # Suggestions
+	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
+
+	    # Transmettre à la Vue
+	    $this->show('redaction');
+
+	}
+	public function gestionDesMembres(){
+
+ 		DBFactory::start();
+		$membres = \ORM::for_table('view_partage')->find_result_set();
+		//$this->allowTo('admin');
+ 		$this->show('admin/gestionDesMembres', ['membres' => $membres ]);
+
 
  DBFactory::start();
 $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
@@ -141,7 +177,10 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
 			 {
 
 
+
 			 $newpartage = \ORM::for_table('modpartages')->create();
+
+
 
 			 $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
 			 $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
@@ -173,6 +212,22 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	}
+
+		public function deleteprofil($id){
+			# Connexion a la BDD
+	   		DBFactory::start();
+
+	   		$person = \ORM::for_table('users')->find_one($id);
+			$person->delete();
+
+			//on a besoin d'un objet sécurité
+			$auth = new AuthentificationModel;
+
+			//déconnexion de la session
+			$auth->logUserOut();
+
+	   		$this->redirectToRoute('default_home');
+		}
 
 
 

@@ -21,6 +21,9 @@
 
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 
+		['GET', '/deleteprofil/[:id]', 'Default#deleteprofil', 'default_deleteprofil'],
+
+
 		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
 
       ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],

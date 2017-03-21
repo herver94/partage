@@ -25,7 +25,7 @@
       <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
   </div>
 
-						<form ifaction="#" method="post" id="contact-form" id="inscriptionForm">
+						<form action="#" method="post" id="contact-form" id="inscriptionForm">
 
 
                 <div class="input-prepend">
@@ -50,7 +50,7 @@
                 </div><br>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span7 champ" name="EMAILUSER" id="email" size="16" type="text" placeholder="Email">
+                    <input class="span7 " name="EMAILUSER" id="email" size="16" type="text" placeholder="Email">
                 </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
@@ -131,15 +131,15 @@
             }
         });
 
-        $envoi.click(function(e){
-            e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
+      //  $envoi.click(function(e){
+        //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
 
             // puis on lance la fonction de vérification sur tous les champs :
           //  verifier($pseudo);
-            verifier($mdp);
-            verifier($confirmation);
-            verifier($email);
-        });
+        //    verifier($mdp);
+          //  verifier($confirmation);
+          //  verifier($email);
+        //});
 
         $reset.click(function(){
             $champ.css({ // on remet le style des champs comme on l'avait défini dans le style CSS

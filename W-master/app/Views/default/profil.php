@@ -8,11 +8,22 @@
 		$mdp= $w_user['MOTDEPASSEUSER'];
 		$photo= $w_user['PHOTOUSER'];
 		$genre = $w_user['SEXEUSER'];
+        $id = $w_user['IDUSER'];
 		$this->start('contenu');
 
 
 ?>
-
+<script type="text/javascript">
+            function getConfirmation(){
+               var retVal = confirm("Etes vous certain ?");
+               if( retVal == true ){
+                  return true;
+               }
+               else{
+                  return false;
+               }
+            }
+</script>
 
     <!-- Page Content
 
@@ -33,7 +44,7 @@
 
 
             <div class="row">
-                <div class="span6">
+                <div class="span5">
 
                     <img src="<?php if(empty($photo)){
 											if ($genre == 'Homme'){
@@ -57,31 +68,28 @@
 
 
 
-                    <p class="lead">For an international ad campaign. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
 
 
 
                     <ul class="project-info">
 
-                        <li><h6>Date:</h6> 09/12/15</li>
+                        <li><h6>Role:</h6> <?= $w_user['ROLE'] ; ?></li>
+                        <li><h6>Date de naissance:</h6> <?= $w_user['DATEDENAISSANCEUSER']; ?></li>
 
-                        <li><h6>Client:</h6> John Doe, Inc.</li>
+                        <li><h6>Sexe:</h6> <?= $w_user['SEXEUSER']; ?></li>
 
-                        <li><h6>Services:</h6> Design, Illustration</li>
+                        <li><h6>Email:</h6> <?= $w_user['EMAILUSER']; ?></li>
 
-                        <li><h6>Art Director:</h6> Jane Doe</li>
+                        <li><h6>Code Postal:</h6> <?= $w_user['CPUSER']; ?></li>
 
-                        <li><h6>Designer:</h6> Jimmy Doe</li>
 
                     </ul>
 
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte à partager</button>
+
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
-										<a href="<?= $this->url('default_deconnexion') ?>">
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Déconnexion</button></a>
+                    <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
 
 
 
