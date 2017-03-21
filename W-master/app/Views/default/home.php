@@ -2,37 +2,40 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
     use Model\Shortcut;
-?>
-<?php $this->start('contenu') ?>
-<?php if(empty($w_user)){
-  echo 'dsajklf';
-}; ?>
+ $this->start('contenu') ?>
+
 
 
     <div class="row headline"><!-- Begin Headline -->
 
-     	<!-- Slider Carousel
+      <!-- Slider Carousel
         ================================================== -->
-        <div class="span8">
-      <div class="flexslider">
-        <ul class="slides">
-          <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/23.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/24.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/20.jpg'); ?>" alt="slider" /></li>
-          <li><img src="<?= $this->assetUrl('/img/partages/16.jpg'); ?>" alt="slider" /></li>
-        </ul>
-      </div>
-  </div>
+
+         <div class="span8">
+            <div class="flexslider">
+              <ul class="slides">
+                <li><img src="<?= $this->assetUrl('/img/partages/21.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/23.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/24.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/20.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/16.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/19.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/17.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/15.jpg'); ?>" alt="slider" /></li>
+                <li><img src="<?= $this->assetUrl('/img/partages/18.jpg'); ?>" alt="slider" /></li>
+
+              </ul>
+            </div>
+        </div>
 
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-        	<h3>Bienvenue sur Part Âge.</h3>
+          <h3>Bienvenue sur Part Âge.</h3>
             <p class="quote-text text-accueil">Partager une expérience de vie, une anecdote,
             des conseils aux futurs générations, votre avis sur la société actuelle...<br />
             N'hésitez pas à vous inscrire sur Part Âge !<br />
@@ -64,6 +67,7 @@
                    </div>
                </div>
            </div>
+
        </div>
     </div>
         </div>
@@ -72,7 +76,7 @@
 
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 
-    	<div class="span12">
+      <div class="span12">
             <h4 class="title-bg">Les Derniers Partages</h4>
         </div>
 
@@ -83,11 +87,11 @@
         <div class="span5 blog dernier-partage">
             <article class="clearfix">
               <div class="thumbnail img-home">
-                <a href="blog-single.htm"><img class="img-responsive" src="<?= $this->assetUrl('/img/partages/'. $partage->PHOTOPARTAGE  .''); ?>" alt="Partage" class="align-left"></a>
+                <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img class="img-responsive" src="<?= $this->assetUrl('/img/partages/'. $partage->PHOTOPARTAGE  .''); ?>" alt="Partage" class="align-left"></a>
               </div>
-                <h4 class="title-bg"><a href=""><?= Shortcut::getTitre($partage->TITREPARTAGE); ?></a></h4>
+                <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= Shortcut::getTitre($partage->TITREPARTAGE); ?></a></h4>
                   <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
-                  <a href="#">Lire plus</a>
+                  <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>">Lire plus</a>
                     <div class="post-summary-footer">
                         <ul class="post-data-3">
                             <li><i class="icon-calendar"></i><?= $partage->DATEPARTAGE; ?></li>

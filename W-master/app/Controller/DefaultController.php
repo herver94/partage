@@ -15,10 +15,11 @@ class DefaultController extends Controller
 	 * Page d'accueil par défaut
 	 */
 	public function home() {
-		# Récupération des Articles pour la home
+	# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-        DBFactory::start();
+		DBFactory::start();
+
 
 			DBFactory::start();
 	    # Récupération des Articles pour la home
@@ -27,7 +28,6 @@ class DefaultController extends Controller
 	    # Transmettre à la Vue
 	    $this->show('default/home', ['partages' => $partages]);
 	}
-
 
 
 public function connexion() {
@@ -52,7 +52,7 @@ public function connexion() {
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home' ); }
+									$this->redirectToRoute('default_home'); }
 						}
 						}
 	/**
@@ -150,7 +150,10 @@ public function connexion() {
 
 
 	    # Transmettre à la Vue
+
 	    $this->show('default/profil');
+
+
 	}
 
 
