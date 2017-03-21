@@ -4,7 +4,9 @@
     use Model\Shortcut;
 ?>
 <?php $this->start('contenu') ?>
-
+<?php if(empty($w_user)){
+  echo 'dsajklf';
+}; ?>
 
 
     <div class="row headline"><!-- Begin Headline -->
@@ -40,7 +42,9 @@
 
 -->
 
-    <div class="container">
+    <div <?php if(!empty($w_user)){
+      echo 'style="display:none;"';
+    }; ?> class="container">
        <div class="row">
            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                <div class="container-fluid container-login formulaire">

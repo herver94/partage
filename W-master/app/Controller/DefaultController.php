@@ -147,10 +147,10 @@ public function connexion() {
 
 
         # Récupérer l'utilisateur connecté
-        $loggedUser = $this->getUser();
+
 
 	    # Transmettre à la Vue
-	    $this->show('default/profil', ['loggedUser' => $loggedUser]);
+	    $this->show('default/profil');
 	}
 
 

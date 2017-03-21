@@ -33,7 +33,7 @@
 
 											}
 
-										?>" width="50%" height="50%" class="align-left thumbnail" alt="avatar">
+										?>" class="align-left thumbnail" alt="avatar">
                 </div>
                 <div class="span6">
                     <h2><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
