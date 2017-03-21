@@ -29,7 +29,7 @@ class DefaultController extends Controller
 
 		
 
-public function connexion() {
+    public function connexion() {
 
 				if(!empty($_POST))
 						{
@@ -46,7 +46,7 @@ public function connexion() {
 									//connexion
 									$auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('oiso');
+									$this->redirectToRoute('default_profil');
 							}//sinon retour formulaire
 							else{
 
@@ -143,7 +143,7 @@ public function connexion() {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Articles pour la home
+	    # Récupération des profils pour la home
 	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
         
         # Récupérer l'utilisateur connecté
@@ -151,6 +151,22 @@ public function connexion() {
 
 	    # Transmettre à la Vue
 	    $this->show('default/profil', ['profil' => $profil]);
+	}
+        public function contact(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/contact');
+	}
+        public function conditionsGenerale(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/conditionsGenerale');
 	}
 
 

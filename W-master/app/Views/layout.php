@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/flexslider.css'); ?>" />
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -47,6 +48,7 @@
 <script src="<?= $this->assetUrl('/js/jquery.flexslider.js'); ?>"></script>
 <script src="<?= $this->assetUrl('/js/jquery.custom.js'); ?>"></script>
 <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -111,15 +113,14 @@
             <li class="dropdown">
 
                 <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Lire les partages <b class="caret"></b></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu active">
                     <?php foreach($categories as $categorie) : ?>
                         <li <?php if($current == $categorie->getLIBELLECATEGORIE()) { echo 'class="active"'; } ?> ><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
                 </ul>
              </li>
 
-                <li> <a href="<?= $this->url("Default_inscription");
-?>">Inscription</a></li>
+                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
                 <li> <a href="#">Connexion</a></li>
                 <li> <a href="#">Mon Compte</a></li>
                 <li> <a href="#">Contact</a></li>
@@ -184,7 +185,7 @@
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
-                        <div class="span6">s
+                        <div class="span6">
                             <span class="right">
                             <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
                             </span>

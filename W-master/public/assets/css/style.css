@@ -69,6 +69,7 @@ li.span2 .project-details {
     border-bottom: 1px dotted #a9a9a9;
     background: #f8f8f8;
     padding: 10px 5px;
+    margin-bottom: 10px;
     margin: 0 60px;
 }
 .formulaire{
@@ -78,4 +79,23 @@ li.span2 .project-details {
     width: 300px;
     text-align: center;
     margin-top: 30px;
+}
+.btn-profil{
+    margin-left: 20px;
+}
+.btn-profil:hover{
+    background: #d8450b;
+    transition: 0.2s;
+    color: white;
+}
+.inscription{
+    border-bottom: 1px dotted #a9a9a9;
+    background: #f8f8f8;
+    padding: 30px;
+    margin-bottom: 10px;
+}
+.centrer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

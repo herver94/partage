@@ -5,31 +5,26 @@
     $this->layout('layout', ['title' => 'Inscription', 'current' => 'inscription']);
     //use Model\Shortcut;
 ?>
-<?php $this->start('css'); ?>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
-<?php $this->stop('css'); ?>
 
 <?php $this->start('contenu'); ?>
 
 
     <!-- Page Content
     ================================================== -->
-    <div class="row"><!--Container row-->
+    <div class="row-fluid centrer"><!--Container row-->
 
-        <div class="span8 contact"><!--Begin page content column-->
+        <div class="span8 contact inscription"><!--Begin page content column-->
 
 
             <h2>Inscription</h2>
-            <p>Inscrivez vous simplement, rapidement et gratuitement pour partager et échanger avec les autres. Recevoir nos newsletters pour être toujours mieux informés
-							Commenter les articles et discuter. Participer à nos jeux concours
-
-
+                <p>Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,
+                des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres. </p>
             <div class="alert alert-success">
-                Well done! You successfully read this important alert message.
+                Votre inscription s'est déroulée avec succès !
             </div>
 
 
-						<form action="#" method="post" id="contact-form" id="inscriptionForm">
+            <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
@@ -69,34 +64,12 @@
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Inscription">
+                        <input type="submit" class="btn btn-inverse btn-profil" value="Inscription">
                     </div>
                 </div>
             </form>
 
         </div> <!--End page content column-->
-
-        <!-- Sidebar
-        ================================================== -->
-        <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-            <h5 class="title-bg">Our Location</h5>
-            <address>
-            <strong>Piccolo</strong><br>
-            123 Main St, Suite 600<br>
-            San Francisco, CA 94107<br>
-            <abbr title="Phone">P:</abbr> (123) 456-7890
-            </address>
-
-            <address>
-            <strong>Jimmy Doe</strong><br>
-            <a href="mailto:#">first.last@gmail.com</a>
-            </address>
-
-            <h5 class="title-bg">Map Us</h5>
-            <img src="img/location-map.jpg" alt="map">
-
-        </div><!-- End sidebar column -->
-
 
     </div><!-- End container row -->
 

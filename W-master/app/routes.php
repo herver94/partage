@@ -10,6 +10,8 @@
 		['GET', '/redaction', 'Default#redaction', 'redaction'],
 		['GET|POST', '/inscription', 'Default#inscription', 'Default_inscription'],
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
-		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres']
+		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
+        ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
+        ['GET', '/contact', 'Default#contact', 'default_contact'],
 	);
 
