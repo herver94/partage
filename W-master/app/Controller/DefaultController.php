@@ -21,6 +21,7 @@ class DefaultController extends Controller
 		DBFactory::start();
 
 
+			DBFactory::start();
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
@@ -143,14 +144,15 @@ class DefaultController extends Controller
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des profils pour la home
-	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
-        
-        # Récupérer l'utilisateur connecté
-        $loggedUser = $this->getUser();
+
+
+
 
 	    # Transmettre à la Vue
-	   // $this->show('default/profil', ['profil' => $profil]);
+
+	    $this->show('default/profil');
+
+
 	}
         public function contact(){
 

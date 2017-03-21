@@ -1,35 +1,52 @@
 <?php
 
-        $this->layout('layout', ['title' => 'Partage | Profil ', 'current' => 'profil']);
-        //use Model\Shortcut;
-        $this->start('contenu');
+		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => '']);
+
+	$nom = $w_user['PRENOMUSER'];
+		$prenom= $w_user['NOMUSER'];
+		$date= $w_user['DATEDENAISSANCEUSER'];
+		$mdp= $w_user['MOTDEPASSEUSER'];
+		$photo= $w_user['PHOTOUSER'];
+		$genre = $w_user['SEXEUSER'];
+		$this->start('contenu');
+
 
 ?>
 
 
-
     <!-- Page Content
 
-    ================================================== --> 
-
+    ================================================== -->
     <div class="row">
 
 
 
         <!-- Gallery Items
 
-        ================================================== --> 
+        ================================================== -->
+
+
+
 
         <div class="span12 gallery-single">
 
 
 
             <div class="row">
-
                 <div class="span6">
 
-                    <img src="<?= $this->assetUrl('/img/partages/'.$w_user['PHOTOUSER']); ?>" class="align-left thumbnail" alt="avatar">
+                    <img src="<?php if(empty($photo)){
+											if ($genre == 'Homme'){
+												echo $this->assetUrl('/img/partages/homme.jpg');
+										}
+											else{
+												echo  $this->assetUrl('/img/partages/femme.jpg');
+											}}
+											else{ 	echo $this->assetUrl("/img/profil/".$photo );
 
+											}
+
+										?>" class="align-left thumbnail" alt="avatar">
 
                 </div>
 
@@ -80,7 +97,6 @@
 
     </div><!-- End container row -->
 
-    
 
     </div> <!-- End Container -->
 
@@ -90,4 +106,3 @@
     <!-- Footer Area -->
 
 <?php $this->stop('contenu'); ?>
-
