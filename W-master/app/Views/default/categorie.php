@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current'=>'categorie']);
+    $this->layout('layout', ['title' => 'Accueil', 'current'=> $categorie]);
     use Model\Shortcut;
  $this->start('contenu');
  ?>
@@ -17,7 +17,7 @@
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
                     <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h4>
                         <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
-                        <button class="btn btn-mini btn-inverse" type="button" onclick="javascript:location.href='<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>'">Lire la suite...</button>
+                        <button class="btn btn-mini btn-inverse btn-profil" type="button" onclick="javascript:location.href='<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>'">Lire la suite...</button>
                         <div class="post-summary-footer">
                             <ul class="post-data-3">
                                 <li><i class="icon-calendar"></i>  <?= $partage->DATEPARTAGE; ?></li>
@@ -49,7 +49,7 @@
             <section>
                 <div class="input-append">
                     <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Search"><button class="btn" type="button"><i class="icon-search"></i></button>
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Recherche"><button class="btn" type="button"><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>

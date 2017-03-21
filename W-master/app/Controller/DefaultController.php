@@ -15,11 +15,13 @@ class DefaultController extends Controller
 	 * Page d'accueil par défaut
 	 */
 	public function home() {
-		# Récupération des Articles pour la home
+	# Récupération des Articles pour la home
 
 	    # Connexion a la BDD
-        DBFactory::start();
+		DBFactory::start();
 
+
+			DBFactory::start();
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
@@ -27,9 +29,8 @@ class DefaultController extends Controller
 	    $this->show('default/home', ['partages' => $partages]);
 	}
 
-		
 
-public function connexion() {
+    public function connexion() {
 
 				if(!empty($_POST))
 						{
@@ -46,12 +47,12 @@ public function connexion() {
 									//connexion
 									$auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('oiso');
+									$this->redirectToRoute('default_profil');
 							}//sinon retour formulaire
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home' ); }
+									$this->redirectToRoute('default_home'); }
 						}
 						}
 	/**
@@ -143,14 +144,31 @@ public function connexion() {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Articles pour la home
-	    $profil = \ORM::for_table('view_partage')->where('IDUSER')->find_one();
-        
-        # Récupérer l'utilisateur connecté
-        $loggedUser = $this->getUser();
+
+
+
 
 	    # Transmettre à la Vue
-	    $this->show('default/profil', ['profil' => $profil]);
+
+	    $this->show('default/profil');
+
+
+	}
+        public function contact(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/contact');
+	}
+        public function conditionsGenerale(){
+
+	    # Connexion a la BDD
+	    DBFactory::start();
+
+	    # Transmettre à la Vue
+	    $this->show('default/conditionsGenerale');
 	}
 
 
