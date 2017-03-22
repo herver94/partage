@@ -98,14 +98,14 @@
 
         <!-- Logo
         ================================================== -->
-        <div class="span5 logo">
+        <div class="span4 logo">
         	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
             <h4 class="otto">Le site web qui donne la parole aux seniors !</h4>
         </div>
 
         <!-- Main Navigation
         ================================================== -->
-        <div class="span7 navigation">
+        <div class="span8 navigation">
             <div class="navbar hidden-phone">
 
             <ul class="nav">
@@ -144,10 +144,20 @@
 
                  <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
 
-                <li <?php if($current == '') {
+                <li <?php if($current == 'partagez') {
                     echo 'class="active"';
                 } ?>>
                 <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
+
+                 <?php if($w_user['ROLE'] == 'admin') : ?>
+
+                   <li <?php if($current == 'moderation') {
+                       echo 'class="active"';
+                   } ?>>
+                    <a href="<?= $this->url("moderation"); ?>">Modération </a></li>
+
+                 <?php endif; ?>
+
 
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 

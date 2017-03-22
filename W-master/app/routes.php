@@ -1,6 +1,7 @@
 <?php
 
 	$w_routes = array(
+        
 		['GET', '/', 'Default#home', 'default_home'],
 
 		['GET', '/profil', 'Default#profil', 'default_profil'],
@@ -25,9 +26,9 @@
 
 		['GET', '/deleteprofil/[:id]', 'Default#deleteprofil', 'default_deleteprofil'],
 
-    	['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
+        ['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
 
-    	['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
+        ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
 
         ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'admin_moderationarticle'],
         

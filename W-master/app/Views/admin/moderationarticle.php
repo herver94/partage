@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current' => 'moderation']);
+    $this->layout('layout', ['title' => 'Moderation', 'current' => 'moderation']);
     //use Model\Shortcut;
 ?>
 <?php $this->start('contenu');
@@ -30,7 +30,7 @@
 
                     <span class="add-on"></i></span>
                     <textarea value="SALUT"  class="span7" name="TITREPARTAGE" ><?= $modpartage->MODTITREPARTAGE ; ?></textarea>
-
+                    <img src="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" alt="Illustration" class="align-left">
                     <div class="input-prepend">
                         <span class="add-on"></span>
                         <input type="hidden" >
@@ -48,7 +48,10 @@ Anecdotes</option>
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                        <input type="submit" name="accepter" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                    </div>
+                    <div class="span2">
+                        <input type="submit"  name="supprimer" class="btn btn-inverse btn-profil " value="Supprimer le partage">
                     </div>
                 </div>
             </form>

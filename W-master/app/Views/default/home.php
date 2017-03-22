@@ -42,7 +42,7 @@
     <div <?php if(!empty($w_user)){
       echo 'style="display:none;"';
     }; ?> class="container">
-       <div class="row-fluid">
+       <div class="row-fluid connect">
            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                <div class="container-fluid container-login formulaire">
                    <div class="panel panel-default" id="panel-login">
