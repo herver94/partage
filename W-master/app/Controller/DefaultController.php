@@ -60,7 +60,7 @@ class DefaultController extends Controller
 	 * $categorie
 	 */public function profil() {
 
-		 # Connexion a la BDD
+		 # Connexion a la BDDgit
 			 DBFactory::start();
 
 			 # Récupération des Articles pour la home
@@ -90,6 +90,7 @@ class DefaultController extends Controller
 				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
 				$newuser->EMAILUSER = $_POST['EMAILUSER'];
 				$newuser->CPUSER = $_POST['CPUSER'];
+				$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
 				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
 				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
 				$newuser->save();
@@ -157,19 +158,10 @@ class DefaultController extends Controller
 	    # Suggestions
 	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
-	    # Transmettre à la Vue
-	    $this->show('redaction');
-
-	}
-	public function gestionDesMembres(){
-
- 		DBFactory::start();
-		$membres = \ORM::for_table('view_partage')->find_result_set();
-		//$this->allowTo('admin');
- 		$this->show('admin/gestionDesMembres', ['membres' => $membres ]);
 
 
- DBFactory::start();
+
+
 $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
 
