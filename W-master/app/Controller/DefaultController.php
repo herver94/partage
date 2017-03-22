@@ -8,8 +8,7 @@ use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
 
 	/**
 	 * Page d'accueil par défaut
@@ -21,7 +20,6 @@ class DefaultController extends Controller
 		DBFactory::start();
 
 
-			DBFactory::start();
 	    # Récupération des Articles pour la home
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
@@ -64,10 +62,13 @@ class DefaultController extends Controller
 					//retour à l'index
 					$this->redirectToRoute('default_home');
 				}
+
 	/**
 	 * Permet d'afficher les articles d'une catégorie
-	 * $categorie
-	 */
+	 * $categorie*/
+    public function profil() {
+			$this->show('default/profil');
+		 }
 
 	public function inscription() {
 		 if(!empty($_POST))
@@ -87,7 +88,22 @@ class DefaultController extends Controller
 			$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
 			$newuser->save();
 		}
-		$this->show('default/inscription');
+
+		 $this->show('default/profil');
+    }
+
+
+
+	public function deconnexion()
+	{
+		//on a besoin d'un objet sécurité
+		$auth = new AuthentificationModel;
+
+		//déconnexion de la session
+		$auth->logUserOut();
+
+		//retour à l'index
+		$this->redirectToRoute('default_home');
 	}
 
 
@@ -95,6 +111,8 @@ class DefaultController extends Controller
 
 	    # Connexion a la BDD
 	    DBFactory::start();
+
+        $categorieTitre = \ORM::for_table('categories')->where('CHEMIN', $categorie)->find_one();
 
 	    # Récupérations des Articles de la Catégorie
 	    $articles  = \ORM::for_table('view_partage')->where('CHEMIN', $categorie)->find_result_set();
@@ -104,9 +122,7 @@ class DefaultController extends Controller
 	    $categories = \ORM::for_table('categories')->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles]);
-
-
+	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles, 'titre' => $categorieTitre]);
 	}
 
 
@@ -143,8 +159,13 @@ class DefaultController extends Controller
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-	}
+
+
 	public function redaction() {
+		$this->allowTo(['user', 'admin']);
+
+		$loggedUser = $this->getUser();
+		$idloggedUser = $loggedUser['IDUSER'];
 
 	    # Connexion a la BDD
 	    DBFactory::start();
@@ -156,29 +177,27 @@ class DefaultController extends Controller
 	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('redaction');
 
-	}
-	public function gestionDesMembres(){
+        $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
-  DBFactory::start();
-	$membres = \ORM::for_table('view_partage')->find_result_set();
-		//$this->allowTo('admin');
- $this->show('admin/gestionDesMembres', ['membres' => $membres ]);
+		if(!empty($_POST))
+         {
+         $newpartage = \ORM::for_table('modpartages')->create();
 
-
-	}
-    public function profil() {
-
-	    # Connexion a la BDD
-	    DBFactory::start();
-
-	    # Transmettre à la Vue
-
-	    $this->show('default/profil');
+         $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
+         $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
+    //	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+         $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
+         $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
+         $newpartage->IDUSER= $idloggedUser;
+         $newpartage->save();
+                     }
 
 
-	}
+        $this->show('redaction', ['samepartage' => $samepartage]);
+
+        }
+
         public function contact(){
 
 	    # Connexion a la BDD
@@ -186,7 +205,7 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/contact');
-	}
+	   }
         public function conditionsGenerale(){
 
 	    # Connexion a la BDD
@@ -194,8 +213,27 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
-	}
+	   }
 
+		public function deleteprofil($id){
+			# Connexion a la BDD
+	   		DBFactory::start();
+
+	   		$person = \ORM::for_table('users')->find_one($id);
+			$person->delete();
+
+			//on a besoin d'un objet sécurité
+			$auth = new AuthentificationModel;
+
+			//déconnexion de la session
+			$auth->logUserOut();
+
+	   		$this->redirectToRoute('default_home');
+        }
+
+        function dateFr($date){
+            return strftime('%d-%m-%Y',strtotime($date));
+        }
 
 
 }

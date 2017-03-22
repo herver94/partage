@@ -24,7 +24,8 @@ class DBFactory
         'commentaires' => 'IDCOMMENTAIRE',
         'partages' => 'IDPARTAGE',
         'users' => 'IDUSER',
-        'view_partage' => 'IDPARTAGE'
+        'view_partage' => 'IDPARTAGE',
+        'modpartages' => 'MODIDPARTAGE'
       ));
 
     }

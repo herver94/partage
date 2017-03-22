@@ -1,7 +1,8 @@
 <?php
 
- use Model\CategoriesModel;
+    use Model\CategoriesModel;
     use Model\DBFactory;
+    use Controller\DefaultController;
 
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
@@ -148,7 +149,7 @@ print_r($current); ?>
                 } ?>>
                  <a href="">Partagez ! </a></li>
 
-                <li> <a href="<?= $this->url('default_deconnexion'); ?>">Déconnexion</a></li>
+                <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
             <?php endif; ?>
 
@@ -158,9 +159,9 @@ print_r($current); ?>
             ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
                 <div class="mobile-nav-select">
-                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="  menu-responsive">
                     <option value="">Menu...</option>
-                    <option value="index.htm">ACCUEIL</option>
+                    <option value="index.htm" class="accueil">ACCUEIL</option>
                     <option value="page-full-width.htm">Lire les partages</option>
                         <option value="page-full-width.htm">- Expériences de vie</option>
                         <option value="page-right-sidebar.htm">- Anecdotes</option>
@@ -172,7 +173,7 @@ print_r($current); ?>
                     <option value="page-contact.htm">Contact</option>
                 </select>
                 </div>
-                </form>
+            </form>
 
         </div>
 
@@ -199,8 +200,8 @@ print_r($current); ?>
                 </div>
                 <div class="span3 footer-col">
                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
+                        <li><a href="https://www.facebook.com/partage.net/" class="social-icon facebook" target="_blank"></a></li>
+                        <li><a href="https://twitter.com/Part_ages" class="social-icon twitter" target="_blank"></a></li>
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
                 </div>

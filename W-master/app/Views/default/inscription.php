@@ -16,17 +16,15 @@
         <div class="span8 contact inscription"><!--Begin page content column-->
 
 
-            <h2>Inscription</h2>
+            <h2 class="title-bg">Inscription</h2>
 
-              <p>Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,
-                des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres. </p>
+              <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une         anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
 
               <div id="erreur" style="display : none;">
-      <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-  </div>
+              <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+              </div>
 
-						<form ifaction="#" method="post" id="contact-form" id="inscriptionForm">
-
+              <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
@@ -43,14 +41,14 @@
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input type="hidden" >
-										<select name="SEXEUSER" id="sexe" class="span4">
-											<option value="Homme">Homme</option>
-                      <option value="Femme">Femme</option>
-										</select>
+				        <select name="SEXEUSER" id="sexe" class="span4">
+				            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+				        </select>
                 </div><br>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span7 champ" name="EMAILUSER" id="email" size="16" type="text" placeholder="Email">
+                    <input class="span7 " name="EMAILUSER" id="email" size="16" type="text" placeholder="Email">
                 </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
@@ -64,6 +62,9 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
+                <div id="erreur1" style="display : block;">
+        <p>Les mots de passe ne sont pas identiques!</p>
+    </div>
 								<div class="input-prepend">
                   <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
@@ -72,11 +73,11 @@
                 <div class="row">
                     <div class="span2">
 
-                        <input type="submit" id="envoi" class="btn btn-inverse" value="Inscription">
+                        <input type="submit" id="envoi" class="btn btn-inverse btn-profil" value="Inscription">
 
                     </div>
                 </div>
-            </form>
+        </form>
 
         </div> <!--End page content column-->
 
@@ -99,7 +100,7 @@
              $champ = $('.champ');
 
         $champ.keyup(function(){
-            if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+            if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
                 $(this).css({ // on rend le champ rouge
                     borderColor : 'red',
     	        color : 'red'
@@ -114,7 +115,8 @@
         });
 
         $confirmation.keyup(function(){
-            if($(this).val() != $mdp.val()){ // si la confirmation est différente du mot de passe
+            if($(this).val() != $mdp.val()){
+                $erreur1.css('display', 'block'); // si la confirmation est différente du mot de passe
                 $(this).css({ // on rend le champ rouge
          	        borderColor : 'red',
             	color : 'red'
@@ -130,13 +132,15 @@
 
         $envoi.click(function(e){
             //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
+      //  $envoi.click(function(e){
+        //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
 
             // puis on lance la fonction de vérification sur tous les champs :
           //  verifier($pseudo);
-            verifier($mdp);
-            verifier($confirmation);
-            verifier($email);
-        });
+        //    verifier($mdp);
+          //  verifier($confirmation);
+          //  verifier($email);
+        //});
 
         $reset.click(function(){
             $champ.css({ // on remet le style des champs comme on l'avait défini dans le style CSS

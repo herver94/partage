@@ -6,7 +6,7 @@
 <?php $this->start('contenu') ?>
     
 <div class="row-fluid">   
-    <h1><strong>Conditions générales d'utilisation</strong></h1>
+    <h1 class="title-bg"><strong>Conditions générales d'utilisation</strong></h1>
         <h2>1. DEFINITIONS</h2>
             <p>Contenu Editorial : désigne l'ensemble des informations mises à la disposition des Utilisateurs par PART ÂGE.</p>
             <p>Données Personnelles : désigne les informations personnelles que l'Utilisateur a enregistrées lors de son inscription au Service Spécifique proposés par PART ÂGE (à savior l'accès à des documents de type .pdf) et/ou fournies dans le cadre de l'utilisation des Services.</p>
