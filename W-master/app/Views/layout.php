@@ -99,8 +99,8 @@
         <!-- Logo
         ================================================== -->
         <div class="span4 logo">
-        	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
-            <h4 class="otto">Le site web qui donne la parole aux seniors !</h4>
+        	<a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a>
+            <h4 class="slogan">Le site qui donne la parole aux seniors !</h4>
         </div>
 
         <!-- Main Navigation
@@ -199,7 +199,7 @@
                    <img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /><br /><br />
                 </div>
                 <div class="span3 footer-col">
-                    <h5 class="otto">À Propos</h5>
+                    <h5>À Propos</h5>
                     <address>
                         <strong>Part Âge</strong><br />
                         157 Boulevard Macdonald<br />
@@ -213,9 +213,20 @@
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
                 </div>
+                <!-- Single button -->
+                <div class="span3 footer-col">
+                   <h4>TAGS</h4>  
+                    <div class="btn-group">
+                    <!-- Standard button -->
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="row-fluid"><!-- Begin Sub Footer -->
+            <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>

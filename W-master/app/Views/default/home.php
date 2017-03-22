@@ -2,7 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
     use Model\Shortcut;
- $this->start('contenu') ?>
+    $this->start('contenu') ?>
 
 
 
