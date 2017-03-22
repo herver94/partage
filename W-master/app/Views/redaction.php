@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
+    $this->layout('layout', ['title' => 'Partagez', 'current' => 'partagez']);
     use Model\Shortcut;
 ?>
 <?php $this->start('contenu');
@@ -31,23 +31,25 @@
 
             <form action="#" method="post" id="message-form">
 
-                    <span class="add-on"><i class="icon-user"></i></span>
                     <textarea  class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
 
                     <div class="input-prepend">
-                        <span class="add-on"><i class="icon-user"></i></span>
                         <input type="hidden" >
                         <label for="categorie">Selectionnez une catégorie</label>
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
-                          <option value="2">
-Anecdotes</option>
+                          <option value="2">Anecdotes</option>
                           <option value="3">Avis sur la société actuelle</option>
                           <option value="4">Conseils aux futures générations</option>
                         </select>
                     </div><br>
 
                           <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+
+                          <div class="input-prepend">
+                            <label>Ajouter une image</label>
+                              <input type="file" name="PHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                          </div>
 
                 <div class="row">
                     <div class="span2">
@@ -66,7 +68,7 @@ Anecdotes</option>
             <article>
                 <h3 class="title-bg"><a href="#"><?= $partage->TITREPARTAGE; ?></a></h3>
                 <div class="post-content">
-                    <a href="#"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb"></a>
+                    <a href="#"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
 
                     <div class="post-body">
                               <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p></p>
@@ -90,6 +92,18 @@ Anecdotes</option>
 </div>
     <script>
         CKEDITOR.replace( 'MODCONTENUPARTAGE' );
+        $(document).ready(function () {
+                $('.dropify').dropify({
+                    messages: {
+                        default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
+                        replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                        remove:  'Supprimer',
+                        error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+                    }
+                });
+
+
+      });
     </script>
 
 <?php $this->stop('contenu') ?>

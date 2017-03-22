@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current' => 'moderation']);
+    $this->layout('layout', ['title' => 'Moderation', 'current' => 'moderation']);
     //use Model\Shortcut;
 ?>
 <?php $this->start('contenu');
@@ -30,7 +30,7 @@
 
                     <span class="add-on"></i></span>
                     <textarea value="SALUT"  class="span7" name="TITREPARTAGE" ><?= $modpartage->MODTITREPARTAGE ; ?></textarea>
-
+                    <img src="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" alt="Illustration" class="align-left">
                     <div class="input-prepend">
                         <span class="add-on"></span>
                         <input type="hidden" >

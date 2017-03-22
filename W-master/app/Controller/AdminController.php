@@ -53,9 +53,9 @@ class AdminController extends Controller{
 
 				 $newpartage->TITREPARTAGE = $_POST['TITREPARTAGE'];
 				 $newpartage->CONTENUPARTAGE = $_POST['CONTENUPARTAGE'];
-			//	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+				 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
 				 $newpartage->IDCATEGORIE = $_POST['IDCATEGORIE'];
-			 $newpartage->DATEPARTAGE =$datepartage;
+			 	 $newpartage->DATEPARTAGE =$datepartage;
 				 $newpartage->IDUSER= $idUser;
 				 $newpartage->save();
 

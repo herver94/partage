@@ -130,7 +130,7 @@
             }
         });
 
-        $envoi.click(function(e){
+        //$envoi.click(function(e){
             //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
       //  $envoi.click(function(e){
         //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
@@ -161,40 +161,28 @@
         }
 
     });
-</script>
 
 
-    <!-- Footer Area
-        ================================================== -->
+
+    $(document).ready(function () {
+          	$('.dropify').dropify({
+                messages: {
+                    default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
+                    replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                    remove:  'Supprimer',
+                    error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+                }
+            });
+
+
+  });
+
+  </script>
+
+
 
 	    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 
 <?php $this->stop('contenu'); ?>
-
-<?php $this->start('script') ?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.js"></script>
-      <!-- wysuhtml5 Plugin JavaScript -->
-      <script>
-
-  		// -- Dropify
-
-
-
-
-  $(document).ready(function () {
-        	$('.dropify').dropify({
-              messages: {
-                  default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
-                  replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
-                  remove:  'Supprimer',
-                  error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
-              }
-          });
-
-
-});
-
-      </script>
-<?php $this->stop('script') ?>

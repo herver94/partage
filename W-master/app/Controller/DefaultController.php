@@ -50,16 +50,19 @@ class DefaultController extends Controller {
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home'); }
+									$this->redirectToRoute('default_home');
 						}
 
 						}
+					}
+
 
 
 
     public function profil() {
 			$this->show('default/profil');
 		 }
+
 
 	public function inscription() {
 		 if(!empty($_POST))
@@ -79,9 +82,29 @@ class DefaultController extends Controller {
 				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
 				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
 				$newuser->save();
-	 						}
+
+				extract($_POST);
+				$handle = new \upload($_FILES['PHOTOUSER']);
+				if ($handle->uploaded) {
+						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
+						$handle->image_resize         = true;
+						$handle->image_x              = 770;
+						$handle->image_y              = 500;
+					$handle->image_ratio_crop      = true;
+						$handle->process('/assets/img/profil/');
+						if ($handle->processed) {
+								$PHOTOPARTAGE = $handle->file_dst_name;
+								$handle->clean();
+						} else {
+								//$PHOTOPARTAGE = 'default.jpg';
+								echo 'error : ' . $handle->error;
+						}
+				}
+
+
+							}
 								$this->show('default/inscription');
-}
+				}
 
 
 
@@ -137,7 +160,7 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-
+}
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -148,11 +171,8 @@ class DefaultController extends Controller {
 	    DBFactory::start();
 
 
+			$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
-
-
-
-$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
 
 		if(!empty($_POST))
@@ -161,19 +181,37 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
 
          $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
          $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
-    //	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+    	 	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
          $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
          $newpartage->IDUSER= $idloggedUser;
          $newpartage->save();
-                     }
 
+				extract($_POST);
+	 			$handle = new \upload($_FILES['PHOTOPARTAGE']);
+	 			if ($handle->uploaded) {
+	 					$handle->file_new_name_body   = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
+	 					$handle->image_resize         = true;
+	 					$handle->image_x              = 770;
+	 					$handle->image_y              = 500;
+	 				$handle->image_ratio_crop      = true;
+	 					$handle->process('assets/img/partages/');
+	 					if ($handle->processed) {
+	 							$PHOTOPARTAGE = $handle->file_dst_name;
+	 							$handle->clean();
+	 					} else {
+	 							$PHOTOPARTAGE = 'default.jpg';
+	 							echo 'error : ' . $handle->error;
+	 					}
+	 			}
+      }
 
-        $this->show('redaction', ['samepartage' => $samepartage]);
+					 $this->show('redaction', ['samepartage' => $samepartage]);
 
         }
 
-        public function contact(){
+
+      public function contact(){
 
 	    # Connexion a la BDD
 	    DBFactory::start();
@@ -189,6 +227,7 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	   }
+
 
 		public function deleteprofil($id){
 			# Connexion a la BDD
@@ -207,12 +246,23 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
         }
 
 
+
 		public function search(){
 			$search = \ORM::for_table('tags')
             ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
             ->order_by_asc('LIBELLETAGS')
             ->find_many();
 		}
+
+
+		public function deconnexion()
+		{
+		$auth = new AuthentificationModel;
+		//déconnexion de la session
+		$auth->logUserOut();
+		//retour à l'index
+		$this->redirectToRoute('default_home');
+	}
 
 
 
