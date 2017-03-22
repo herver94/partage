@@ -3,10 +3,11 @@
 		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => 'profil']);
 
 	    $nom = $w_user['PRENOMUSER'];
-		$prenom= $w_user['NOMUSER'];
-		$date=  strftime('%d-%m-%Y',strtotime($w_user['DATEDENAISSANCEUSER']));
-		$mdp= $w_user['MOTDEPASSEUSER'];
-		$photo= $w_user['PHOTOUSER'];
+		$prenom = $w_user['NOMUSER'];
+        $inscription = $w_user['DATEINSCRIPTION'];
+		$date =  strftime('%d-%m-%Y',strtotime($w_user['DATEDENAISSANCEUSER']));
+		$mdp = $w_user['MOTDEPASSEUSER'];
+		$photo = $w_user['PHOTOUSER'];
 		$genre = $w_user['SEXEUSER'];
         $id = $w_user['IDUSER'];
 		$this->start('contenu');
@@ -58,7 +59,7 @@
 
                         <ul class="project-info">
 
-                            <li><h6>Role:</h6> <?= $w_user['ROLE'] ; ?></li>
+                            <li><h6>Membre depuis le :</h6><?= $w_user['DATEINSCRIPTION']; ?></li>
                             <li><h6>Date de naissance:</h6> <?= $date; ?></li>
                             <li><h6>Sexe:</h6> <?= $w_user['SEXEUSER']; ?></li>
                             <li><h6>Email:</h6> <?= $w_user['EMAILUSER']; ?></li>
@@ -75,19 +76,12 @@
 
             </div>
 
-
-
         </div><!-- End gallery-single-->
-
-
 
     </div><!-- End container row -->
 
 
-    </div> <!-- End Container -->
-
-
-
+</div> <!-- End Container -->
 
     <!-- Footer Area -->
 

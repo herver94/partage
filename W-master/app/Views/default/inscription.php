@@ -87,12 +87,12 @@
     $(document).ready(function(){
 
       var    $nom = $('#nom'),
-              $prenom = $('#prenom'),
+            $prenom = $('#prenom'),
              $mdp = $('#mdp'),
              $genre = $('#sexe'),
              $confirmation = $('#confirmation'),
              $email = $('#email'),
-             $codepostal = $('#codepostal')
+             $codepostal = $('#codepostal'),
              $envoi = $('#envoi'),
              $reset = $('#rafraichir'),
              $erreur = $('#erreur'),
