@@ -8,8 +8,7 @@ use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
 
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
 
 	/**
 	 * Page d'accueil par défaut
@@ -51,27 +50,24 @@ class DefaultController extends Controller
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home'); }
+									$this->redirectToRoute('default_home'); 
+                            }
 						}
-						}
+    }
 	/**
 	 * Permet d'afficher les articles d'une catégorie
-	 * $categorie
-	 */public function profil() {
+	 * $categorie*/
+    public function profil() {
 
 		 # Connexion a la BDD
-			 DBFactory::start();
+         DBFactory::start();
 
-			 # Récupération des Articles pour la home
-
-
+         # Récupération des Articles pour la home
 
 		 # Transmettre à la Vue
 
 		 $this->show('default/profil');
-
-
- }
+    }
 
     public function inscription(){
 		 if(!empty($_POST))
@@ -92,7 +88,7 @@ class DefaultController extends Controller
 				$newuser->save();
 	 		        }
 				$this->show('default/inscription');
-				}
+    }
 
 	public function deconnexion()
 	{
@@ -123,8 +119,6 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles, 'titre' => $categorieTitre]);
-
-
 	}
 
 	/* Permet d'afficher un Article*/
@@ -138,8 +132,8 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage]);
-
 	}
+    
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -174,7 +168,7 @@ class DefaultController extends Controller
 
         $this->show('redaction', ['samepartage' => $samepartage]);
 
-}
+        }
 
         public function contact(){
 
@@ -183,7 +177,7 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/contact');
-	}
+	   }
         public function conditionsGenerale(){
 
 	    # Connexion a la BDD
@@ -191,7 +185,7 @@ class DefaultController extends Controller
 
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
-	}
+	   }
 
 		public function deleteprofil($id){
 			# Connexion a la BDD
@@ -207,9 +201,11 @@ class DefaultController extends Controller
 			$auth->logUserOut();
 
 	   		$this->redirectToRoute('default_home');
-		}
+        }
 
-
+        function dateFr($date){
+            return strftime('%d-%m-%Y',strtotime($date));
+        }
 
 
 }

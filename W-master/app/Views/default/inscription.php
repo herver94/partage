@@ -99,7 +99,7 @@
              $champ = $('.champ');
 
         $champ.keyup(function(){
-            if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+            if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
                 $(this).css({ // on rend le champ rouge
                     borderColor : 'red',
     	        color : 'red'

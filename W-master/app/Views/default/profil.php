@@ -2,9 +2,9 @@
 
 		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => 'profil']);
 
-	$nom = $w_user['PRENOMUSER'];
+	    $nom = $w_user['PRENOMUSER'];
 		$prenom= $w_user['NOMUSER'];
-		$date= $w_user['DATEDENAISSANCEUSER'];
+		$date=  strftime('%d-%m-%Y',strtotime($w_user['DATEDENAISSANCEUSER']));
 		$mdp= $w_user['MOTDEPASSEUSER'];
 		$photo= $w_user['PHOTOUSER'];
 		$genre = $w_user['SEXEUSER'];
@@ -30,14 +30,9 @@
     ================================================== -->
     <div class="row">
 
-
-
         <!-- Gallery Items
 
         ================================================== -->
-
-
-
 
         <div class="span12 gallery-single">
             <div class="row">
@@ -64,17 +59,14 @@
                         <ul class="project-info">
 
                             <li><h6>Role:</h6> <?= $w_user['ROLE'] ; ?></li>
-                            <li><h6>Date de naissance:</h6> <?= $w_user['DATEDENAISSANCEUSER']; ?></li>
-
+                            <li><h6>Date de naissance:</h6> <?= $date; ?></li>
                             <li><h6>Sexe:</h6> <?= $w_user['SEXEUSER']; ?></li>
-
                             <li><h6>Email:</h6> <?= $w_user['EMAILUSER']; ?></li>
-
                             <li><h6>Code Postal:</h6> <?= $w_user['CPUSER']; ?></li>
 
                         </ul>
 
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte à partager</button>
+                    <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte<br>à partager</button>
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
