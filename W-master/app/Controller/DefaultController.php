@@ -52,20 +52,11 @@ class DefaultController extends Controller {
 									$message = 'erreur de pseudo';
 									$this->redirectToRoute('default_home'); }
 						}
-				}
 
-					public function deconnexion()
-					{
-					$auth = new AuthentificationModel;
-					//déconnexion de la session
-					$auth->logUserOut();
-					//retour à l'index
-					$this->redirectToRoute('default_home');
-				}
+						}
 
-	/**
-	 * Permet d'afficher les articles d'une catégorie
-	 * $categorie*/
+
+
     public function profil() {
 			$this->show('default/profil');
 		 }
@@ -75,24 +66,22 @@ class DefaultController extends Controller {
 	 	{
 	 		DBFactory::start();
 
- 			$newuser	= \ORM::for_table('users')->create();
-
-			$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
-			$newuser->NOMUSER = $_POST['NOMUSER'];
-			$newuser->ROLE = 'USER';
-			$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
-			$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
-			$newuser->EMAILUSER = $_POST['EMAILUSER'];
-			$newuser->CPUSER = $_POST['CPUSER'];
-			$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
-			$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
-			$newuser->save();
-		}
-
-		 $this->show('default/profil');
-    }
 
 
+				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
+				$newuser->NOMUSER = $_POST['NOMUSER'];
+				$newuser->ROLE = 'user';
+				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
+				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
+				$newuser->EMAILUSER = $_POST['EMAILUSER'];
+				$newuser->CPUSER = $_POST['CPUSER'];
+				$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
+				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
+				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
+				$newuser->save();
+	 						}
+								$this->show('default/inscription');
+}
 
 
 
@@ -148,7 +137,6 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-}
 
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
@@ -159,15 +147,13 @@ class DefaultController extends Controller {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Données de l'Article
-	   // $article = \ORM::for_table('view_partage')->find_one($id);
 
-	    # Suggestions
-	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
-	    # Transmettre à la Vue
 
-        $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
+
+
+$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
+
 
 		if(!empty($_POST))
          {
@@ -220,9 +206,14 @@ class DefaultController extends Controller {
 	   		$this->redirectToRoute('default_home');
         }
 
-        function dateFr($date){
-            return strftime('%d-%m-%Y',strtotime($date));
-        }
+
+		public function search(){
+			$search = \ORM::for_table('tags')
+            ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
+            ->order_by_asc('LIBELLETAGS')
+            ->find_many();
+		}
+
 
 
 }
