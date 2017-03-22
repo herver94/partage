@@ -19,7 +19,7 @@
 
 		['GET|POST', '/inscription', 'Default#inscription', 'default_inscription'],
 
-		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
+		['GET|POST', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 
 		['GET', '/deleteprofil/[:id]', 'Default#deleteprofil', 'default_deleteprofil'],
 
