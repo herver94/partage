@@ -29,14 +29,14 @@
     <!-- Page Content
 
     ================================================== -->
-    <div class="row">
+    <div class="row-fluid">
 
         <!-- Gallery Items
 
         ================================================== -->
 
         <div class="span12 gallery-single">
-            <div class="row">
+            <div class="row-fluid">
 
                 <div class="span5">
 
@@ -68,9 +68,9 @@
                         </ul>
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte<br>à partager</button>
-
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
+                    <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button> 
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
+
 
                 </div>
 

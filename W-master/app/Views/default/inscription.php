@@ -21,9 +21,10 @@
 
               <div id="erreur" style="display : none;">
               <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-        </div>
+              </div>
 
-        <form action="#" method="post" id="contact-form" id="inscriptionForm">
+
+              <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
@@ -61,10 +62,13 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
+                
                 <div id="erreur1" style="display : block;">
                 <p>Les mots de passe ne sont pas identiques!</p>
                 </div>
+                
 				<div class="input-prepend">
+                  <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
 
@@ -128,6 +132,8 @@
             }
         });
 
+        $envoi.click(function(e){
+            //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
       //  $envoi.click(function(e){
         //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
 

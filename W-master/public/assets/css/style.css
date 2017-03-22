@@ -142,9 +142,7 @@ label{
 h1, h2, h3, h4, h5, h6{
     font-family: 'Abril Fatface', cursive;
 }
-.otto{
-    text-shadow: -1px 2px 0 rgba(0,0,0,0.3);
-}
+
 body{
     font-family: 'Roboto', sans-serif;
 }

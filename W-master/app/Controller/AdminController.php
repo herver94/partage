@@ -15,21 +15,7 @@ class AdminController extends Controller{
 
 
 	}
-    public function profil() {
 
-	    # Connexion a la BDD
-		    DBFactory::start();
-
-		    # Récupération des Articles pour la home
-
-
-
-	    # Transmettre à la Vue
-
-	    $this->show('default/profil');
-
-
-	}
   public function moderation() {
 		$this->allowTo('admin');
 
@@ -56,6 +42,7 @@ class AdminController extends Controller{
 			# Récupérations des Articles de la Catégorie
 			$modpartage  = \ORM::for_table('modpartages')->find_one($id);
 			$idUser = 	$modpartage->IDUSER;
+			$datepartage =  $modpartage->MODDATEPARTAGE;
 
 			$mcategorie = \ORM::for_table('categories')->where('IDCATEGORIE', $modpartage->IDCATEGORIE)->find_one();
 			if(!empty($_POST))
@@ -67,10 +54,14 @@ class AdminController extends Controller{
 				 $newpartage->TITREPARTAGE = $_POST['TITREPARTAGE'];
 				 $newpartage->CONTENUPARTAGE = $_POST['CONTENUPARTAGE'];
 			//	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
-				 $newpartage->DATEPARTAGE = $modpartage->MODDATEPARTAGE;
 				 $newpartage->IDCATEGORIE = $_POST['IDCATEGORIE'];
+			 $newpartage->DATEPARTAGE =$datepartage;
 				 $newpartage->IDUSER= $idUser;
 				 $newpartage->save();
+
+				 $oldarticle = \ORM::for_table('modpartages')->find_one($id);
+				 $oldarticle->delete();
+
 							 }
 
 			# Transmettre à la Vue

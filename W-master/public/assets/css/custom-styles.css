@@ -1,5 +1,5 @@
 html, body {
-	font-size:12px;
+	font-size:14px;
 	line-height:18px;
 	height: 100%;
  }
@@ -472,7 +472,7 @@ ul.post-data li:last-child {padding-right: 0px;}
 
 /*** Blog Full Page ***/
 .post-content {background: #f8f8f8; overflow: auto;}
-.post-body {padding: 20px;}
+.post-body {padding: 20px 10px 20px 0; font-size: 1.2em;}
 .about-author img {float: left; margin-right: 20px;}
 
 /*** Comments ***/
@@ -704,14 +704,14 @@ a.accordion-toggle{background: #f5f5f5;}
 .quote-text cite {
 	font-size:12px;
 =======
-.quote-text { 
-	font-size:16px; 
-	line-height:24px; 
-	font-family:Georgia, "Times New Roman", Times, serif; 
-	font-style:italic; 
+.quote-text {
+	font-size:16px;
+	line-height:24px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
 }
-.quote-text cite { 
-	font-size:12px; 
+.quote-text cite {
+	font-size:12px;
 >>>>>>> ecff2dc23a50575b6b0ee87e99aeb190f215572b
 	color:#999;
 	display:block;
@@ -774,4 +774,11 @@ a.accordion-toggle{background: #f5f5f5;}
 /* Mobile Portrait Size to Tablet Portrait Size */
 @media only screen and  (max-width: 767px) {
 	.the-icons li {float: none; width: 100%; line-height: 25px;}
+}
+.img-categorie{
+	width: 100%;
+}
+.p-partage{
+	font-size: 1.5em;
+	margin: 10px;
 }

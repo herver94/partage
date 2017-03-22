@@ -50,31 +50,23 @@ class DefaultController extends Controller {
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home'); 
-                            }
+									$this->redirectToRoute('default_home'); }
 						}
-    }
-	/**
-	 * Permet d'afficher les articles d'une catégorie
-	 * $categorie*/
+
+						}
+
+
+
     public function profil() {
+			$this->show('default/profil');
+		 }
 
-		 # Connexion a la BDD
-         DBFactory::start();
-
-         # Récupération des Articles pour la home
-
-		 # Transmettre à la Vue
-
-		 $this->show('default/profil');
-    }
-
-    public function inscription(){
+	public function inscription() {
 		 if(!empty($_POST))
-	 			{
-	 		    DBFactory::start();
+	 	{
+	 		DBFactory::start();
 
-	 			$newuser	= \ORM::for_table('users')->limit(3)->create();
+
 
 				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
 				$newuser->NOMUSER = $_POST['NOMUSER'];
@@ -83,12 +75,13 @@ class DefaultController extends Controller {
 				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
 				$newuser->EMAILUSER = $_POST['EMAILUSER'];
 				$newuser->CPUSER = $_POST['CPUSER'];
+				$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
 				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
 				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
 				$newuser->save();
-	 		        }
-				$this->show('default/inscription');
-    }
+	 						}
+								$this->show('default/inscription');
+}
 
 	public function deconnexion()
 	{
@@ -107,9 +100,9 @@ class DefaultController extends Controller {
 
 	    # Connexion a la BDD
 	    DBFactory::start();
-        
+
         $categorieTitre = \ORM::for_table('categories')->where('CHEMIN', $categorie)->find_one();
-        
+
 	    # Récupérations des Articles de la Catégorie
 	    $articles  = \ORM::for_table('view_partage')->where('CHEMIN', $categorie)->find_result_set();
 
@@ -121,6 +114,8 @@ class DefaultController extends Controller {
 	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie, 'categories' => $categories, 'nbarticles' => $nbarticles, 'titre' => $categorieTitre]);
 	}
 
+
+
 	/* Permet d'afficher un Article*/
 	public function partage($id, $slug) {
 
@@ -130,10 +125,31 @@ class DefaultController extends Controller {
 	    # Récupération des Données de l'Article
 	    $partage = \ORM::for_table('view_partage')->find_one($id);
 
+			#récupération des commentaires
+			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
+
+
+			if(!empty($_POST))
+ 	 			{
+ 	 			DBFactory::start();
+ 	 			$newcomment	= \ORM::for_table('commentaires')->create();
+
+				$newcomment->IDUSER = $_POST['IDUSER'];
+				$newcomment->IDPARTAGE = $_POST['IDPARTAGE'];
+ 				$newcomment->PRENOMUSER = $_POST['PRENOMUSER'];
+ 				$newcomment->NOMUSER = $_POST['NOMUSER'];
+				$newcomment->CONTENUCOMMENTAIRE = $_POST['CONTENUCOMMENTAIRE'];
+				$newcomment->set_expr('DATECOMMENTAIRE', 'NOW()');
+
+ 				$newcomment->save();
+
+ 	 			}
+
 	    # Transmettre à la Vue
-	    $this->show('default/partage', ['partage' => $partage]);
-	}
-    
+	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
+
+
+}
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -143,15 +159,13 @@ class DefaultController extends Controller {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Données de l'Article
-	   // $article = \ORM::for_table('view_partage')->find_one($id);
 
-	    # Suggestions
-	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
-	    # Transmettre à la Vue
 
-        $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
+
+
+$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
+
 
 		if(!empty($_POST))
          {
@@ -165,6 +179,7 @@ class DefaultController extends Controller {
          $newpartage->IDUSER= $idloggedUser;
          $newpartage->save();
                      }
+
 
         $this->show('redaction', ['samepartage' => $samepartage]);
 
@@ -203,9 +218,14 @@ class DefaultController extends Controller {
 	   		$this->redirectToRoute('default_home');
         }
 
-        function dateFr($date){
-            return strftime('%d-%m-%Y',strtotime($date));
-        }
+
+		public function search(){
+			$search = \ORM::for_table('tags')
+            ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
+            ->order_by_asc('LIBELLETAGS')
+            ->find_many();
+		}
+
 
 
 }

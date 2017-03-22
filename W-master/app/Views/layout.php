@@ -1,9 +1,9 @@
 <?php
-    
+
     use Model\CategoriesModel;
     use Model\DBFactory;
     use Controller\DefaultController;
-    
+
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
 ?>
@@ -87,8 +87,7 @@
 
 </head>
 <body class="home">
-<?php 
-print_r($current); ?>
+
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
@@ -108,47 +107,50 @@ print_r($current); ?>
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-          
+
             <ul class="nav">
-               <li <?php if($current == 'Accueil') { 
-                    echo 'class="active"'; 
-                } ?> 
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
 
-           
+
             <li <?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?> >
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
 
                     <?php foreach($categories as $categorie) : ?>
                         <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
-                </ul> 
+
+                </ul>
              <?php if(empty($w_user)) : ?>
              </li>
                 <li> <a href="<?= $this->url("default_inscription");?>">Inscription</a></li>
                 <li> <a href="<?= $this->url("default_connexion");?>">Connexion</a></li>
                 <li> <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
-                
-            </ul>  
+
+            </ul>
             <?php else : ?>
-                <li <?php if($current == 'profil') { 
-                    echo 'class="active"'; 
-                } ?>> 
+                <li <?php if($current == 'profil') {
+                    echo 'class="active"';
+                } ?>>
                 <a href="<?= $this->url('default_profil'); ?>">Mon Compte</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                <li <?php if($current == 'contact') {
+                    echo 'class="active"';
                 } ?>>
+
                  <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                <li <?php if($current == '') {
+                    echo 'class="active"';
                 } ?>>
-                 <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
-               
+                <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
+
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
-              
+
             <?php endif; ?>
 
             </div>
@@ -203,7 +205,7 @@ print_r($current); ?>
                 </div>
             </div>
 
-            <div class="row"><!-- Begin Sub Footer -->
+            <div class="row-fluid"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>

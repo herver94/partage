@@ -2,7 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current'=> $categorie]);
     use Model\Shortcut;
- $this->start('contenu');
+    $this->start('contenu');
  ?>
     <!-- Blog Content
     ================================================== -->
@@ -16,9 +16,9 @@
             <?php foreach ($articles as $partage) : ?>
                 <!-- Blog Post 1 -->
                 <article class="clearfix">
-                    <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
+                    <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="img-categorie"></a>
                     <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h4>
-                        <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
+                        <p class="p-partage"><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
                         <button class="btn btn-mini btn-inverse btn-profil" type="button" onclick="javascript:location.href='<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>'">Lire la suite...</button>
                         <div class="post-summary-footer">
                             <ul class="post-data-3">
@@ -51,7 +51,7 @@
             <section>
                 <div class="input-append">
                     <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Recherche"><button class="btn" type="button"><i class="icon-search"></i></button>
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Recherche"><button class="btn" type="button"><a href="<?= $this->url('default_search') ?>"></a><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>
@@ -61,7 +61,7 @@
 
             <ul class="post-category-list">
                <?php foreach ($categories as $categorie) : ?>
-                    <li><a href="#"><i class="icon-plus-sign"></i><?= $categorie->LIBELLECATEGORIE; ?></a></li>
+                    <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->CHEMIN)]); ?>"><i class="icon-plus-sign"></i><?= $categorie->LIBELLECATEGORIE; ?></a></li>
                 <?php endforeach; ?>
             </ul>
 

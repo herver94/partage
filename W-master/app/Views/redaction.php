@@ -12,7 +12,7 @@
 
     <div class="container main-container">
 
-    <div class="row"><!--Container row-->
+    <div class="row-fluid"><!--Container row-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
@@ -38,7 +38,7 @@
                     </div><br>
                         <textarea name="MODCONTENUPARTAGE"></textarea><br/>
 
-                <div class="row">
+                <div class="row-fluid">
                     <div class="span2">
                         <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage">
                     </div>
