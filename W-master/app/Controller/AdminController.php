@@ -42,6 +42,7 @@ class AdminController extends Controller{
 			# Récupérations des Articles de la Catégorie
 			$modpartage  = \ORM::for_table('modpartages')->find_one($id);
 			$idUser = 	$modpartage->IDUSER;
+			$datepartage =  $modpartage->MODDATEPARTAGE;
 
 			$mcategorie = \ORM::for_table('categories')->where('IDCATEGORIE', $modpartage->IDCATEGORIE)->find_one();
 			if(!empty($_POST))
@@ -52,8 +53,9 @@ class AdminController extends Controller{
 
 				 $newpartage->TITREPARTAGE = $_POST['TITREPARTAGE'];
 				 $newpartage->CONTENUPARTAGE = $_POST['CONTENUPARTAGE'];
-			//	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];  
+			//	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
 				 $newpartage->IDCATEGORIE = $_POST['IDCATEGORIE'];
+			 $newpartage->DATEPARTAGE =$datepartage;
 				 $newpartage->IDUSER= $idUser;
 				 $newpartage->save();
 

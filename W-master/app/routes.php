@@ -17,18 +17,18 @@
 
 		['GET|POST', '/moderation', 'Admin#moderation', 'moderation'],
 
-		['GET|POST', '/inscription', 'Default#inscription', 'Default_inscription'],
+		['GET|POST', '/inscription', 'Default#inscription', 'default_inscription'],
 
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 
 		['GET', '/deleteprofil/[:id]', 'Default#deleteprofil', 'default_deleteprofil'],
 
+    ['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
 
-		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
+    ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
 
-      ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
-
-    ['GET', '/contact', 'Default#contact', 'default_contact'],
+    ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
     ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'default_moderationarticle'],
+
 	);

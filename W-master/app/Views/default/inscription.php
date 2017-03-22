@@ -16,17 +16,15 @@
         <div class="span8 contact inscription"><!--Begin page content column-->
 
 
-            <h2>Inscription</h2>
+            <h2 class="title-bg">Inscription</h2>
 
-              <p>Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,
-                des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres. </p>
+              <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une         anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
 
               <div id="erreur" style="display : none;">
-      <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-  </div>
+              <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+              </div>
 
-						<form action="#" method="post" id="contact-form" id="inscriptionForm">
-
+              <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
@@ -43,10 +41,10 @@
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input type="hidden" >
-										<select name="SEXEUSER" id="sexe" class="span4">
-											<option value="Homme">Homme</option>
-                      <option value="Femme">Femme</option>
-										</select>
+				        <select name="SEXEUSER" id="sexe" class="span4">
+				            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+				        </select>
                 </div><br>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
@@ -68,17 +66,18 @@
         <p>Les mots de passe ne sont pas identiques!</p>
     </div>
 								<div class="input-prepend">
+                  <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
 
                 <div class="row">
                     <div class="span2">
 
-                        <input type="submit" id="envoi" class="btn btn-inverse" value="Inscription">
+                        <input type="submit" id="envoi" class="btn btn-inverse btn-profil" value="Inscription">
 
                     </div>
                 </div>
-            </form>
+        </form>
 
         </div> <!--End page content column-->
 
@@ -89,19 +88,19 @@
     $(document).ready(function(){
 
       var    $nom = $('#nom'),
-              $prenom = $('#prenom'),
+            $prenom = $('#prenom'),
              $mdp = $('#mdp'),
              $genre = $('#sexe'),
              $confirmation = $('#confirmation'),
              $email = $('#email'),
-             $codepostal = $('#codepostal')
+             $codepostal = $('#codepostal'),
              $envoi = $('#envoi'),
              $reset = $('#rafraichir'),
              $erreur = $('#erreur'),
              $champ = $('.champ');
 
         $champ.keyup(function(){
-            if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+            if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
                 $(this).css({ // on rend le champ rouge
                     borderColor : 'red',
     	        color : 'red'
@@ -131,6 +130,8 @@
             }
         });
 
+        $envoi.click(function(e){
+            //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
       //  $envoi.click(function(e){
         //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
 
