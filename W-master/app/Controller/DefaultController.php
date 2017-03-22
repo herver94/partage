@@ -54,34 +54,41 @@ class DefaultController extends Controller
 									$message = 'erreur de pseudo';
 									$this->redirectToRoute('default_home'); }
 						}
-						}
+				}
+
+					public function deconnexion()
+					{
+					$auth = new AuthentificationModel;
+					//déconnexion de la session
+					$auth->logUserOut();
+					//retour à l'index
+					$this->redirectToRoute('default_home');
+				}
 	/**
 	 * Permet d'afficher les articles d'une catégorie
 	 * $categorie
 	 */
 
-	 public function inscription() {
+	public function inscription() {
 		 if(!empty($_POST))
-	 			{
-	 				DBFactory::start();
+	 	{
+	 		DBFactory::start();
 
+ 			$newuser	= \ORM::for_table('users')->create();
 
-
-	 			$newuser	= \ORM::for_table('users')->create();
-
-				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
-				$newuser->NOMUSER = $_POST['NOMUSER'];
-				$newuser->ROLE = 'USER';
-				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
-				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
-				$newuser->EMAILUSER = $_POST['EMAILUSER'];
-				$newuser->CPUSER = $_POST['CPUSER'];
-				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
-				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
-				$newuser->save();
-	 						}
-								$this->show('default/inscription');
-							}
+			$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
+			$newuser->NOMUSER = $_POST['NOMUSER'];
+			$newuser->ROLE = 'USER';
+			$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
+			$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
+			$newuser->EMAILUSER = $_POST['EMAILUSER'];
+			$newuser->CPUSER = $_POST['CPUSER'];
+			$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
+			$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
+			$newuser->save();
+		}
+		$this->show('default/inscription');
+	}
 
 
 	public function categories($categorie) {
@@ -102,6 +109,8 @@ class DefaultController extends Controller
 
 	}
 
+
+
 	/* Permet d'afficher un Article*/
 	public function partage($id, $slug) {
 
@@ -111,8 +120,28 @@ class DefaultController extends Controller
 	    # Récupération des Données de l'Article
 	    $partage = \ORM::for_table('view_partage')->find_one($id);
 
+			#récupération des commentaires
+			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
+
+
+			if(!empty($_POST))
+ 	 			{
+ 	 			DBFactory::start();
+ 	 			$newcomment	= \ORM::for_table('commentaires')->create();
+
+				$newcomment->IDUSER = $_POST['IDUSER'];
+				$newcomment->IDPARTAGE = $_POST['IDPARTAGE'];
+ 				$newcomment->PRENOMUSER = $_POST['PRENOMUSER'];
+ 				$newcomment->NOMUSER = $_POST['NOMUSER'];
+				$newcomment->CONTENUCOMMENTAIRE = $_POST['CONTENUCOMMENTAIRE'];
+				$newcomment->set_expr('DATECOMMENTAIRE', 'NOW()');
+
+ 				$newcomment->save();
+
+ 	 			}
+
 	    # Transmettre à la Vue
-	    $this->show('default/partage', ['partage' => $partage]);
+	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
 	}
 	public function redaction() {
@@ -143,10 +172,6 @@ class DefaultController extends Controller
 
 	    # Connexion a la BDD
 	    DBFactory::start();
-
-
-
-
 
 	    # Transmettre à la Vue
 

@@ -2,7 +2,7 @@
 
  use Model\CategoriesModel;
     use Model\DBFactory;
-    
+
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
 ?>
@@ -85,7 +85,7 @@
 
 </head>
 <body class="home">
-<?php 
+<?php
 print_r($current); ?>
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
@@ -106,53 +106,50 @@ print_r($current); ?>
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-          
+
             <ul class="nav">
-               <li <?php if($current == 'Accueil') { 
-                    echo 'class="active"'; 
-                } ?> 
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
 
-           
+
             <li <?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?> >
-            
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
 
                     <?php foreach($categories as $categorie) : ?>
                         <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
-                </ul> 
-             <?php if(empty($w_user)) : ?>
+                </ul>
+
              </li>
 
-
+             <?php if(empty($w_user)) : ?>
                 <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
 
-             
-
-                <li> <a href="#">Connexion</a></li>
                 <li> <a href="#">Contact</a></li>
-                
-            </ul>  
+
+            </ul>
             <?php else : ?>
-                <li <?php if($current == 'profil') { 
-                    echo 'class="active"'; 
-                } ?>> 
+                <li <?php if($current == 'profil') {
+                    echo 'class="active"';
+                } ?>>
                 <a href="<?= $this->url('default_profil'); ?>">Mon Compte</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                <li <?php if($current == 'contact') {
+                    echo 'class="active"';
                 } ?>>
                  <a href="#">Contact</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                <li <?php if($current == 'partagez') {
+                    echo 'class="active"';
                 } ?>>
                  <a href="">Partagez ! </a></li>
-               
-                <li> <a href="">Déconnexion</a></li>
-              
+
+                <li> <a href="<?= $this->url('default_deconnexion'); ?>">Déconnexion</a></li>
+
             <?php endif; ?>
 
             </div>

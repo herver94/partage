@@ -65,6 +65,7 @@
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
 								<div class="input-prepend">
+                  <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
 
@@ -128,7 +129,7 @@
         });
 
         $envoi.click(function(e){
-            e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
+            //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
 
             // puis on lance la fonction de vérification sur tous les champs :
           //  verifier($pseudo);
