@@ -147,7 +147,7 @@ print_r($current); ?>
                 <li <?php if($current == '') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="<?= $this->url("default_partage"); ?>">Partagez ! </a></li>
+                 <a href="<?= $this->url("redaction"); ?>">Partagez ! </a></li>
 
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
