@@ -123,14 +123,13 @@ print_r($current); ?>
                     <?php foreach($categories as $categorie) : ?>
                         <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
+
                 </ul>
-
-             </li>
-
              <?php if(empty($w_user)) : ?>
-                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
-
-                <li> <a href="#">Contact</a></li>
+             </li>
+                <li> <a href="<?= $this->url("default_inscription");?>">Inscription</a></li>
+                <li> <a href="<?= $this->url("default_connexion");?>">Connexion</a></li>
+                <li> <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
 
             </ul>
             <?php else : ?>
@@ -142,12 +141,13 @@ print_r($current); ?>
                 <li <?php if($current == 'contact') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="#">Contact</a></li>
 
-                <li <?php if($current == 'partagez') {
+                 <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
+
+                <li <?php if($current == '') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="">Partagez ! </a></li>
+                 <a href="<?= $this->url("default_partage"); ?>">Partagez ! </a></li>
 
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
@@ -174,9 +174,7 @@ print_r($current); ?>
                 </select>
                 </div>
             </form>
-
         </div>
-
       </div><!-- End Header -->
 
 
@@ -213,13 +211,12 @@ print_r($current); ?>
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
                         <div class="span6">
                             <span class="right">
-                            <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
+                            <a href="<?= $this->url("default_home"); ?>">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= $this->url("default_conditionsGenerale"); ?>">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= $this->url("default_contact"); ?>">Contact</a>
                             </span>
                         </div>
                     </div>
                 </div>
             </div><!-- End Sub Footer -->
-
         </div>
     </div><!-- End Footer -->
 

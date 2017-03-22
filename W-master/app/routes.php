@@ -17,7 +17,7 @@
 
 		['GET|POST', '/moderation', 'Admin#moderation', 'moderation'],
 
-		['GET|POST', '/inscription', 'Default#inscription', 'Default_inscription'],
+		['GET|POST', '/inscription', 'Default#inscription', 'default_inscription'],
 
 		['GET', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 
