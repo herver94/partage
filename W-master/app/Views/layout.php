@@ -1,9 +1,9 @@
 <?php
-    
+
     use Model\CategoriesModel;
     use Model\DBFactory;
     use Controller\DefaultController;
-    
+
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
 ?>
@@ -86,7 +86,7 @@
 
 </head>
 <body class="home">
-<?php 
+<?php
 print_r($current); ?>
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
@@ -107,53 +107,50 @@ print_r($current); ?>
         ================================================== -->
         <div class="span7 navigation">
             <div class="navbar hidden-phone">
-          
+
             <ul class="nav">
-               <li <?php if($current == 'Accueil') { 
-                    echo 'class="active"'; 
-                } ?> 
+               <li <?php if($current == 'Accueil') {
+                    echo 'class="active"';
+                } ?>
                 ><a href="<?= $this->url("default_home"); ?>">Accueil</a></li>
 
-           
+
             <li <?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?> >
-            
+
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lire les partages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
 
                     <?php foreach($categories as $categorie) : ?>
                         <li><a href="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a></li>
                     <?php endforeach; ?>
-                </ul> 
+
+                </ul>
              <?php if(empty($w_user)) : ?>
              </li>
+                <li> <a href="<?= $this->url("default_inscription");?>">Inscription</a></li>
+                <li> <a href="<?= $this->url("default_connexion");?>">Connexion</a></li>
+                <li> <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
 
-
-                <li> <a href="<?= $this->url("Default_inscription");?>">Inscription</a></li>
-
-             
-
-                <li> <a href="#">Connexion</a></li>
-                <li> <a href="#">Contact</a></li>
-                
-            </ul>  
+            </ul>
             <?php else : ?>
-                <li <?php if($current == 'profil') { 
-                    echo 'class="active"'; 
-                } ?>> 
+                <li <?php if($current == 'profil') {
+                    echo 'class="active"';
+                } ?>>
                 <a href="<?= $this->url('default_profil'); ?>">Mon Compte</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                <li <?php if($current == 'contact') {
+                    echo 'class="active"';
                 } ?>>
-                 <a href="#">Contact</a></li>
-               
-                <li <?php if($current == '') { 
-                    echo 'class="active"'; 
+
+                 <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
+
+                <li <?php if($current == '') {
+                    echo 'class="active"';
                 } ?>>
-                 <a href="">Partagez ! </a></li>
-               
+                 <a href="<?= $this->url("default_partage"); ?>">Partagez ! </a></li>
+
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
-              
+
             <?php endif; ?>
 
             </div>
@@ -162,9 +159,9 @@ print_r($current); ?>
             ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
                 <div class="mobile-nav-select">
-                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="  menu-responsive">
                     <option value="">Menu...</option>
-                    <option value="index.htm">ACCUEIL</option>
+                    <option value="index.htm" class="accueil">ACCUEIL</option>
                     <option value="page-full-width.htm">Lire les partages</option>
                         <option value="page-full-width.htm">- Expériences de vie</option>
                         <option value="page-right-sidebar.htm">- Anecdotes</option>
@@ -176,10 +173,8 @@ print_r($current); ?>
                     <option value="page-contact.htm">Contact</option>
                 </select>
                 </div>
-                </form>
-
+            </form>
         </div>
-
       </div><!-- End Header -->
 
 
@@ -203,8 +198,8 @@ print_r($current); ?>
                 </div>
                 <div class="span3 footer-col">
                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
+                        <li><a href="https://www.facebook.com/partage.net/" class="social-icon facebook" target="_blank"></a></li>
+                        <li><a href="https://twitter.com/Part_ages" class="social-icon twitter" target="_blank"></a></li>
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
                 </div>
@@ -216,13 +211,12 @@ print_r($current); ?>
                         <div class="span6"><span class="left">Copyright <?php echo date('Y')?> Part Âge. Tout droits réservés.</span></div>
                         <div class="span6">
                             <span class="right">
-                            <a href="#">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
+                            <a href="<?= $this->url("default_home"); ?>">ACCUEIL</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= $this->url("default_conditionsGenerale"); ?>">Conditions Générales D'utilisation</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="<?= $this->url("default_contact"); ?>">Contact</a>
                             </span>
                         </div>
                     </div>
                 </div>
             </div><!-- End Sub Footer -->
-
         </div>
     </div><!-- End Footer -->
 
