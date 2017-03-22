@@ -198,6 +198,12 @@ class DefaultController extends Controller
 	   		$this->redirectToRoute('default_home');
 		}
 
+		public function search(){
+			$search = \ORM::for_table('tags')
+            ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
+            ->order_by_asc('LIBELLETAGS')
+            ->find_many();
+		}
 
 
 }

@@ -73,14 +73,14 @@
 
                     <ul class="project-info">
 
-                        <li><h6>Role:</h6> <?= $w_user['ROLE'] ; ?></li>
-                        <li><h6>Date de naissance:</h6> <?= $w_user['DATEDENAISSANCEUSER']; ?></li>
+                        <li><h6>Role : </h6> <?= $w_user['ROLE'] ; ?></li>
+                        <li><h6>Date de naissance : </h6> <?= $w_user['DATEDENAISSANCEUSER']; ?></li>
 
-                        <li><h6>Sexe:</h6> <?= $w_user['SEXEUSER']; ?></li>
+                        <li><h6>Sexe : </h6> <?= $w_user['SEXEUSER']; ?></li>
                         
-                        <li><h6>Email:</h6> <?= $w_user['EMAILUSER']; ?></li>
+                        <li><h6>Email : </h6> <?= $w_user['EMAILUSER']; ?></li>
                         
-                        <li><h6>Code Postal:</h6> <?= $w_user['CPUSER']; ?></li>
+                        <li><h6>Code Postal : </h6> <?= $w_user['CPUSER']; ?></li>
 
 
                     </ul>

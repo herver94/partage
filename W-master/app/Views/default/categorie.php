@@ -2,7 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current'=> $categorie]);
     use Model\Shortcut;
- $this->start('contenu');
+    $this->start('contenu');
  ?>
     <!-- Blog Content
     ================================================== -->
@@ -49,7 +49,7 @@
             <section>
                 <div class="input-append">
                     <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Recherche"><button class="btn" type="button"><i class="icon-search"></i></button>
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Recherche"><button class="btn" type="button"><a href="<?= $this->url('default_search') ?>"></a><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>

@@ -24,4 +24,6 @@
 		['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
         ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
         ['GET', '/contact', 'Default#contact', 'default_contact'],
+
+        ['GET', '/search', 'Default#search', 'default_search'],
 	);
