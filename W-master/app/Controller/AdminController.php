@@ -45,7 +45,7 @@ class AdminController extends Controller{
 			$datepartage =  $modpartage->MODDATEPARTAGE;
 
 			$mcategorie = \ORM::for_table('categories')->where('IDCATEGORIE', $modpartage->IDCATEGORIE)->find_one();
-			if(!empty($_POST))
+			if(!empty($_POST) &&  isset($_POST['accepter']))
 				 {
 
 
@@ -63,7 +63,11 @@ class AdminController extends Controller{
 				 $oldarticle->delete();
 
 							 }
+							 	if(!empty($_POST) && isset($_POST['supprimer'])){
+									$oldarticle = \ORM::for_table('modpartages')->find_one($id);
+									$oldarticle->delete();
 
+								}
 			# Transmettre à la Vue
 			$this->show('admin/moderationarticle', [ 'modpartage' => $modpartage, 'mcategorie'=> $mcategorie]);
 

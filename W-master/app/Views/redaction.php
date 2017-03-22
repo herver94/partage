@@ -66,20 +66,14 @@
             <h5 class="title-bg">Vos precendents articles</h5>
                <?php foreach ($samepartage as $partage) : ?>
             <article>
-                <h3 class="title-bg"><a href="#"><?= $partage->TITREPARTAGE; ?></a></h3>
+                <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
                 <div class="post-content">
-                    <a href="#"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
+                  
+                    <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
+
 
                     <div class="post-body">
                               <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p></p>
-                    </div>
-
-                    <div class="post-summary-footer">
-                        <ul class="post-data">
-                            <li><i class="icon-calendar"></i> <?= $partage->DATEPARTAGE; ?></li>
-                            <li><i class="icon-user"></i> <a href="#"><?= $partage->PRENOMUSER; ?> <?= $partage->NOMUSER; ?></a></li>
-                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
-                        </ul>
                     </div>
                 </div>
             </article>

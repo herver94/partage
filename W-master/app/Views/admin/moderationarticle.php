@@ -48,7 +48,10 @@ Anecdotes</option>
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                        <input type="submit" name="accepter" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                    </div>
+                    <div class="span2">
+                        <input type="submit"  name="supprimer" class="btn btn-inverse btn-profil " value="Supprimer le partage">
                     </div>
                 </div>
             </form>
