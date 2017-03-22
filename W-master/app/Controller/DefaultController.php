@@ -57,18 +57,32 @@ class DefaultController extends Controller
 	/**
 	 * Permet d'afficher les articles d'une catégorie
 	 * $categorie
-	 */
+	 */public function profil() {
+
+		 # Connexion a la BDD
+			 DBFactory::start();
+
+			 # Récupération des Articles pour la home
+
+
+
+		 # Transmettre à la Vue
+
+		 $this->show('default/profil');
+
+
+ }
 
     public function inscription(){
 		 if(!empty($_POST))
 	 			{
 	 		    DBFactory::start();
 
-	 			$newuser	= \ORM::for_table('users')->create();
+	 			$newuser	= \ORM::for_table('users')->limit(3)->create();
 
 				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
 				$newuser->NOMUSER = $_POST['NOMUSER'];
-				$newuser->ROLE = 'USER';
+				$newuser->ROLE = 'user';
 				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
 				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
 				$newuser->EMAILUSER = $_POST['EMAILUSER'];
@@ -79,6 +93,18 @@ class DefaultController extends Controller
 	 		        }
 				$this->show('default/inscription');
 				}
+
+	public function deconnexion()
+	{
+		//on a besoin d'un objet sécurité
+		$auth = new AuthentificationModel;
+
+		//déconnexion de la session
+		$auth->logUserOut();
+
+		//retour à l'index
+		$this->redirectToRoute('default_home');
+	}
 
 
 	public function categories($categorie) {
@@ -115,6 +141,10 @@ class DefaultController extends Controller
 
 	}
 	public function redaction() {
+		$this->allowTo(['user', 'admin']);
+
+		$loggedUser = $this->getUser();
+		$idloggedUser = $loggedUser['IDUSER'];
 
 	    # Connexion a la BDD
 	    DBFactory::start();
@@ -126,28 +156,26 @@ class DefaultController extends Controller
 	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('redaction');
 
-	}
-	public function gestionDesMembres(){
+        $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
-  DBFactory::start();
-	$membres = \ORM::for_table('view_partage')->find_result_set();
-		//$this->allowTo('admin');
- $this->show('admin/gestionDesMembres', ['membres' => $membres ]);
+		if(!empty($_POST))
+         {
+         $newpartage = \ORM::for_table('modpartages')->create();
 
+         $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
+         $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
+    //	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+         $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
+         $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
+         $newpartage->IDUSER= $idloggedUser;
+         $newpartage->save();
+                     }
 
-	}
-    public function profil() {
+        $this->show('redaction', ['samepartage' => $samepartage]);
 
-	    # Connexion a la BDD
-	    DBFactory::start();
+}
 
-	    # Transmettre à la Vue
-
-	    $this->show('default/profil');
-
-	}
         public function contact(){
 
 	    # Connexion a la BDD
@@ -164,6 +192,23 @@ class DefaultController extends Controller
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	}
+
+		public function deleteprofil($id){
+			# Connexion a la BDD
+	   		DBFactory::start();
+
+	   		$person = \ORM::for_table('users')->find_one($id);
+			$person->delete();
+
+			//on a besoin d'un objet sécurité
+			$auth = new AuthentificationModel;
+
+			//déconnexion de la session
+			$auth->logUserOut();
+
+	   		$this->redirectToRoute('default_home');
+		}
+
 
 
 
