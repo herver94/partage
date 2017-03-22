@@ -21,14 +21,15 @@
 
 		['GET|POST', '/partage/[i:id]-[:slug].html', 'Default#partage', 'default_partage'],
 
+        ['GET', '/search', 'Default#search', 'default_search'],
+
 		['GET', '/deleteprofil/[:id]', 'Default#deleteprofil', 'default_deleteprofil'],
 
-    ['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
+    	['GET|POST', '/admin/gestionDesMembres', 'Default#gestionDesMembres', 'gestionDesMembres'],
 
-    ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
+    	['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
 
-    ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
+    	['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
-    ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'default_moderationarticle'],
-
+    	['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'default_moderationarticle'],
 	);

@@ -219,5 +219,13 @@ $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )-
         }
 
 
+		public function search(){
+			$search = \ORM::for_table('tags')
+            ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
+            ->order_by_asc('LIBELLETAGS')
+            ->find_many();
+		}
+
+
 
 }
