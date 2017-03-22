@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cantarell|Roboto" rel="stylesheet">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -100,7 +101,7 @@ print_r($current); ?>
         ================================================== -->
         <div class="span5 logo">
         	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
-            <h4>Le site web qui donne la parole aux seniors !</h4>
+            <h4 class="otto">Le site web qui donne la parole aux seniors !</h4>
         </div>
 
         <!-- Main Navigation
@@ -144,7 +145,7 @@ print_r($current); ?>
                 <li <?php if($current == '') { 
                     echo 'class="active"'; 
                 } ?>>
-                 <a href="<?= $this->url("default_partage"); ?>">Partagez ! </a></li>
+                 <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
                
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
               
@@ -186,10 +187,10 @@ print_r($current); ?>
                    <img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /><br /><br />
                 </div>
                 <div class="span3 footer-col">
-                    <h5>À Propos</h5>
+                    <h5 class="otto">À Propos</h5>
                     <address>
                         <strong>Part Âge</strong><br />
-                        132 Bd MacDonald<br />
+                        157 Boulevard Macdonald<br />
                         75019 PARIS<br />
                     </address>
                 </div>

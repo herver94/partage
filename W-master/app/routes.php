@@ -13,9 +13,9 @@
 
 		['GET', '/partages/[:categorie]', 'Default#categories', 'default_categorie'],
 
-		['GET|POST', '/redaction', 'Default#redaction', 'redaction'],
+		['GET|POST', '/redaction', 'Default#redaction', 'default_redaction'],
 
-		['GET|POST', '/moderation', 'Admin#moderation', 'moderation'],
+		['GET|POST', '/moderation', 'Admin#moderation', 'admin_moderation'],
 
 		['GET|POST', '/inscription', 'Default#inscription', 'default_inscription'],
 
@@ -29,6 +29,6 @@
         
         ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
-        ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'default_moderationarticle'],
+        ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'admin_moderationarticle'],
 
 	);

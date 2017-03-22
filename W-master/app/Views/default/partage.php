@@ -150,7 +150,7 @@
 
     </div>
     
-    </div> <!-- End Container -->
-    <?php $this->stop('contenu') ?>
+</div> <!-- End Container -->
+<?php $this->stop('contenu') ?>
 
    

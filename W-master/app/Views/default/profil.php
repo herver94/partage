@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="span6">
-                    <h2><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
+                    <h2 class="otto"><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
 
                         <ul class="project-info">
 

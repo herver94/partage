@@ -8,50 +8,39 @@
 
  ?>
 
-
-
-
 <body>
 
-
     <div class="container main-container">
-
-
 
     <div class="row"><!--Container row-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
-            <h2 class="title-bg">Ecrire votre anecdote ici</h2>
-            <p>Veuillez remplir les champs suivant en appliquant les instructions .</p>
+            <h2 class="title-bg">Ecrire votre Partage ici :</h2>
+            <p class="instruction">Veuillez remplir les champs suivant en appliquant les instructions.</p>
 
             <div class="hidden" class="alert alert-success">
                 Well done! You successfully read this important alert message.
             </div>
 
             <form action="#" method="post" id="message-form">
-
-                    <span class="add-on"><i class="icon-user"></i></span>
-                    <textarea  class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
-
+                    <label for="MODTITREPARTAGE">Titre</label>
+                    <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
                     <div class="input-prepend">
-                        <span class="add-on"><i class="icon-user"></i></span>
-                        <input type="hidden" >
-                        <label for="categorie">Selectionnez une catégorie</label>
+                    <input type="hidden" >
+                    <label for="categorie">Selectionnez une catégorie</label>
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
-                          <option value="2">
-Anecdotes</option>
+                          <option value="2">Anecdotes</option>
                           <option value="3">Avis sur la société actuelle</option>
                           <option value="4">Conseils aux futures générations</option>
                         </select>
                     </div><br>
-
-                          <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+                        <textarea name="MODCONTENUPARTAGE"></textarea><br/>
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Envoyer le partage">
+                        <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage">
                     </div>
                 </div>
             </form>
