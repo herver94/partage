@@ -6,6 +6,12 @@
 
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
+
+    DBFactory::start();
+
+            # Récupération des Données de l'Article
+            $tags = \ORM::for_table('tags')->find_many();
+
 ?>
 
 <!DOCTYPE html>
@@ -147,7 +153,7 @@ print_r($current); ?>
                 <li <?php if($current == '') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="<?= $this->url("default_partage"); ?>">Partagez ! </a></li>
+                 <a href="<?= $this->url("redaction"); ?>">Partagez ! </a></li>
 
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
@@ -203,7 +209,17 @@ print_r($current); ?>
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
                 </div>
-            </div>
+                <div>
+                    <h4 style="color:white;">Tags : </h4>
+                
+                        <div class="span1 footer-col" >
+                
+                            <?php foreach ($tags as $tag) {
+                                echo '<a href="#"> '.$tag->LIBELLETAGS.' </a>';
+                            }?>
+
+                        </div>
+                </div>
 
             <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">

@@ -31,5 +31,7 @@
 
     	['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
+    	['GET', '/tags', 'Default#tags', 'tags'],
+
     	['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'default_moderationarticle'],
 	);

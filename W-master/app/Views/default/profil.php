@@ -69,20 +69,7 @@
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte<br>à partager</button>
 
-                        <li><h6>Role : </h6> <?= $w_user['ROLE'] ; ?></li>
-                        <li><h6>Date de naissance : </h6> <?= $w_user['DATEDENAISSANCEUSER']; ?></li>
 
-                        <li><h6>Sexe : </h6> <?= $w_user['SEXEUSER']; ?></li>
-                        
-                        <li><h6>Email : </h6> <?= $w_user['EMAILUSER']; ?></li>
-                        
-                        <li><h6>Code Postal : </h6> <?= $w_user['CPUSER']; ?></li>
-
-
-                    </ul>
-
-
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte à partager</button>
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button> 
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
 

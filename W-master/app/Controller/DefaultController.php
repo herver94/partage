@@ -89,22 +89,8 @@ class DefaultController extends Controller {
 			$newuser->save();
 		}
 
-		 $this->show('default/profil');
+		 $this->show('default/inscription');
     }
-
-
-
-	public function deconnexion()
-	{
-		//on a besoin d'un objet sécurité
-		$auth = new AuthentificationModel;
-
-		//déconnexion de la session
-		$auth->logUserOut();
-
-		//retour à l'index
-		$this->redirectToRoute('default_home');
-	}
 
 
 	public function categories($categorie) {
@@ -159,7 +145,7 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-
+	}
 
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
@@ -231,18 +217,16 @@ class DefaultController extends Controller {
 	   		$this->redirectToRoute('default_home');
         }
 
-<<<<<<< HEAD
 		public function search(){
+
+			DBFactory::start();
+
 			$search = \ORM::for_table('tags')
             ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
             ->order_by_asc('LIBELLETAGS')
             ->find_many();
-		}
-=======
-        function dateFr($date){
-            return strftime('%d-%m-%Y',strtotime($date));
-        }
->>>>>>> 9873c4c161121fe84d27ae2643f328a0c721b8dc
 
+             $this->show('');
+		}	
 
 }
