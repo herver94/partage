@@ -92,6 +92,7 @@ li.span2 .project-details {
     transition: 0.2s;
     color: white;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
 }
 .inscription{
     border-bottom: 1px dotted #a9a9a9;
