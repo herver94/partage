@@ -74,8 +74,8 @@ class DefaultController extends Controller {
 				if ($handle->uploaded) {
 						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
 						$handle->image_resize         = true;
-						$handle->image_x              = 300;
-						$handle->image_y              = 250;
+						$handle->image_x              = 250;
+						$handle->image_y              = 200;
 					$handle->image_ratio_crop      = true;
 						$handle->process('/assets/img/profil/');
 						if ($handle->processed) {
@@ -148,6 +148,9 @@ class DefaultController extends Controller {
 			#récupération des commentaires
 			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
 
+			#récupération des commentaires populaires
+			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
+
 
 			if(!empty($_POST))
  	 			{
@@ -194,8 +197,8 @@ class DefaultController extends Controller {
 	 	 			if ($handle->uploaded) {
 	 	 					$handle->file_new_name_body = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
 	 	 					$handle->image_resize = true;
-	 	 					$handle->image_x = 770;
-	 	 					$handle->image_y = 500;
+	 	 					$handle->image_x = 460;
+	 	 					$handle->image_y = 250;
 	 	 					$handle->image_ratio_crop = true;
 	 	 					$handle->process('assets/img/partages/');
 	 	 					if ($handle->processed) {
@@ -281,5 +284,6 @@ class DefaultController extends Controller {
 		//retour à l'index
 		$this->redirectToRoute('default_home');
 		}	
+
 
 }

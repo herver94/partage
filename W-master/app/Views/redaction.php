@@ -8,7 +8,7 @@
 
  ?>
 
-<body>
+
 
 <div class="container main-container"><!--- Container --->
 
@@ -25,9 +25,10 @@
 
             <form action="#" method="post" enctype="multipart/form-data" id="message-form">
 
+
                     <label for="MODTITREPARTAGE">Titre</label>
                     <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
-                    
+
                     <div class="input-prepend">
                         <input type="hidden" >
                         <label for="categorie">Selectionnez une catégorie :</label>
@@ -55,31 +56,30 @@
                     </div>
             </form>
         </div>
-
+      </div>
 
         <!-- Sidebar
         ================================================== -->
         <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
             <h5 class="title-bg">Vos precendents articles</h5>
-               <?php foreach ($samepartage as $partage) : ?>
+            <?php foreach ($samepartage as $partage) : ?>
             <article>
                 <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
-                
+
                 <div class="post-content">
-                   
+
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
 
                     <div class="post-body">
                         <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
                     </div>
-                    
+
                 </div>
             </article>
-             <?php endforeach; ?>
+            <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
     </div><!--End Container row-fluid-->
-</div><!--- End Container --->
     <script>
         CKEDITOR.replace( 'MODCONTENUPARTAGE' );
         $(document).ready(function () {
@@ -98,5 +98,5 @@
 </div>
 <?php $this->stop('contenu') ?>
 
-    <!-- Scroll to Top -->  
+    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Haut de page</div>
