@@ -23,7 +23,7 @@
                 Well done! You successfully read this important alert message.
             </div>
 
-            <form action="#" method="post" id="message-form">
+            <form action="#" method="post" enctype="multipart/form-data" id="message-form">
 
                     <label for="MODTITREPARTAGE">Titre</label>
                     <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
@@ -47,7 +47,7 @@
                           <textarea name="MODCONTENUPARTAGE"></textarea><br/>
                           <div class="input-prepend">
                             <label>Ajouter une image</label>
-                              <input type="file" name="PHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                              <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
                           </div>
 
                     <div class="span2">
@@ -65,7 +65,7 @@
             <article>
                 <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
                 <div class="post-content">
-                  
+
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
 
 

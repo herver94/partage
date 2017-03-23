@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
+use Model\Shortcut;
 
 
 class DefaultController extends Controller {
@@ -67,28 +68,14 @@ class DefaultController extends Controller {
 		 if(!empty($_POST))
 	 	{
 	 		DBFactory::start();
+			extract($_POST);
 
-
-
-				$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
-				$newuser->NOMUSER = $_POST['NOMUSER'];
-				$newuser->ROLE = 'user';
-				$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
-				$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
-				$newuser->EMAILUSER = $_POST['EMAILUSER'];
-				$newuser->CPUSER = $_POST['CPUSER'];
-				$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
-				$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
-				$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
-				$newuser->save();
-
-				extract($_POST);
 				$handle = new \upload($_FILES['PHOTOUSER']);
 				if ($handle->uploaded) {
 						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
 						$handle->image_resize         = true;
-						$handle->image_x              = 770;
-						$handle->image_y              = 500;
+						$handle->image_x              = 300;
+						$handle->image_y              = 250;
 					$handle->image_ratio_crop      = true;
 						$handle->process('/assets/img/profil/');
 						if ($handle->processed) {
@@ -99,6 +86,28 @@ class DefaultController extends Controller {
 								echo 'error : ' . $handle->error;
 						}
 				}
+
+				if(empty($PHOTOUSER)){
+						if ($SEXEUSER == 'Homme'){
+								$PHOTOUSER = 'homme.jpg';
+				}
+						else{
+								$PHOTOUSER = 'femme.jpg';
+						}
+					}
+				$newuser	= \ORM::for_table('users')->create();
+
+				$newuser->PRENOMUSER = $PRENOMUSER;
+				$newuser->NOMUSER = $NOMUSER;
+				$newuser->ROLE = 'user';
+				$newuser->DATEDENAISSANCEUSER = $DATEDENAISSANCEUSER;
+				$newuser->SEXEUSER = $SEXEUSER ;
+				$newuser->EMAILUSER = $EMAILUSER;
+				$newuser->CPUSER = $CPUSER;
+				//$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
+				$newuser->PHOTOUSER = $PHOTOUSER;
+				$newuser->MOTDEPASSEUSER = password_hash($MOTDEPASSEUSER, PASSWORD_DEFAULT);
+				$newuser->save();
 
 
 							}
@@ -176,34 +185,42 @@ class DefaultController extends Controller {
 
 		if(!empty($_POST))
          {
+
+						extract($_POST);
+
+					 $handle = new \upload($_FILES['MODPHOTOPARTAGE']);
+	 	 			if ($handle->uploaded) {
+	 	 					$handle->file_new_name_body = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
+	 	 					$handle->image_resize = true;
+	 	 					$handle->image_x = 770;
+	 	 					$handle->image_y = 500;
+	 	 					$handle->image_ratio_crop = true;
+	 	 					$handle->process('assets/img/partages/');
+	 	 					if ($handle->processed) {
+	 	 							$MODPHOTOPARTAGE = $handle->file_dst_name;
+	 	 							$handle->clean();
+	 	 					} else {
+	 	 							$MODPHOTOPARTAGE = 'default.jpg';
+	 	 							echo 'error : ' . $handle->error;
+	 	 					}
+	 	 			}
+					if(empty($MODPHOTOPARTAGE)){
+			 		 $MODPHOTOPARTAGE='default.jpg';
+			 	 }
          $newpartage = \ORM::for_table('modpartages')->create();
 
-         $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
-         $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
-    	 	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+         $newpartage->MODTITREPARTAGE = $MODTITREPARTAGE;
+         $newpartage->MODCONTENUPARTAGE = $MODCONTENUPARTAGE;
+    	 	 $newpartage->MODPHOTOPARTAGE =  $MODPHOTOPARTAGE;
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
-         $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
+         $newpartage->IDCATEGORIE = $MODIDCATEGORIE;
          $newpartage->IDUSER= $idloggedUser;
          $newpartage->save();
+				 //var_dump($_FILES);
+				 		//die;
 
-				extract($_POST);
-	 			$handle = new \upload($_FILES['PHOTOPARTAGE']);
-	 			if ($handle->uploaded) {
-	 					$handle->file_new_name_body   = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
-	 					$handle->image_resize         = true;
-	 					$handle->image_x              = 770;
-	 					$handle->image_y              = 500;
-	 				$handle->image_ratio_crop      = true;
-	 					$handle->process('assets/img/partages/');
-	 					if ($handle->processed) {
-	 							$PHOTOPARTAGE = $handle->file_dst_name;
-	 							$handle->clean();
-	 					} else {
-	 							$PHOTOPARTAGE = 'default.jpg';
-	 							echo 'error : ' . $handle->error;
-	 					}
-	 			}
-      }
+				}
+
 
 					 $this->show('redaction', ['samepartage' => $samepartage]);
 
