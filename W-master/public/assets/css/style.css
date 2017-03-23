@@ -81,10 +81,10 @@ li.span2 .project-details {
 }
 
 .btn-profil{
-    margin-left: 30px;
     background: #363636;
     color: white;
     font-family: 'Roboto', sans-serif;
+		margin: 20px 0;
 
 }
 .btn-profil:hover{
@@ -92,7 +92,7 @@ li.span2 .project-details {
     transition: 0.2s;
     color: white;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 20px;
+
 }
 .inscription{
     border-bottom: 1px dotted #a9a9a9;

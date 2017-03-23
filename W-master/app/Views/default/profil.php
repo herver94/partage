@@ -67,7 +67,7 @@
 
                         </ul>
 
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte<br>à partager</button>
+                    <button class="btn btn-inverse pull-left btn-profil" type="button">Partagez</button>
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
 
@@ -82,7 +82,7 @@
 
 
 </div> <!-- End Container -->
-</div> 
+
     <!-- Footer Area -->
 
 <?php $this->stop('contenu'); ?>

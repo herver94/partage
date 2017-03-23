@@ -8,7 +8,7 @@
 
  ?>
 
-<body>
+
 
 <div class="container main-container">
 
@@ -25,41 +25,41 @@
 
             <form action="#" method="post" enctype="multipart/form-data" id="message-form">
 
-                    <label for="MODTITREPARTAGE">Titre</label>
-                    <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
-                    <div class="input-prepend">
-                    <input type="hidden" >
-                    <label for="categorie">Selectionnez une catégorie</label>
+                <label for="MODTITREPARTAGE">Titre</label>
+                <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
+                <div class="input-prepend">
+                  <input type="hidden" >
+                  <label for="categorie">Selectionnez une catégorie</label>
+                </div>
 
+                <div class="input-prepend">
+                    <select name="MODIDCATEGORIE" id="categorie" class="span4">
+                      <option value="1">Expériences de vie</option>
+                      <option value="2">Anecdotes</option>
+                      <option value="3">Avis sur la société actuelle</option>
+                      <option value="4">Conseils aux futures générations</option>
+                    </select>
+                </div><br>
 
-                    <div class="input-prepend">
-                        <select name="MODIDCATEGORIE" id="categorie" class="span4">
-                          <option value="1">Expériences de vie</option>
-                          <option value="2">Anecdotes</option>
-                          <option value="3">Avis sur la société actuelle</option>
-                          <option value="4">Conseils aux futures générations</option>
-                        </select>
-                    </div><br>
+                <div class="row-fluid">
+                      <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+                      <div class="input-prepend">
+                        <label>Ajouter une image</label>
+                          <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                      </div>
 
-                    <div class="row-fluid">
-                          <textarea name="MODCONTENUPARTAGE"></textarea><br/>
-                          <div class="input-prepend">
-                            <label>Ajouter une image</label>
-                              <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
-                          </div>
-
-                    <div class="span2">
-                        <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
-                    </div>
-                    </div>
+                  <div>
+                      <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
+                  </div>
+                </div>
             </form>
-
+        </div>
 
         <!-- Sidebar
         ================================================== -->
         <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
             <h5 class="title-bg">Vos precendents articles</h5>
-               <?php foreach ($samepartage as $partage) : ?>
+            <?php foreach ($samepartage as $partage) : ?>
             <article>
                 <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
                 <div class="post-content">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </article>
-             <?php endforeach; ?>
+            <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
     </div><!-- End container row -->
