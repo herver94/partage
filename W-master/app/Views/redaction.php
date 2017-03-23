@@ -33,8 +33,6 @@
 
 
                     <div class="input-prepend">
-                        <input type="hidden" />
-                        <label for="categorie">Selectionnez une catégorie</label>
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
                           <option value="2">Anecdotes</option>
@@ -74,7 +72,7 @@
                     </div>
                 </div>
             </article>
- <?php endforeach; ?>
+             <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
     </div><!-- End container row -->

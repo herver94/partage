@@ -28,7 +28,6 @@ class DefaultController extends Controller {
 	    $this->show('default/home', ['partages' => $partages]);
 	}
 
-
     public function connexion() {
 
 				if(!empty($_POST))
