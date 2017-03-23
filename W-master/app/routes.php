@@ -35,4 +35,7 @@
     ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
 
+    	['GET', '/tags', 'Default#tags', 'tags'],
+
+    	
 	);
