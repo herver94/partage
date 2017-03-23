@@ -219,8 +219,8 @@
                 </div>
                 <div class="span3 footer-col">
                     <h5>À Propos</h5>
-                    <address>
-                        <strong>Part Âge</strong><br />
+                    <address class="address-footer">
+                        <strong id="partage">Part Âge</strong><br />
                         157 Boulevard Macdonald<br />
                         75019 PARIS<br />
                     </address>
@@ -234,11 +234,11 @@
                 </div>
                 <!-- Single button -->
                 <div class="span3 footer-col">
-                   <h4>TAGS</h4>
+                   <h4 class="tag">TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
                       <?php foreach ($tags as $tag) {
-                                echo '<button type="button" class="btn btn-default"> '.$tag->LIBELLETAGS.' </button>';
+                                echo '<button type="button" class="btn btn-default btn-tag"> '.$tag->LIBELLETAGS.' </button>';
                             }?>
                     </div>
                 </div>

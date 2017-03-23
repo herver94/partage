@@ -90,7 +90,7 @@
     $(document).ready(function(){
 
       var    $nom = $('#nom'),
-            $prenom = $('#prenom'),
+             $prenom = $('#prenom'),
              $mdp = $('#mdp'),
              $genre = $('#sexe'),
              $confirmation = $('#confirmation'),
