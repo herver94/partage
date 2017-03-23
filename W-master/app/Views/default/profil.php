@@ -40,18 +40,18 @@
 
                 <div class="span5">
 
-                    <img src="<?php if(empty($photo)){
-                                        if ($genre == 'Homme'){
-                                            echo $this->assetUrl('/img/partages/homme.jpg');
-                                    }
-                                        else{
-                                            echo  $this->assetUrl('/img/partages/femme.jpg');
-                                        }}
-                                        else{ 	echo $this->assetUrl("/img/profil/".$photo );
+									<img src="<?php if(empty($photo)){
+										if ($genre == 'Homme'){
+											echo $this->assetUrl('/img/partages/homme.jpg');
+									}
+										else{
+											echo  $this->assetUrl('/img/partages/femme.jpg');
+										}}
+										else{ 	echo $this->assetUrl("/img/profil/".$photo );
 
-                                        }
+										}
 
-                                    ?>" class="align-left thumbnail" alt="avatar">
+									?>" class="align-left thumbnail" alt="avatar">
                 </div>
 
                 <div class="span6">

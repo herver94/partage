@@ -1,6 +1,6 @@
 RewriteEngine On
 
-# PIQUÉ AU HTACCESS DE SYMFONY2 : 
+# PIQUÉ AU HTACCESS DE SYMFONY2 :
 # Determine the RewriteBase automatically and set it as environment variable.
 # If you are using Apache aliases to do mass virtual hosting or installed the
 # project in a subdirectory, the base path will be prepended to allow proper
@@ -16,3 +16,17 @@ RewriteRule .? - [L]
 
 # Réécrit tout le reste à public/index.php.
 RewriteRule .? %{ENV:W_BASE}/index.php [L]
+
+# Exclusions
+RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml)$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+
+# Règles de Réecriture
+RewriteRule ^article/([0-9]+)-([^/]+)\.html index.php?controller=news&action=article&idarticle=$1 [QSA,L]
+RewriteRule ^([^/]+)/([^/]+) index.php?controller=$1&action=$2 [QSA,L]
+
+ErrorDocument 404 /erreur_404.php
