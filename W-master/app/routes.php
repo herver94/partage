@@ -1,7 +1,7 @@
 <?php
 
 	$w_routes = array(
-        
+
 		['GET', '/', 'Default#home', 'default_home'],
 
 		['GET', '/profil', 'Default#profil', 'default_profil'],
@@ -31,7 +31,7 @@
         ['GET', '/conditionsGenerale', 'Default#conditionsGenerale', 'default_conditionsGenerale'],
 
         ['GET|POST', '/moderation/[i:id]-[:slug].html', 'Admin#moderationarticle', 'admin_moderationarticle'],
-        
+
     	['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
 	);

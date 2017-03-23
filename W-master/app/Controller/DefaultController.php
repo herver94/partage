@@ -26,35 +26,37 @@ class DefaultController extends Controller {
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('default/home', ['partages' => $partages]);
+	    $this->show('default/home', ['partages' => $partages, 'message' => $message]);
 	}
 
     public function connexion() {
 
-				if(!empty($_POST))
-						{
-							DBFactory::start();
-							//on a besoin d'un objet sécurité
-							$auth = new AuthentificationModel;
-							// vérification du login/password dans la table (cf config.php)
-							if($auth->isValidLoginInfo($_POST['login'], $_POST['password']))
-							{
-									// récup d'un objet User
-									$user = new UsersModel;
-									// récupération des infos de l'utilisateur
-									$util = $user->getUserByUsernameOrEmail($_POST['login']);
-									//connexion
-									$auth->logUserIn($util); //utilisateur dans la session
+      if(!empty($_POST))
+          {
+            DBFactory::start();
+            //on a besoin d'un objet sécurité
+            $auth = new AuthentificationModel;
+            // vérification du login/password dans la table (cf config.php)
+            if($auth->isValidLoginInfo($_POST['login'], $_POST['password']))
+            {
+                // récup d'un objet User
+                $user = new UsersModel;
+                // récupération des infos de l'utilisateur
+                $util = $user->getUserByUsernameOrEmail($_POST['login']);
+                //connexion
+                $auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('default_profil');
-							}//sinon retour formulaire
-							else{
+                $this->redirectToRoute('default_profil');
+            }//sinon retour formulaire
+            else{
 
-									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home');
-						}
+                $message = 'erreur de pseudo';
+                print_r($message);
 
-						}
+                $this->redirectToRoute('default_home', ['id'=>35]);
+          }
+
+          }
 					}
 
 
