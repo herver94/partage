@@ -26,7 +26,7 @@ class DefaultController extends Controller {
 	    $partages = \ORM::for_table('view_partage')->order_by_desc('IDPARTAGE')->limit(10)->find_result_set();
 
 	    # Transmettre à la Vue
-	    $this->show('default/home', ['partages' => $partages, 'message' => $message]);
+	    $this->show('default/home', ['partages' => $partages]);
 	}
 
     public function connexion() {
@@ -77,8 +77,8 @@ class DefaultController extends Controller {
 				if ($handle->uploaded) {
 						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
 						$handle->image_resize         = true;
-						$handle->image_x              = 300;
-						$handle->image_y              = 250;
+						$handle->image_x              = 250;
+						$handle->image_y              = 200;
 					$handle->image_ratio_crop      = true;
 						$handle->process('/assets/img/profil/');
 						if ($handle->processed) {
@@ -151,6 +151,9 @@ class DefaultController extends Controller {
 			#récupération des commentaires
 			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
 
+			#récupération des commentaires populaires
+			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
+
 
 			if(!empty($_POST))
  	 			{
@@ -171,7 +174,9 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-}
+	}
+
+
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -196,8 +201,8 @@ class DefaultController extends Controller {
 	 	 			if ($handle->uploaded) {
 	 	 					$handle->file_new_name_body = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
 	 	 					$handle->image_resize = true;
-	 	 					$handle->image_x = 770;
-	 	 					$handle->image_y = 500;
+	 	 					$handle->image_x = 460;
+	 	 					$handle->image_y = 250;
 	 	 					$handle->image_ratio_crop = true;
 	 	 					$handle->process('assets/img/partages/');
 	 	 					if ($handle->processed) {
@@ -267,9 +272,10 @@ class DefaultController extends Controller {
 	   		$this->redirectToRoute('default_home');
         }
 
-
-
 		public function search(){
+
+			DBFactory::start();
+
 			$search = \ORM::for_table('tags')
             ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
             ->order_by_asc('LIBELLETAGS')
@@ -277,15 +283,13 @@ class DefaultController extends Controller {
 		}
 
 
-		public function deconnexion()
-		{
+		public function deconnexion(){
 		$auth = new AuthentificationModel;
 		//déconnexion de la session
 		$auth->logUserOut();
 		//retour à l'index
 		$this->redirectToRoute('default_home');
-	}
-
+		}
 
 
 }

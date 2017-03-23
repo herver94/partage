@@ -33,7 +33,7 @@
                     <img src="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" alt="Illustration" class="align-left">
                     <div >
                       <span>Si vous souhaitez changer l'image :</span>
-                      <input type="file" value="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" name="PHOTOPARTAGE" class="dropify" data-max-file-size="2M" /><br>
+                      <input type="file" name="PHOTOPARTAGE" class="dropify" data-max-file-size="2M" /><br>
                     </div>
                     <div class="input-prepend">
                         <span class="add-on"></span>
