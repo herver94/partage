@@ -173,3 +173,27 @@ body{
     font-size: 16px;
     font-style: italic;
 }
+
+.error{
+	display: none;
+	margin-left: 10px;
+}
+
+.error_show{
+	display: block;
+	font-size: 12px !important;
+	color: red;
+	margin-left: 10px;
+}
+
+input.invalid, textarea.invalid{
+	border: 2px solid red;
+}
+
+input.valid, textarea.valid{
+	border: 2px solid green;
+}
+
+.bt_contact{
+	margin-left: 33px;
+}
