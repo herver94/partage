@@ -66,18 +66,20 @@ li.span2 .project-details {
     margin: 0px 0px;
 }
 .dernier-partage{
-    border-bottom: 1px dotted #a9a9a9;
     background: #f8f8f8;
     padding: 10px 5px;
     margin: 10px 60px;
+    border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
 }
 .formulaire{
-    border-bottom: 1px dotted #a9a9a9;
     background: #f8f8f8;
     padding: 10px 5px;
     width: 300px;
     text-align: center;
     margin-top: 30px;
+    border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
 }
 
 .btn-profil{
@@ -88,14 +90,15 @@ li.span2 .project-details {
 
 }
 .btn-profil:hover{
-    background: #d8450b;
+    background: #3e6e8c;
     transition: 0.2s;
     color: white;
     font-family: 'Roboto', sans-serif;
 
 }
 .inscription{
-    border-bottom: 1px dotted #a9a9a9;
+    border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
     background: #f8f8f8;
     padding: 30px;
     margin-bottom: 10px;
@@ -114,8 +117,8 @@ li.span2 .project-details {
 }
 .menu-responsive{
     background:#f8f8f8;
-	border-bottom: 1px dotted #a9a9a9;
-	border-top: 1px dotted #a9a9a9;
+	border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
     border-left: none;
     border-right: none;
     font-family: 'Abril Fatface', cursive;
@@ -124,8 +127,8 @@ li.span2 .project-details {
     font-size: 16px;
 }
 .menu-responsive:hover{
-    border-bottom: 1px dotted #d8450b;
-	border-top: 1px dotted #d8450b;
+    border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
 }
 label{
     font-family: 'Abril Fatface', cursive;
@@ -141,6 +144,7 @@ label{
 }
 h1, h2, h3, h4, h5, h6{
     font-family: 'Abril Fatface', cursive;
+    color: #3e6e8c;
 }
 
 body{
@@ -164,7 +168,8 @@ body{
     margin-bottom: 5px;
 }
 .articles{
-    border-bottom: 1px dotted #a9a9a9;
+    border-bottom: 1px dotted #3e6e8c;
+    border-left: 1px dotted #3e6e8c;
     background: #f8f8f8;
     padding: 30px;
     margin-bottom: 20px;
@@ -172,6 +177,7 @@ body{
 .slogan{
     font-size: 16px;
     font-style: italic;
+    color: #414141;
 }
 
 .error{
@@ -196,4 +202,53 @@ input.valid, textarea.valid{
 
 .bt_contact{
 	margin-left: 33px;
+}
+
+.partage{
+    width: 100%;
+}
+.clearfix{
+    width: 100%;
+    margin: 0 auto;
+}
+.thumbnail {
+    display: block;
+    padding: 0;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.tag{
+    color: #414141;
+}
+.address-footer {
+    display: block;
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 20px;
+    color: white;
+}
+.btn{
+   font-family: 'Roboto', sans-serif;
+}
+.btn-tag:hover{
+    color: white;
+    background: #414141;
+    transition: 0.2s;
+}
+#partage{
+    font-size: 20px;
+}
+.input-prepend .add-on, .input-prepend .btn {
+    margin-right: -1px;
+    background: #3e6e8c;
 }
