@@ -73,7 +73,7 @@ echo '</pre>';
 
         <div class="span8 contact"><!--Begin page content column-->
 
-            <h2 class="title-bg">Contact</h2>
+            <h2 class="title-bg otto">Contact</h2>
             <p>N'hésitez pas à nous contacter pour toutes demandes d'informations.<br/>Nous vous y réponderons dans les plus brefs délais.<br/>
             Bien cordialement, l'équipe de Part Âge !</p>
 
@@ -111,7 +111,7 @@ echo '</pre>';
         <!-- Sidebar
         ================================================== --> 
         <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
-            <h5 class="title-bg">Adresse</h5>
+            <h5 class="title-bg otto">Adresse</h5>
             <address>
             <strong>Part Âge</strong><br>
             157 Boulevard Macdonald<br>

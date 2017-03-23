@@ -9,22 +9,16 @@
 
  ?>
 
-
-
-
 <body>
 
+<div class="container main-container">
 
-    <div class="container main-container">
-
-
-
-    <div class="row"><!--Container row-->
+    <div class="row-fluid"><!--Container row-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
-            <h2 class="title-bg">Ecrire votre anecdote ici</h2>
-            <p>Veuillez remplir les champs suivant en appliquant les instructions .</p>
+            <h2 class="title-bg">Ecrire votre Partage ici :</h2>
+            <p class="instruction">Veuillez remplir les champs suivant en appliquant les instructions.</p>
 
             <div class="hidden" class="alert alert-success">
                 Well done! You successfully read this important alert message.
@@ -32,10 +26,17 @@
 
             <form action="#" method="post" enctype="multipart/form-data" id="message-form">
 
-                    <textarea  class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/></textarea>
+
+                    <label for="MODTITREPARTAGE">Titre</label>
+                    <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
+                    <div class="input-prepend">
+                    <input type="hidden" >
+                    <label for="categorie">Selectionnez une catégorie</label>
+
+
 
                     <div class="input-prepend">
-                        <input type="hidden" >
+                        <input type="hidden" />
                         <label for="categorie">Selectionnez une catégorie</label>
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
@@ -45,21 +46,21 @@
                         </select>
                     </div><br>
 
+                    <div class="row-fluid">
                           <textarea name="MODCONTENUPARTAGE"></textarea><br/>
-
                           <div class="input-prepend">
                             <label>Ajouter une image</label>
-                              <input type="file" name="MODPHOTOPARTAGE"class="dropify"  data-max-file-size="2M" />
+
+                              <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+
                           </div>
 
-                <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="Envoyer le partage">
+                        <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
                     </div>
-                </div>
+                    </div>
             </form>
 
-        </div> <!--End page content column-->
 
         <!-- Sidebar
         ================================================== -->
@@ -74,7 +75,7 @@
 
 
                     <div class="post-body">
-                              <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p></p>
+                              <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
                     </div>
                 </div>
             </article>

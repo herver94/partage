@@ -15,10 +15,10 @@
 
         <div class="span8 contact inscription"><!--Begin page content column-->
 
-
-            <h2 class="title-bg">Inscription</h2>
+            <h2 class="title-bg otto">Inscription</h2>
 
               <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
+
 
 
 
@@ -77,10 +77,12 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
+
                 <div id="erreurmdp" style="display : block;">
         <p>Les mots de passe ne sont pas identiques!</p>
     </div>
 								<div class="input-prepend">
+
                   <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
@@ -113,8 +115,9 @@
              $reset = $('#rafraichir'),
              $nomerreur = $('#erreurnom'),
              $champ = $('.champ');
-//console.log($nom);
-        $champ.blur(function(){console.log(this);//
+
+
+        $email.keyup(function(){
             if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
                 $($nomerreur).css({ // on rend le champ rouge
                 display: 'block',

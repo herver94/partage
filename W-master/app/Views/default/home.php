@@ -2,7 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Accueil', 'current' => 'Accueil']);
     use Model\Shortcut;
- $this->start('contenu') ?>
+    $this->start('contenu') ?>
 
 
 
@@ -29,7 +29,7 @@
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-          <h3>Bienvenue sur Part Âge</h3>
+          <h3 class="title-bg">Bienvenue sur Part Âge</h3>
             <p class="quote-text text-accueil">Partager une expérience de vie, une anecdote,
             des conseils aux futurs générations, votre avis sur la société actuelle...<br />
             N'hésitez pas à vous inscrire sur Part Âge !<br />
@@ -42,9 +42,10 @@
     <div <?php if(!empty($w_user)){
       echo 'style="display:none;"';
     }; ?> class="container">
-       <div class="row-fluid">
-           <div  style="margin : 0 0 0 20px ;" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-               <div  class="container-fluid container-login formulaire">
+
+       <div class="row-fluid connect">
+           <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+               <div class="container-fluid container-login formulaire">
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
 
@@ -71,7 +72,7 @@
 
     </div><!-- End Headline -->
 
-    <div class="row gallery-row"><!-- Begin Gallery Row -->
+    <div class="row-fluid gallery-row"><!-- Begin Gallery Row -->
 
       <div class="span12">
             <h4 class="title-bg">Les Derniers Partages</h4>

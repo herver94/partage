@@ -58,7 +58,7 @@ li.span2 .project-details {
 .quote-text {
     font-size: 16px;
     line-height: 24px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Roboto', sans-serif;
     font-style: italic;
     margin: 0px 20px;
 }
@@ -69,8 +69,7 @@ li.span2 .project-details {
     border-bottom: 1px dotted #a9a9a9;
     background: #f8f8f8;
     padding: 10px 5px;
-    margin-bottom: 10px;
-    margin: 0 60px;
+    margin: 10px 60px;
 }
 .formulaire{
     border-bottom: 1px dotted #a9a9a9;
@@ -85,17 +84,21 @@ li.span2 .project-details {
     margin-left: 30px;
     background: #363636;
     color: white;
+    font-family: 'Roboto', sans-serif;
+
 }
 .btn-profil:hover{
     background: #d8450b;
     transition: 0.2s;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 .inscription{
     border-bottom: 1px dotted #a9a9a9;
     background: #f8f8f8;
     padding: 30px;
     margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 .centrer{
     display: flex;
@@ -114,7 +117,7 @@ li.span2 .project-details {
 	border-top: 1px dotted #a9a9a9;
     border-left: none;
     border-right: none;
-    font-family: "Oswald", sans-serif;
+    font-family: 'Abril Fatface', cursive;
     font-weight: normal;
     text-shadow: none;
     font-size: 16px;
@@ -122,4 +125,50 @@ li.span2 .project-details {
 .menu-responsive:hover{
     border-bottom: 1px dotted #d8450b;
 	border-top: 1px dotted #d8450b;
+}
+label{
+    font-family: 'Abril Fatface', cursive;
+    font-weight: normal;
+}
+.instruction{
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Abril Fatface', cursive;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.navbar .nav > li > a{
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+}
+.dropdown-menu {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.connect{
+    margin-left: 22px;
+}
+.blog article, .blog section {
+    margin-bottom: 5px;
+}
+.articles{
+    border-bottom: 1px dotted #a9a9a9;
+    background: #f8f8f8;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+.slogan{
+    font-size: 16px;
+    font-style: italic;
 }
