@@ -154,7 +154,7 @@
                    <li <?php if($current == 'moderation') {
                        echo 'class="active"';
                    } ?>>
-                    <a href="<?= $this->url("moderation"); ?>">Modération </a></li>
+                    <a href="<?= $this->url("admin_moderation"); ?>">Modération </a></li>
 
                  <?php endif; ?>
 
@@ -215,7 +215,7 @@
                 </div>
                 <!-- Single button -->
                 <div class="span3 footer-col">
-                   <h4>TAGS</h4>  
+                   <h4>TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
                     <button type="button" class="btn btn-default">Tag</button>

@@ -82,7 +82,7 @@
 
 
 </div> <!-- End Container -->
-
+</div> 
     <!-- Footer Area -->
 
 <?php $this->stop('contenu'); ?>
