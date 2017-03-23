@@ -18,41 +18,56 @@
 
             <h2 class="title-bg">Inscription</h2>
 
-              <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une         anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
+              <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
 
-              <div id="erreur" style="display : none;">
-              <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-              </div>
+
 
               <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <input class="span7 champ" name="NOMUSER" id="nom" size="16" type="text" placeholder="Nom">
+                    <input class="span7 champ" name="NOMUSER" id="nom" size="16" type="text" placeholder="Nom"/>
+                    <div id="erreurnom" style="display : none;">
+                    <p>Veuillez renseigner votre nom !</p>
+                    </div>
                 </div>
+
+
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input class="span7 champ" name="PRENOMUSER" id="prenom" size="16" type="text" placeholder="Prenom">
                 </div>
+                <div id="erreurnom" style="display : none;">
+                <p>Veuillez renseigner votre nom !</p>
+                </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-calendar"></i></span>
                     <input  class="span7 " name="DATEDENAISSANCEUSER" id="datedenaissance" size="16" type="date" placeholder="Date de naissance">
+                </div>
+                <div id="erreurprenom" style="display : none;">
+                <p>Veuillez renseigner votre nom !</p>
                 </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
                     <input type="hidden" >
 				        <select name="SEXEUSER" id="sexe" class="span4">
 				            <option value="Homme">Homme</option>
-                            <option value="Femme">Femme</option>
+                    <option value="Femme">Femme</option>
 				        </select>
                 </div><br>
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
                     <input class="span7 " name="EMAILUSER" id="email" size="16" type="text" placeholder="Email">
                 </div>
+                <div id="erreuremail" style="display : none;">
+                <p>Veuillez renseigner votre nom !</p>
+                </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
                     <input class="span7" name="CPUSER" id="codepostal" size="16" type="text" placeholder="Code postal">
+                </div>
+                <div id="erreurcodepostal" style="display : none;">
+                <p>Veuillez renseigner votre nom !</p>
                 </div>
 								<div class="input-prepend">
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
@@ -62,7 +77,7 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
-                <div id="erreur1" style="display : block;">
+                <div id="erreurmdp" style="display : block;">
         <p>Les mots de passe ne sont pas identiques!</p>
     </div>
 								<div class="input-prepend">
@@ -88,7 +103,7 @@
     $(document).ready(function(){
 
       var    $nom = $('#nom'),
-            $prenom = $('#prenom'),
+             $prenom = $('#prenom'),
              $mdp = $('#mdp'),
              $genre = $('#sexe'),
              $confirmation = $('#confirmation'),
@@ -96,14 +111,14 @@
              $codepostal = $('#codepostal'),
              $envoi = $('#envoi'),
              $reset = $('#rafraichir'),
-             $erreur = $('#erreur'),
+             $nomerreur = $('#erreurnom'),
              $champ = $('.champ');
-
-        $champ.keyup(function(){
+//console.log($nom);
+        $champ.blur(function(){console.log(this);//
             if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
-                $(this).css({ // on rend le champ rouge
-                    borderColor : 'red',
-    	        color : 'red'
+                $($nomerreur).css({ // on rend le champ rouge
+                display: 'block',
+
                 });
              }
              else{

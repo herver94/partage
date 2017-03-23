@@ -42,15 +42,15 @@
     <div <?php if(!empty($w_user)){
       echo 'style="display:none;"';
     }; ?> class="container">
-       <div class="row">
-           <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-               <div class="container-fluid container-login formulaire">
+       <div class="row-fluid">
+           <div  style="margin : 0 0 0 20px ;" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+               <div  class="container-fluid container-login formulaire">
                    <div class="panel panel-default" id="panel-login">
                        <div class="panel-body">
 
-                           <h4 id="title-login">Connectez-vous</h4>    
+                           <h4 id="title-login">Connectez-vous</h4>
 
-                           <form method="post" action="#">                   
+                           <form method="post" action="#">
 
                                <div class="form-group">
                                    <input type="text" name="login"  placeholder="Votre email ou votre nom">
@@ -79,7 +79,7 @@
 
     </div><!-- End Gallery Row -->
 
-    <div class="row"><!-- Begin Bottom Section -->
+    <div class="row-fluid"><!-- Begin Bottom Section -->
        <?php foreach ($partages as $partage) : ?>
         <div class="span5 blog dernier-partage">
             <article class="clearfix">

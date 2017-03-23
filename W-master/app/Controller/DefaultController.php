@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
+      use Model\Shortcut;
 
 
 class DefaultController extends Controller {
@@ -177,33 +178,35 @@ class DefaultController extends Controller {
 
 		if(!empty($_POST))
          {
+
+					 	 			$handle = new \upload($_FILES['MODPHOTOPARTAGE']);
+
+					 	 			if ($handle->uploaded) {
+					 	 			$handle->file_new_name_body   = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
+					 	 					$handle->image_resize         = true;
+					 	 					$handle->image_x              = 770;
+					 	 					$handle->image_y              = 500;
+					 	 				$handle->image_ratio_crop      = true;
+					 	 					$handle->process('assets/img/partages/');
+					 	 					if ($handle->processed) {
+					 	 							$PHOTOPARTAGE = $handle->file_dst_name;
+					 	 							$handle->clean();
+					 	 					} else {
+					 	 							$PHOTOPARTAGE = 'default.jpg';
+					 	 							echo 'error : ' . $handle->error;
+					 	 					}
+					 	 			}
          $newpartage = \ORM::for_table('modpartages')->create();
 
          $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
          $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
-    	 	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+    	$newpartage->MODPHOTOPARTAGE = $PHOTOPARTAGE ;
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
          $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
          $newpartage->IDUSER= $idloggedUser;
          $newpartage->save();
 
-				extract($_POST);
-	 			$handle = new \upload($_FILES['PHOTOPARTAGE']);
-	 			if ($handle->uploaded) {
-	 					$handle->file_new_name_body   = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
-	 					$handle->image_resize         = true;
-	 					$handle->image_x              = 770;
-	 					$handle->image_y              = 500;
-	 				$handle->image_ratio_crop      = true;
-	 					$handle->process('assets/img/partages/');
-	 					if ($handle->processed) {
-	 							$PHOTOPARTAGE = $handle->file_dst_name;
-	 							$handle->clean();
-	 					} else {
-	 							$PHOTOPARTAGE = 'default.jpg';
-	 							echo 'error : ' . $handle->error;
-	 					}
-	 			}
+
       }
 
 					 $this->show('redaction', ['samepartage' => $samepartage]);

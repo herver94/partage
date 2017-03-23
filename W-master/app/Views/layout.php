@@ -18,8 +18,7 @@
 <meta name="keywords" content="partage, seniors, experiences de vie, anecdotes, conseils, generations futurs, avis sur la societe actuelle, blog, personnes agees, grands-parents, mamie, papie, enfants, parents, petits-enfants, generation, souvenirs">
 <meta name="author" content="part-age.net">
 
-<!-- CSS
-================================================== -->
+<!-- ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>">
