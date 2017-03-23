@@ -10,9 +10,9 @@
 
 <body>
 
-<div class="container main-container">
+<div class="container main-container"><!--- Container --->
 
-    <div class="row-fluid"><!--Container row-->
+    <div class="row-fluid"><!--Container row-fluid-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
@@ -27,10 +27,11 @@
 
                     <label for="MODTITREPARTAGE">Titre</label>
                     <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
+                    
                     <div class="input-prepend">
-                    <input type="hidden" >
-                    <label for="categorie">Selectionnez une catégorie</label>
-
+                        <input type="hidden" >
+                        <label for="categorie">Selectionnez une catégorie :</label>
+                    </div><br>
 
                     <div class="input-prepend">
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
@@ -42,17 +43,18 @@
                     </div><br>
 
                     <div class="row-fluid">
-                          <textarea name="MODCONTENUPARTAGE"></textarea><br/>
-                          <div class="input-prepend">
-                            <label>Ajouter une image</label>
-                              <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
-                          </div>
+                        <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+                        <div class="input-prepend">
+                        <label>Ajouter une image</label>
+                          <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                        </div>
 
-                    <div class="span2">
-                        <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
-                    </div>
+                        <div class="span2">
+                            <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
+                        </div>
                     </div>
             </form>
+        </div>
 
 
         <!-- Sidebar
@@ -62,23 +64,22 @@
                <?php foreach ($samepartage as $partage) : ?>
             <article>
                 <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
+                
                 <div class="post-content">
-
+                   
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
 
-
                     <div class="post-body">
-                              <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
+                        <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
                     </div>
+                    
                 </div>
             </article>
              <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
-    </div><!-- End container row -->
-
-    </div> <!-- End Container -->
-</div>
+    </div><!--End Container row-fluid-->
+</div><!--- End Container --->
     <script>
         CKEDITOR.replace( 'MODCONTENUPARTAGE' );
         $(document).ready(function () {
@@ -94,5 +95,8 @@
 
       });
     </script>
-
+</div>
 <?php $this->stop('contenu') ?>
+
+    <!-- Scroll to Top -->  
+    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page</div>
