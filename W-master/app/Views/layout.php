@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cantarell|Roboto" rel="stylesheet">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -98,8 +99,8 @@
         <!-- Logo
         ================================================== -->
         <div class="span4 logo">
-        	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
-            <h4>Le site web qui donne la parole aux seniors !</h4>
+        	<a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a>
+            <h4 class="slogan">Le site qui donne la parole aux seniors !</h4>
         </div>
 
         <!-- Main Navigation
@@ -146,7 +147,7 @@
                 <li <?php if($current == 'partagez') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="<?= $this->url("redaction"); ?>">Partagez ! </a></li>
+                <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
 
                  <?php if($w_user['ROLE'] == 'admin') : ?>
 
@@ -201,7 +202,7 @@
                     <h5>À Propos</h5>
                     <address>
                         <strong>Part Âge</strong><br />
-                        132 Bd MacDonald<br />
+                        157 Boulevard Macdonald<br />
                         75019 PARIS<br />
                     </address>
                 </div>
@@ -211,6 +212,17 @@
                         <li><a href="https://twitter.com/Part_ages" class="social-icon twitter" target="_blank"></a></li>
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
+                </div>
+                <!-- Single button -->
+                <div class="span3 footer-col">
+                   <h4>TAGS</h4>  
+                    <div class="btn-group">
+                    <!-- Standard button -->
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    <button type="button" class="btn btn-default">Tag</button>
+                    </div>
                 </div>
             </div>
 

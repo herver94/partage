@@ -12,7 +12,7 @@
 
   <!-- Blog Content
     ================================================== -->
-    <div class="row"><!--Container row-->
+    <div class="row-fluid"><!--Container row-->
 
         <!-- Blog Full Post
         ================================================== -->
@@ -115,5 +115,7 @@
 
     </div>
 
-    </div> <!-- End Container -->
-    <?php $this->stop('contenu') ?>
+    
+</div> <!-- End Container -->
+<?php $this->stop('contenu') ?>
+
