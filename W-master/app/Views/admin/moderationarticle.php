@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current' => 'moderation']);
+    $this->layout('layout', ['title' => 'Moderation', 'current' => 'moderation']);
     //use Model\Shortcut;
 ?>
 <?php $this->start('contenu');
@@ -26,11 +26,15 @@
 
 
 
-            <form action="#" method="post" id="message-form">
+            <form action="#" method="post" id="message-form" enctype="multipart/form-data" id="message-form">
 
                     <span class="add-on"></i></span>
                     <textarea value="SALUT"  class="span7" name="TITREPARTAGE" ><?= $modpartage->MODTITREPARTAGE ; ?></textarea>
-
+                    <img src="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" alt="Illustration" class="align-left">
+                    <div >
+                      <span>Si vous souhaitez changer l'image :</span>
+                      <input type="file" value="<?= $this->assetUrl('img/partages/'. $modpartage->MODPHOTOPARTAGE  ); ?>" name="PHOTOPARTAGE" class="dropify" data-max-file-size="2M" /><br>
+                    </div>
                     <div class="input-prepend">
                         <span class="add-on"></span>
                         <input type="hidden" >
@@ -48,7 +52,10 @@ Anecdotes</option>
 
                 <div class="row">
                     <div class="span2">
-                        <input type="submit" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                        <input type="submit" name="accepter" class="btn btn-inverse btn-profil " value="Accepter le partage">
+                    </div>
+                    <div class="span2">
+                        <input type="submit"  name="supprimer" class="btn btn-inverse btn-profil " value="Supprimer le partage">
                     </div>
                 </div>
             </form>
@@ -64,6 +71,18 @@ Anecdotes</option>
 </div>
     <script>
         CKEDITOR.replace( 'CONTENUPARTAGE' );
+        $(document).ready(function () {
+                $('.dropify').dropify({
+                    messages: {
+                        default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
+                        replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                        remove:  'Supprimer',
+                        error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+                    }
+                });
+
+
+      });
     </script>
 
 <?php $this->stop('contenu') ?>

@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/custom-styles.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/style.css'); ?>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.css" />
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cantarell|Roboto" rel="stylesheet">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -92,8 +93,7 @@
 
 </head>
 <body class="home">
-<?php
-print_r($current); ?>
+
     <!-- Color Bars (above header)-->
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
@@ -104,14 +104,14 @@ print_r($current); ?>
 
         <!-- Logo
         ================================================== -->
-        <div class="span5 logo">
-        	<h1><a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a></h1>
-            <h4>Le site web qui donne la parole aux seniors !</h4>
+        <div class="span4 logo">
+        	<a href="index.htm"><img src="<?= $this->assetUrl('/img/logoPartAge.png'); ?>" alt="Logo Part Age" /></a>
+            <h4 class="slogan">Le site qui donne la parole aux seniors !</h4>
         </div>
 
         <!-- Main Navigation
         ================================================== -->
-        <div class="span7 navigation">
+        <div class="span8 navigation">
             <div class="navbar hidden-phone">
 
             <ul class="nav">
@@ -150,10 +150,20 @@ print_r($current); ?>
 
                  <a href="<?= $this->url("default_contact"); ?>">Contact</a></li>
 
-                <li <?php if($current == '') {
+                <li <?php if($current == 'partagez') {
                     echo 'class="active"';
                 } ?>>
-                 <a href="<?= $this->url("redaction"); ?>">Partagez ! </a></li>
+
+                <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
+
+                 <?php if($w_user['ROLE'] == 'admin') : ?>
+
+                   <li <?php if($current == 'moderation') {
+                       echo 'class="active"';
+                   } ?>>
+                    <a href="<?= $this->url("moderation"); ?>">Modération </a></li>
+
+                 <?php endif; ?>
 
                 <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
@@ -198,7 +208,7 @@ print_r($current); ?>
                     <h5>À Propos</h5>
                     <address>
                         <strong>Part Âge</strong><br />
-                        132 Bd MacDonald<br />
+                        157 Boulevard Macdonald<br />
                         75019 PARIS<br />
                     </address>
                 </div>
@@ -209,18 +219,17 @@ print_r($current); ?>
                         <li><a href="#" class="social-icon rss"></a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 style="color:white;">Tags : </h4>
-                
-                        <div class="span1 footer-col" >
-                
-                            <?php foreach ($tags as $tag) {
-                                echo '<a href="#"> '.$tag->LIBELLETAGS.' </a>';
+                <!-- Single button -->
+                <div class="span3 footer-col">
+                   <h4>TAGS</h4>  
+                    <div class="btn-group">
+                    <!-- Standard button -->
+                      <?php foreach ($tags as $tag) {
+                                echo '<button type="button" class="btn btn-default"> '.$tag->LIBELLETAGS.' </button>';
                             }?>
-
-                        </div>
+                    </div>
                 </div>
-
+            </div>
             <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">

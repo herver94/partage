@@ -8,14 +8,14 @@
     ================================================== -->
     <div class="row-fluid">
         <h2 class="title-bg"><?= $titre->LIBELLECATEGORIE; ?></h2>
-        
+
 
         <!-- Blog Posts
         ================================================== -->
         <div class="span8 blog">
             <?php foreach ($articles as $partage) : ?>
                 <!-- Blog Post 1 -->
-                <article class="clearfix">
+                <article class="clearfix articles">
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Post Thumb" class="img-categorie"></a>
                     <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h4>
                         <p class="p-partage"><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
@@ -45,7 +45,7 @@
 
         <!-- Blog Sidebar
         ================================================== -->
-        <div class="span4 sidebar">
+        <div class="span3 sidebar">
 
             <!--Search-->
             <section>
@@ -70,8 +70,5 @@
 
     </div>
 
-    </div> <!-- End Container -->
+  </div> <!-- End Container -->
     <?php $this->stop('contenu') ?>
-
-
- 

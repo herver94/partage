@@ -1,6 +1,6 @@
 <?php
     # Layout utilisé pour la vue
-    $this->layout('layout', ['title' => 'Accueil', 'current' => 'moderation']);
+    $this->layout('layout', ['title' => 'Moderation', 'current' => 'moderation']);
     use Model\Shortcut;
  $this->start('contenu');
 
@@ -16,7 +16,8 @@
             <?php foreach ($modpartages as $partage) : ?>
                 <!-- Blog Post 1 -->
                 <article class="clearfix">
-                    <a href="<?= $this->url('default_moderationarticle', ['id' => $partage->MODIDPARTAGE, 'slug' => Shortcut::generateSlug($partage->MODTITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->MODPHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
+                    <a href="<?= $this->url('default_moderationarticle', ['id' => $partage->MODIDPARTAGE, 'slug' => Shortcut::generateSlug($partage->MODTITREPARTAGE)]); ?>">
+                      <img src="<?= $this->assetUrl('img/partages/'. $partage->MODPHOTOPARTAGE  ); ?>" alt="Post Thumb" class="align-left"></a>
                     <h4 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->MODIDPARTAGE, 'slug' => Shortcut::generateSlug($partage->MODTITREPARTAGE)]); ?>"><?= $partage->MODTITREPARTAGE; ?></a></h4>
                         <p><?= Shortcut::getAccroche($partage->MODCONTENUPARTAGE); ?> </p>
                         <button class="btn btn-mini btn-inverse btn-profil" type="button" onclick="javascript:location.href='<?= $this->url('default_moderationarticle', ['id' => $partage->MODIDPARTAGE, 'slug' => Shortcut::generateSlug($partage->MODTITREPARTAGE)]); ?>'">MODIFIER/VALIDER  le partage</button>

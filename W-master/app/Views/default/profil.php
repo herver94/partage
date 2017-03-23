@@ -29,33 +29,33 @@
     <!-- Page Content
 
     ================================================== -->
-    <div class="row">
+    <div class="row-fluid">
 
         <!-- Gallery Items
 
         ================================================== -->
 
         <div class="span12 gallery-single">
-            <div class="row">
+            <div class="row-fluid">
 
                 <div class="span5">
 
-                    <img src="<?php if(empty($photo)){
-                                        if ($genre == 'Homme'){
-                                            echo $this->assetUrl('/img/partages/homme.jpg');
-                                    }
-                                        else{
-                                            echo  $this->assetUrl('/img/partages/femme.jpg');
-                                        }}
-                                        else{ 	echo $this->assetUrl("/img/profil/".$photo );
+									<img src="<?php if(empty($photo)){
+										if ($genre == 'Homme'){
+											echo $this->assetUrl('/img/partages/homme.jpg');
+									}
+										else{
+											echo  $this->assetUrl('/img/partages/femme.jpg');
+										}}
+										else{ 	echo $this->assetUrl("/img/profil/".$photo );
 
-                                        }
+										}
 
-                                    ?>" class="align-left thumbnail" alt="avatar">
+									?>" class="align-left thumbnail" alt="avatar">
                 </div>
 
                 <div class="span6">
-                    <h2><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
+                    <h2 class="otto"><?= $w_user['PRENOMUSER'].' '.$w_user['NOMUSER']; ?></h2>
 
                         <ul class="project-info">
 
@@ -71,6 +71,7 @@
 
 
                     <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button> 
+
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
 
 

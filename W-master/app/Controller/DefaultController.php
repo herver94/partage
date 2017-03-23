@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
+use Model\Shortcut;
 
 
 class DefaultController extends Controller {
@@ -26,7 +27,6 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/home', ['partages' => $partages]);
 	}
-
 
     public function connexion() {
 
@@ -50,47 +50,70 @@ class DefaultController extends Controller {
 							else{
 
 									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home'); }
+									$this->redirectToRoute('default_home');
 						}
-				}
 
-					public function deconnexion()
-					{
-					$auth = new AuthentificationModel;
-					//déconnexion de la session
-					$auth->logUserOut();
-					//retour à l'index
-					$this->redirectToRoute('default_home');
-				}
+						}
+					}
 
-	/**
-	 * Permet d'afficher les articles d'une catégorie
-	 * $categorie*/
+
+
+
     public function profil() {
 			$this->show('default/profil');
 		 }
+
 
 	public function inscription() {
 		 if(!empty($_POST))
 	 	{
 	 		DBFactory::start();
+			extract($_POST);
 
- 			$newuser	= \ORM::for_table('users')->create();
+				$handle = new \upload($_FILES['PHOTOUSER']);
+				if ($handle->uploaded) {
+						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
+						$handle->image_resize         = true;
+						$handle->image_x              = 300;
+						$handle->image_y              = 250;
+					$handle->image_ratio_crop      = true;
+						$handle->process('/assets/img/profil/');
+						if ($handle->processed) {
+								$PHOTOPARTAGE = $handle->file_dst_name;
+								$handle->clean();
+						} else {
+								//$PHOTOPARTAGE = 'default.jpg';
+								echo 'error : ' . $handle->error;
+						}
+				}
 
-			$newuser->PRENOMUSER = $_POST['PRENOMUSER'];
-			$newuser->NOMUSER = $_POST['NOMUSER'];
-			$newuser->ROLE = 'USER';
-			$newuser->DATEDENAISSANCEUSER = $_POST['DATEDENAISSANCEUSER'];
-			$newuser->SEXEUSER = $_POST['SEXEUSER'] ;
-			$newuser->EMAILUSER = $_POST['EMAILUSER'];
-			$newuser->CPUSER = $_POST['CPUSER'];
-			$newuser->PHOTOUSER = $_POST['PHOTOUSER'];
-			$newuser->MOTDEPASSEUSER = password_hash($_POST['MOTDEPASSEUSER'], PASSWORD_DEFAULT);
-			$newuser->save();
-		}
+				if(empty($PHOTOUSER)){
+						if ($SEXEUSER == 'Homme'){
+								$PHOTOUSER = 'homme.jpg';
+				}
+						else{
+								$PHOTOUSER = 'femme.jpg';
+						}
+					}
+				$newuser	= \ORM::for_table('users')->create();
 
-		 $this->show('default/inscription');
-    }
+				$newuser->PRENOMUSER = $PRENOMUSER;
+				$newuser->NOMUSER = $NOMUSER;
+				$newuser->ROLE = 'user';
+				$newuser->DATEDENAISSANCEUSER = $DATEDENAISSANCEUSER;
+				$newuser->SEXEUSER = $SEXEUSER ;
+				$newuser->EMAILUSER = $EMAILUSER;
+				$newuser->CPUSER = $CPUSER;
+				//$newuser->set_expr('DATEINSCRIPTION', 'NOW()');
+				$newuser->PHOTOUSER = $PHOTOUSER;
+				$newuser->MOTDEPASSEUSER = password_hash($MOTDEPASSEUSER, PASSWORD_DEFAULT);
+				$newuser->save();
+
+
+							}
+								$this->show('default/inscription');
+				}
+
 
 
 	public function categories($categorie) {
@@ -147,6 +170,7 @@ class DefaultController extends Controller {
 
 	}
 
+
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -156,35 +180,56 @@ class DefaultController extends Controller {
 	    # Connexion a la BDD
 	    DBFactory::start();
 
-	    # Récupération des Données de l'Article
-	   // $article = \ORM::for_table('view_partage')->find_one($id);
 
-	    # Suggestions
-	   // $suggestions = \ORM::for_table('view_partage')->where('IDCATEGORIE', $article->IDCATEGORIE)->where_not_equal('IDARTICLE', $id)->limit(3)->order_by_desc('IDARTICLE')->find_result_set();
+			$samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
-	    # Transmettre à la Vue
 
-        $samepartage = \ORM::for_table('view_partage')->where('IDUSER', $idloggedUser )->find_result_set();
 
 		if(!empty($_POST))
          {
+
+						extract($_POST);
+
+					 $handle = new \upload($_FILES['MODPHOTOPARTAGE']);
+	 	 			if ($handle->uploaded) {
+	 	 					$handle->file_new_name_body = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
+	 	 					$handle->image_resize = true;
+	 	 					$handle->image_x = 770;
+	 	 					$handle->image_y = 500;
+	 	 					$handle->image_ratio_crop = true;
+	 	 					$handle->process('assets/img/partages/');
+	 	 					if ($handle->processed) {
+	 	 							$MODPHOTOPARTAGE = $handle->file_dst_name;
+	 	 							$handle->clean();
+	 	 					} else {
+	 	 							$MODPHOTOPARTAGE = 'default.jpg';
+	 	 							echo 'error : ' . $handle->error;
+	 	 					}
+	 	 			}
+					if(empty($MODPHOTOPARTAGE)){
+			 		 $MODPHOTOPARTAGE='default.jpg';
+			 	 }
          $newpartage = \ORM::for_table('modpartages')->create();
 
-         $newpartage->MODTITREPARTAGE = $_POST['MODTITREPARTAGE'];
-         $newpartage->MODCONTENUPARTAGE = $_POST['MODCONTENUPARTAGE'];
-    //	 $newpartage->MODPHOTOPARTAGE =  $_POST['PHOTOPARTAGE'];
+         $newpartage->MODTITREPARTAGE = $MODTITREPARTAGE;
+         $newpartage->MODCONTENUPARTAGE = $MODCONTENUPARTAGE;
+    	 	 $newpartage->MODPHOTOPARTAGE =  $MODPHOTOPARTAGE;
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
-         $newpartage->IDCATEGORIE = $_POST['MODIDCATEGORIE'];
+         $newpartage->IDCATEGORIE = $MODIDCATEGORIE;
          $newpartage->IDUSER= $idloggedUser;
          $newpartage->save();
-                     }
+				 //var_dump($_FILES);
+				 		//die;
+
+				}
 
 
-        $this->show('redaction', ['samepartage' => $samepartage]);
+					 $this->show('redaction', ['samepartage' => $samepartage]);
 
         }
 
-        public function contact(){
+
+      public function contact(){
 
 	    # Connexion a la BDD
 	    DBFactory::start();
@@ -200,6 +245,7 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/conditionsGenerale');
 	   }
+
 
 		public function deleteprofil($id){
 			# Connexion a la BDD
@@ -225,6 +271,16 @@ class DefaultController extends Controller {
             ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
             ->order_by_asc('LIBELLETAGS')
             ->find_many();
+		}
+
+
+		public function deconnexion(){
+		$auth = new AuthentificationModel;
+		//déconnexion de la session
+		$auth->logUserOut();
+		//retour à l'index
+		$this->redirectToRoute('default_home');
+	}
 
              $this->show('');
 		}	

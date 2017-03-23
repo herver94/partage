@@ -15,14 +15,14 @@
 
         <div class="span8 contact inscription"><!--Begin page content column-->
 
-
-            <h2 class="title-bg">Inscription</h2>
+            <h2 class="title-bg otto">Inscription</h2>
 
               <p class="quote-text">Inscrivez vous rapidement et gratuitement sur Part Âge, afin de pouvoir partager une expérience de vie, une         anecdote,des conseils aux futurs générations, votre avis sur la société actuelle... Et également partager vos avis en laissant des commentaires sur les partages des autres membres.<br><br></p>
 
               <div id="erreur" style="display : none;">
               <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
               </div>
+
 
               <form action="#" method="post" id="contact-form" id="inscriptionForm">
 
@@ -62,10 +62,12 @@
                     <span class="add-on"><i class="icon-warning-sign"></i></span>
                       <input class="span7 champ"  id="confirmation" size="16" type="password" placeholder="Confirmation du mot de passe">
                 </div>
+                
                 <div id="erreur1" style="display : block;">
-        <p>Les mots de passe ne sont pas identiques!</p>
-    </div>
-								<div class="input-prepend">
+                <p>Les mots de passe ne sont pas identiques!</p>
+                </div>
+                
+				<div class="input-prepend">
                   <label>Ajouter une image (avatar ou photo)</label>
                     <input type="file" name="PHOTOUSER" class="dropify" data-max-file-size="2M" />
                 </div>
@@ -99,7 +101,7 @@
              $erreur = $('#erreur'),
              $champ = $('.champ');
 
-        $champ.keyup(function(){
+        $email.keyup(function(){
             if($(this).val().length < 3){ // si la chaîne de caractères est inférieure à 5
                 $(this).css({ // on rend le champ rouge
                     borderColor : 'red',
@@ -130,7 +132,7 @@
             }
         });
 
-        $envoi.click(function(e){
+        //$envoi.click(function(e){
             //e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
       //  $envoi.click(function(e){
         //    e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
@@ -161,40 +163,28 @@
         }
 
     });
-</script>
 
 
-    <!-- Footer Area
-        ================================================== -->
+
+    $(document).ready(function () {
+          	$('.dropify').dropify({
+                messages: {
+                    default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
+                    replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                    remove:  'Supprimer',
+                    error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+                }
+            });
+
+
+  });
+
+  </script>
+
+
 
 	    <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 
 <?php $this->stop('contenu'); ?>
-
-<?php $this->start('script') ?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.js"></script>
-      <!-- wysuhtml5 Plugin JavaScript -->
-      <script>
-
-  		// -- Dropify
-
-
-
-
-  $(document).ready(function () {
-        	$('.dropify').dropify({
-              messages: {
-                  default: 'Glissez-d&eacute;posez un fichier ou cliquez ici',
-                  replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
-                  remove:  'Supprimer',
-                  error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
-              }
-          });
-
-
-});
-
-      </script>
-<?php $this->stop('script') ?>
