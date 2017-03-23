@@ -6,6 +6,12 @@
 
     $CM = new CategoriesModel;
     $categories = $CM->findCategories();
+
+    DBFactory::start();
+
+            # Récupération des Données de l'Article
+            $tags = \ORM::for_table('tags')->find_many();
+
 ?>
 
 <!DOCTYPE html>
@@ -147,6 +153,7 @@
                 <li <?php if($current == 'partagez') {
                     echo 'class="active"';
                 } ?>>
+
                 <a href="<?= $this->url("default_redaction"); ?>">Partagez ! </a></li>
 
                  <?php if($w_user['ROLE'] == 'admin') : ?>
@@ -154,11 +161,12 @@
                    <li <?php if($current == 'moderation') {
                        echo 'class="active"';
                    } ?>>
-                    <a href="<?= $this->url('admin_moderation'); ?>">Modération </a></li>
+
+                    <a href="<?= $this->url("admin_moderation"); ?>">Modération </a></li>
 
                  <?php endif; ?>
 
-                    <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
+                <li> <a href="<?= $this->url('default_deconnexion') ?>">Déconnexion</a></li>
 
             <?php endif; ?>
 
@@ -226,17 +234,15 @@
                 </div>
                 <!-- Single button -->
                 <div class="span3 footer-col">
-                   <h4>TAGS</h4>  
+                   <h4>TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
-                    <button type="button" class="btn btn-default">Tag</button>
-                    <button type="button" class="btn btn-default">Tag</button>
-                    <button type="button" class="btn btn-default">Tag</button>
-                    <button type="button" class="btn btn-default">Tag</button>
+                      <?php foreach ($tags as $tag) {
+                                echo '<button type="button" class="btn btn-default"> '.$tag->LIBELLETAGS.' </button>';
+                            }?>
                     </div>
                 </div>
             </div>
-
             <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">

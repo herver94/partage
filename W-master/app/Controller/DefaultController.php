@@ -168,7 +168,9 @@ class DefaultController extends Controller {
 	    # Transmettre à la Vue
 	    $this->show('default/partage', ['partage' => $partage , 'commentaires' => $commentaires]);
 
-}
+	}
+
+
 	public function redaction() {
 		$this->allowTo(['user', 'admin']);
 
@@ -261,9 +263,10 @@ class DefaultController extends Controller {
 	   		$this->redirectToRoute('default_home');
         }
 
-
-
 		public function search(){
+
+			DBFactory::start();
+
 			$search = \ORM::for_table('tags')
             ->where_raw('(`LIBELLETAGS` = ? OR `LIBELLETAGS` = ?)')
             ->order_by_asc('LIBELLETAGS')
@@ -271,8 +274,7 @@ class DefaultController extends Controller {
 		}
 
 
-		public function deconnexion()
-		{
+		public function deconnexion(){
 		$auth = new AuthentificationModel;
 		//déconnexion de la session
 		$auth->logUserOut();
@@ -280,6 +282,7 @@ class DefaultController extends Controller {
 		$this->redirectToRoute('default_home');
 	}
 
-
+             $this->show('');
+		}	
 
 }
