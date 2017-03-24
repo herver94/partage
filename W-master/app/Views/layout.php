@@ -224,7 +224,7 @@
                    <h4>TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
-                      <?php foreach ($tags as $tag) {
+                      <?php foreach ($tags as $tag ) {
                                 echo '<button type="button" class="btn btn-default"> '.$tag->LIBELLETAGS.' </button>';
                             }?>
                     </div>

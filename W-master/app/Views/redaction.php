@@ -47,12 +47,16 @@
                             <label>Ajouter une image</label>
                               <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
                           </div>
-
+                          <div>
+                            <textarea id="textarea"></textarea>
+                          </div>
                     <div class="span2">
                         <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
                     </div>
                     </div>
+
             </form>
+
 
 
         <!-- Sidebar

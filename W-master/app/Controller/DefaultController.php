@@ -280,9 +280,6 @@ class DefaultController extends Controller {
 		$auth->logUserOut();
 		//retour à l'index
 		$this->redirectToRoute('default_home');
-	}
-
-             $this->show('');
-		}	
+	}	
 
 }

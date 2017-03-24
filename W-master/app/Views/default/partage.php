@@ -76,8 +76,8 @@
                         </div>
                     </form>
                 </div>
-        </section><!-- Close comments section-->
-
+            </section><!-- Close comments section-->
+            
         </div><!--Close container row-->
 
         <!-- Blog Sidebar
