@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
+
 use Model\Shortcut;
 
 
@@ -30,30 +31,32 @@ class DefaultController extends Controller {
 
     public function connexion() {
 
-				if(!empty($_POST))
-						{
-							DBFactory::start();
-							//on a besoin d'un objet sécurité
-							$auth = new AuthentificationModel;
-							// vérification du login/password dans la table (cf config.php)
-							if($auth->isValidLoginInfo($_POST['login'], $_POST['password']))
-							{
-									// récup d'un objet User
-									$user = new UsersModel;
-									// récupération des infos de l'utilisateur
-									$util = $user->getUserByUsernameOrEmail($_POST['login']);
-									//connexion
-									$auth->logUserIn($util); //utilisateur dans la session
+      if(!empty($_POST))
+          {
+            DBFactory::start();
+            //on a besoin d'un objet sécurité
+            $auth = new AuthentificationModel;
+            // vérification du login/password dans la table (cf config.php)
+            if($auth->isValidLoginInfo($_POST['login'], $_POST['password']))
+            {
+                // récup d'un objet User
+                $user = new UsersModel;
+                // récupération des infos de l'utilisateur
+                $util = $user->getUserByUsernameOrEmail($_POST['login']);
+                //connexion
+                $auth->logUserIn($util); //utilisateur dans la session
 
-									$this->redirectToRoute('default_profil');
-							}//sinon retour formulaire
-							else{
+                $this->redirectToRoute('default_profil');
+            }//sinon retour formulaire
+            else{
 
-									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home');
-						}
+                $message = 'erreur de pseudo';
+                print_r($message);
 
-						}
+                $this->redirectToRoute('default_home', ['id'=>35]);
+          }
+
+          }
 					}
 
 
@@ -74,8 +77,8 @@ class DefaultController extends Controller {
 				if ($handle->uploaded) {
 						$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER']);
 						$handle->image_resize         = true;
-						$handle->image_x              = 300;
-						$handle->image_y              = 250;
+						$handle->image_x              = 250;
+						$handle->image_y              = 200;
 					$handle->image_ratio_crop      = true;
 						$handle->process('/assets/img/profil/');
 						if ($handle->processed) {
@@ -148,6 +151,9 @@ class DefaultController extends Controller {
 			#récupération des commentaires
 			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
 
+			#récupération des commentaires populaires
+			$commentaires = \ORM::for_table('view_commentaire')->where('IDPARTAGE', $id)->find_result_set();
+
 
 			if(!empty($_POST))
  	 			{
@@ -188,14 +194,15 @@ class DefaultController extends Controller {
 		if(!empty($_POST))
          {
 
+
 						extract($_POST);
 
 					 $handle = new \upload($_FILES['MODPHOTOPARTAGE']);
 	 	 			if ($handle->uploaded) {
 	 	 					$handle->file_new_name_body = Shortcut::generateSlug($_POST['MODTITREPARTAGE']);
 	 	 					$handle->image_resize = true;
-	 	 					$handle->image_x = 770;
-	 	 					$handle->image_y = 500;
+	 	 					$handle->image_x = 460;
+	 	 					$handle->image_y = 250;
 	 	 					$handle->image_ratio_crop = true;
 	 	 					$handle->process('assets/img/partages/');
 	 	 					if ($handle->processed) {
@@ -214,6 +221,7 @@ class DefaultController extends Controller {
          $newpartage->MODTITREPARTAGE = $MODTITREPARTAGE;
          $newpartage->MODCONTENUPARTAGE = $MODCONTENUPARTAGE;
     	 	 $newpartage->MODPHOTOPARTAGE =  $MODPHOTOPARTAGE;
+
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
          $newpartage->IDCATEGORIE = $MODIDCATEGORIE;
          $newpartage->IDUSER= $idloggedUser;
@@ -222,6 +230,7 @@ class DefaultController extends Controller {
 				 		//die;
 
 				}
+
 
 
 					 $this->show('redaction', ['samepartage' => $samepartage]);
@@ -280,6 +289,7 @@ class DefaultController extends Controller {
 		$auth->logUserOut();
 		//retour à l'index
 		$this->redirectToRoute('default_home');
-	}	
+
+		}
 
 }

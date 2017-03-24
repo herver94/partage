@@ -2,17 +2,18 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Partagez', 'current' => 'partagez']);
     use Model\Shortcut;
+
 ?>
 <?php $this->start('contenu');
 //print_r($samepartage);
 
  ?>
 
-<body>
 
-<div class="container main-container">
 
-    <div class="row-fluid"><!--Container row-->
+<div class="container main-container"><!--- Container --->
+
+    <div class="row-fluid"><!--Container row-fluid-->
 
         <div class="span8 contact"><!--Begin page content column-->
 
@@ -25,11 +26,14 @@
 
             <form action="#" method="post" enctype="multipart/form-data" id="message-form">
 
+
                     <label for="MODTITREPARTAGE">Titre</label>
                     <input type="text" class="span7" name="MODTITREPARTAGE" placeholder="Le titre de votre histoire ici"/>
+
                     <div class="input-prepend">
-                    <input type="hidden" >
-                    <label for="categorie">Selectionnez une catégorie</label>
+                        <input type="hidden" >
+                        <label for="categorie">Selectionnez une catégorie :</label>
+                    </div><br>
 
 
                     <div class="input-prepend">
@@ -42,6 +46,7 @@
                     </div><br>
 
                     <div class="row-fluid">
+<<<<<<< HEAD
                           <textarea name="MODCONTENUPARTAGE"></textarea><br/>
                           <div class="input-prepend">
                             <label>Ajouter une image</label>
@@ -53,36 +58,47 @@
                     <div class="span2">
                         <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
                     </div>
+=======
+
+                        <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+                        <div class="input-prepend">
+                        <label>Ajouter une image</label>
+                          <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                        </div>
+
+                        <div class="span2">
+                            <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
+                        </div>
+>>>>>>> f934015270acd2d2430afe00f7ce25f0dbcf1a24
                     </div>
 
             </form>
-
+        </div>
+      </div>
 
 
         <!-- Sidebar
         ================================================== -->
         <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
             <h5 class="title-bg">Vos precendents articles</h5>
-               <?php foreach ($samepartage as $partage) : ?>
+            <?php foreach ($samepartage as $partage) : ?>
             <article>
                 <h3 class="title-bg"><a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><?= $partage->TITREPARTAGE; ?></a></h3>
+
                 <div class="post-content">
 
                     <a href="<?= $this->url('default_partage', ['id' => $partage->IDPARTAGE, 'slug' => Shortcut::generateSlug($partage->TITREPARTAGE)]); ?>"><img src="<?= $this->assetUrl('img/partages/'. $partage->PHOTOPARTAGE  ); ?>" alt="Illustration"></a>
 
-
                     <div class="post-body">
-                              <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
+                        <p><?= Shortcut::getAccroche($partage->CONTENUPARTAGE); ?> </p>
                     </div>
+
                 </div>
             </article>
-             <?php endforeach; ?>
+            <?php endforeach; ?>
         </div><!-- End sidebar column -->
 
-    </div><!-- End container row -->
-
-    </div> <!-- End Container -->
-</div>
+    </div><!--End Container row-fluid-->
     <script>
         CKEDITOR.replace( 'MODCONTENUPARTAGE' );
         $(document).ready(function () {
@@ -98,5 +114,8 @@
 
       });
     </script>
-
+</div>
 <?php $this->stop('contenu') ?>
+
+    <!-- Scroll to Top -->
+    <div id="toTop" class="hidden-phone hidden-tablet">Haut de page</div>

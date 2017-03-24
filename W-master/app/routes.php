@@ -37,7 +37,10 @@
     	['POST', '/newsletter/add', 'Default#newsletteradd', 'default_newsletteradd'],
 
 
-    	['GET', '/tags', 'Default#tags', 'tags'],
 
-    	
+
+
+    	//['GET', '/tags', 'Default#tags', 'tags'],
+
+
 	);

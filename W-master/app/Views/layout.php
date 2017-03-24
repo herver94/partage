@@ -10,7 +10,7 @@
     DBFactory::start();
 
             # Récupération des Données de l'Article
-            $tags = \ORM::for_table('tags')->find_many();
+          //  $tags = \ORM::for_table('tags')->find_many();
 
 ?>
 
@@ -24,8 +24,7 @@
 <meta name="keywords" content="partage, seniors, experiences de vie, anecdotes, conseils, generations futurs, avis sur la societe actuelle, blog, personnes agees, grands-parents, mamie, papie, enfants, parents, petits-enfants, generation, souvenirs">
 <meta name="author" content="part-age.net">
 
-<!-- CSS
-================================================== -->
+<!-- ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>">
@@ -161,6 +160,8 @@
                    <li <?php if($current == 'moderation') {
                        echo 'class="active"';
                    } ?>>
+
+
                     <a href="<?= $this->url("admin_moderation"); ?>">Modération </a></li>
 
                  <?php endif; ?>
@@ -175,18 +176,30 @@
             ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
                 <div class="mobile-nav-select">
-                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="  menu-responsive">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')" class="menu-responsive">
                     <option value="">Menu...</option>
-                    <option value="index.htm" class="accueil">ACCUEIL</option>
-                    <option value="page-full-width.htm">Lire les partages</option>
-                        <option value="page-full-width.htm">- Expériences de vie</option>
-                        <option value="page-right-sidebar.htm">- Anecdotes</option>
-                        <option value="page-left-sidebar.htm">- Avis sur la société actuelle</option>
-                        <option value="page-double-sidebar.htm">- Conseils aux futurs générations</option>
-                    <option value="gallery-4col.htm">Inscription</option>
-                    <option value="blog-style1.htm">Connexion</option>
-                    <option value="blog-style1.htm">Mon compte</option>
-                    <option value="page-contact.htm">Contact</option>
+                    <option value="<?= $this->url("default_home"); ?>" class="accueil">ACCUEIL</option>
+                    <option value="<?php  foreach($categories as $categorie) {if($current == $categorie->getCHEMIN() ) { echo 'class="active"'; }} ?>">Lire les partages</option>
+                       <?php foreach($categories as $categorie) : ?>
+                        <option value="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>">- <?= $categorie->getLIBELLECATEGORIE(); ?></option>
+                    <?php endforeach; ?>
+
+                    <?php if(empty($w_user)) : ?>
+                    <option value="<?= $this->url("default_inscription");?>">Inscription</option>
+                    <option value="<?= $this->url("default_connexion");?>">Connexion</option>
+                    <option value="<?= $this->url("default_contact"); ?>">Contact</option>
+
+                    <?php else : ?>
+                    <option value="<?= $this->url('default_profil'); ?>">Mon compte</option>
+                    <option value="<?= $this->url("default_redaction"); ?>">Partager !</option>
+                    <option value="<?= $this->url('default_deconnexion') ?>">Déconnexion</option>
+                    <option value="<?= $this->url("default_contact"); ?>">Contact</option>
+
+                    <?php if($w_user['ROLE'] == 'admin') : ?>
+                    <option value="<?= $this->url('admin_moderation') ?>">Modération</option>
+                    <?php endif; ?>
+                    <?php endif; ?>
+
                 </select>
                 </div>
             </form>
@@ -206,8 +219,8 @@
                 </div>
                 <div class="span3 footer-col">
                     <h5>À Propos</h5>
-                    <address>
-                        <strong>Part Âge</strong><br />
+                    <address class="address-footer">
+                        <strong id="partage">Part Âge</strong><br />
                         157 Boulevard Macdonald<br />
                         75019 PARIS<br />
                     </address>
@@ -221,11 +234,13 @@
                 </div>
                 <!-- Single button -->
                 <div class="span3 footer-col">
-                   <h4>TAGS</h4>
+
+                   <h4 class="tag">TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
-                      <?php foreach ($tags as $tag ) {
-                                echo '<button type="button" class="btn btn-default"> '.$tag->LIBELLETAGS.' </button>';
+
+                      <?php foreach ($tags as $tag) {
+                                echo '<button type="button" class="btn btn-default btn-tag"> '.$tag->LIBELLETAGS.' </button>';
                             }?>
                     </div>
                 </div>
