@@ -2,6 +2,7 @@
     # Layout utilisé pour la vue
     $this->layout('layout', ['title' => 'Partagez', 'current' => 'partagez']);
     use Model\Shortcut;
+
 ?>
 <?php $this->start('contenu');
 //print_r($samepartage);
@@ -34,6 +35,7 @@
                         <label for="categorie">Selectionnez une catégorie :</label>
                     </div><br>
 
+
                     <div class="input-prepend">
                         <select name="MODIDCATEGORIE" id="categorie" class="span4">
                           <option value="1">Expériences de vie</option>
@@ -44,6 +46,20 @@
                     </div><br>
 
                     <div class="row-fluid">
+<<<<<<< HEAD
+                          <textarea name="MODCONTENUPARTAGE"></textarea><br/>
+                          <div class="input-prepend">
+                            <label>Ajouter une image</label>
+                              <input type="file" name="MODPHOTOPARTAGE" class="dropify" data-max-file-size="2M" />
+                          </div>
+                          <div>
+                            <textarea id="textarea"></textarea>
+                          </div>
+                    <div class="span2">
+                        <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
+                    </div>
+=======
+
                         <textarea name="MODCONTENUPARTAGE"></textarea><br/>
                         <div class="input-prepend">
                         <label>Ajouter une image</label>
@@ -53,10 +69,13 @@
                         <div class="span2">
                             <input type="submit" class="btn btn-inverse btn-profil" value="Envoyer le partage"/>
                         </div>
+>>>>>>> f934015270acd2d2430afe00f7ce25f0dbcf1a24
                     </div>
+
             </form>
         </div>
       </div>
+
 
         <!-- Sidebar
         ================================================== -->

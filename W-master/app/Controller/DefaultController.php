@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\DBFactory;
 use \W\Security\AuthentificationModel;
 use \W\Model\UsersModel;
+
 use Model\Shortcut;
 
 
@@ -58,6 +59,7 @@ class DefaultController extends Controller {
 								echo json_encode($retour);
 
 						}
+
 					}
 
 
@@ -247,6 +249,7 @@ class DefaultController extends Controller {
 		if(!empty($_POST))
          {
 
+
 						extract($_POST);
 
 					 $handle = new \upload($_FILES['MODPHOTOPARTAGE']);
@@ -273,6 +276,7 @@ class DefaultController extends Controller {
          $newpartage->MODTITREPARTAGE = $MODTITREPARTAGE;
          $newpartage->MODCONTENUPARTAGE = $MODCONTENUPARTAGE;
     	 	 $newpartage->MODPHOTOPARTAGE =  $MODPHOTOPARTAGE;
+
          $newpartage->set_expr('MODDATEPARTAGE', 'NOW()');
          $newpartage->IDCATEGORIE = $MODIDCATEGORIE;
          $newpartage->IDUSER= $idloggedUser;
@@ -281,6 +285,7 @@ class DefaultController extends Controller {
 				 		//die;
 
 				}
+
 
 
 					 $this->show('redaction', ['samepartage' => $samepartage]);
@@ -339,7 +344,8 @@ class DefaultController extends Controller {
 		$auth->logUserOut();
 		//retour à l'index
 		$this->redirectToRoute('default_home');
-		}
 
+
+		}
 
 }

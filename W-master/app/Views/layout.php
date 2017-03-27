@@ -10,7 +10,7 @@
     DBFactory::start();
 
             # Récupération des Données de l'Article
-            $tags = \ORM::for_table('tags')->find_many();
+          //  $tags = \ORM::for_table('tags')->find_many();
 
 ?>
 
@@ -24,8 +24,7 @@
 <meta name="keywords" content="partage, seniors, experiences de vie, anecdotes, conseils, generations futurs, avis sur la societe actuelle, blog, personnes agees, grands-parents, mamie, papie, enfants, parents, petits-enfants, generation, souvenirs">
 <meta name="author" content="part-age.net">
 
-<!-- CSS
-================================================== -->
+<!-- ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap.css'); ?>">
 <link rel="stylesheet" href="<?= $this->assetUrl('/css/bootstrap-responsive.css'); ?>">
@@ -162,6 +161,7 @@
                        echo 'class="active"';
                    } ?>>
 
+
                     <a href="<?= $this->url("admin_moderation"); ?>">Modération </a></li>
 
                  <?php endif; ?>
@@ -183,23 +183,23 @@
                        <?php foreach($categories as $categorie) : ?>
                         <option value="<?= $this->url("default_categorie", ["categorie" => strtolower($categorie->getCHEMIN())]); ?>">- <?= $categorie->getLIBELLECATEGORIE(); ?></option>
                     <?php endforeach; ?>
-                    
-                    <?php if(empty($w_user)) : ?>    
+
+                    <?php if(empty($w_user)) : ?>
                     <option value="<?= $this->url("default_inscription");?>">Inscription</option>
                     <option value="<?= $this->url("default_connexion");?>">Connexion</option>
                     <option value="<?= $this->url("default_contact"); ?>">Contact</option>
-                    
+
                     <?php else : ?>
                     <option value="<?= $this->url('default_profil'); ?>">Mon compte</option>
                     <option value="<?= $this->url("default_redaction"); ?>">Partager !</option>
                     <option value="<?= $this->url('default_deconnexion') ?>">Déconnexion</option>
                     <option value="<?= $this->url("default_contact"); ?>">Contact</option>
-                    
+
                     <?php if($w_user['ROLE'] == 'admin') : ?>
                     <option value="<?= $this->url('admin_moderation') ?>">Modération</option>
                     <?php endif; ?>
                     <?php endif; ?>
-                    
+
                 </select>
                 </div>
             </form>
@@ -234,9 +234,11 @@
                 </div>
                 <!-- Single button -->
                 <div class="span3 footer-col">
+
                    <h4 class="tag">TAGS</h4>
                     <div class="btn-group">
                     <!-- Standard button -->
+
                       <?php foreach ($tags as $tag) {
                                 echo '<button type="button" class="btn btn-default btn-tag"> '.$tag->LIBELLETAGS.' </button>';
                             }?>

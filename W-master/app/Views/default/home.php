@@ -37,10 +37,6 @@
             des conseils aux futurs générations, votre avis sur la société actuelle...<br />
             N'hésitez pas à vous inscrire sur Part Âge !<br />
             Inscription gratuite et rapide !</p>
-<!--
-        Connexion
-
--->
 
             <div class="container">
              <div class="row-fluid connect">
@@ -83,6 +79,8 @@
 
       </div>
 
+
+  </div>
     </div><!-- End Headline -->
 
     <div class="row-fluid gallery-row"><!-- Begin Gallery Row -->
