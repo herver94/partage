@@ -34,8 +34,10 @@
 
     ['GET|POST', '/contact', 'Default#contact', 'default_contact'],
 
+		['GET|POST', '/modifiermonprofil/[:id]', 'Default#modifprofil', 'default_modifprofil'],
 
-    	['GET', '/tags', 'Default#tags', 'tags'],
 
-    	
+    ['GET', '/tags', 'Default#tags', 'tags'],
+
+
 	);

@@ -71,7 +71,7 @@
                         <textarea class="span6" name="CONTENUCOMMENTAIRE" id="commentaire"></textarea>
                         <div class="row">
                             <div class="span2">
-                                <input type="submit" class="btn btn-inverse" value="Poster mon commentaire">
+                                <input type="submit" class="btn btn-inverse btn-profil" value="Poster mon commentaire">
                             </div>
                         </div>
                     </form>
@@ -115,7 +115,6 @@
 
     </div>
 
-    
+
 </div> <!-- End Container -->
 <?php $this->stop('contenu') ?>
-

@@ -2,14 +2,14 @@
 
 		$this->layout('layout', ['title' => 'Partage | Profil ', 'current' => 'profil']);
 
-	    $nom = $w_user['PRENOMUSER'];
+	  $nom = $w_user['PRENOMUSER'];
 		$prenom = $w_user['NOMUSER'];
-        $inscription = $w_user['DATEINSCRIPTION'];
+    $inscription = $w_user['DATEINSCRIPTION'];
 		$date =  strftime('%d-%m-%Y',strtotime($w_user['DATEDENAISSANCEUSER']));
 		$mdp = $w_user['MOTDEPASSEUSER'];
 		$photo = $w_user['PHOTOUSER'];
 		$genre = $w_user['SEXEUSER'];
-        $id = $w_user['IDUSER'];
+    $id = $w_user['IDUSER'];
 		$this->start('contenu');
 
 
@@ -67,9 +67,9 @@
 
                         </ul>
 
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Partagez</button>
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Modifier mon profil</button>
-                    <button class="btn btn-inverse pull-left btn-profil" type="button">Écrire un texte<br>à partager</button>
+                    <a class="btn btn-inverse pull-left btn-profil" type="button" href="<?= $this->url("default_redaction"); ?>">Partagez</a>
+
+                    <a class="btn btn-inverse pull-left btn-profil" type="button" href="<?= $this->url('default_modifprofil', ['id'=>$id]); ?>">Modifier mon profil</a>
 
                     <a class="btn btn-inverse pull-left btn-profil" type="button" onclick="getConfirmation();" href="<?= $this->url('default_deleteprofil', ['id'=>$id]); ?>">Supprimer mon profil</a>
 

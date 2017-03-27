@@ -46,12 +46,16 @@ class DefaultController extends Controller {
 									$auth->logUserIn($util); //utilisateur dans la session
 
 									$this->redirectToRoute('default_profil');
+
+									$retour['valid'] = 'ok';
+
 							}//sinon retour formulaire
 							else{
 
-									$message = 'erreur de pseudo';
-									$this->redirectToRoute('default_home');
-						}
+									$retour['valid'] = 'pasok';
+									//$this->redirectToRoute('default_home');
+								}
+								echo json_encode($retour);
 
 						}
 					}
@@ -113,6 +117,58 @@ class DefaultController extends Controller {
 							}
 								$this->show('default/inscription');
 				}
+
+
+				public function modifprofil($id) {
+					 if(!empty($_POST))
+				 	{
+				 		DBFactory::start();
+						extract($_POST);
+
+							$handle = new \upload($_FILES['PHOTOUSER']);
+							if ($handle->uploaded) {
+									$handle->file_new_name_body   = Shortcut::generateSlug($_POST['EMAILUSER'].'new');
+									$handle->image_resize         = true;
+									$handle->image_x              = 250;
+									$handle->image_y              = 200;
+								$handle->image_ratio_crop      = true;
+									$handle->process('/assets/img/profil/');
+									if ($handle->processed) {
+											$PHOTOPARTAGE = $handle->file_dst_name;
+											$handle->clean();
+									} else {
+											//$PHOTOPARTAGE = 'default.jpg';
+											echo 'error : ' . $handle->error;
+									}
+							}
+
+							if(empty($PHOTOUSER)){
+									if ($SEXEUSER == 'Homme'){
+											$PHOTOUSER = 'homme.jpg';
+							}
+									else{
+											$PHOTOUSER = 'femme.jpg';
+									}
+								}
+							$upuser	= \ORM::for_table('users')->find_one($id);
+							$upuser->set(array(
+							'PRENOMUSER' => $PRENOMUSER,
+							'NOMUSER' => $NOMUSER,
+							ROLE => 'user',
+							'DATEDENAISSANCEUSER' => $DATEDENAISSANCEUSER,
+							'SEXEUSER' => $SEXEUSER,
+							'EMAILUSER' => $EMAILUSER,
+							'CPUSER' => $CPUSER,
+							//set_expr('DATEINSCRIPTION', 'NOW()');
+							'PHOTOUSER' => $PHOTOUSER,
+							'MOTDEPASSEUSER' => password_hash($MOTDEPASSEUSER, PASSWORD_DEFAULT)
+							));
+							$upuser->save();
+
+
+										}
+											$this->show('default/modifprofil');
+							}
 
 
 
@@ -283,7 +339,7 @@ class DefaultController extends Controller {
 		$auth->logUserOut();
 		//retour à l'index
 		$this->redirectToRoute('default_home');
-		}	
+		}
 
 
 }
